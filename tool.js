@@ -52,3 +52,38 @@ export function secondFormatToMinute(value) {
     value = result;
     return result;
 }
+
+//数字补0 
+//（9=09）
+function pad(num) {
+	var len = num.toString().length;
+	while (len < 2) {
+		num = "0" + num;
+		len++;
+	}
+	return num;
+}
+
+// 数组深拷贝
+//[{}],[1,2]
+function copy(ary) {
+    let newAry = []
+    for (const item of ary) {
+        let value = item;
+        if (Object.prototype.toString.call(value) === "[object Object]") value = copyObj(value);
+        if (Object.prototype.toString.call(value) === "[object Array]") value = copyAry(value);
+        newAry.push(value);
+    }
+    return newAry;
+}
+
+function copyObj(obj) {
+    let newObj = {};
+    for (const key in obj) {
+        let value = obj[key];
+        if (Object.prototype.toString.call(value) === "[object Object]") value = copyObj(value);
+        if (Object.prototype.toString.call(value) === "[object Array]") value = copyAry(value);
+        newObj[key] = value;
+    }
+    return newObj;
+}
