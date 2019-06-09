@@ -1,5 +1,6 @@
 # job
-工作当中遇到的问题和总结和常用函数库
+
+学习笔记
 
 
 https://github.com/sanlangguo/chenzongqiang/wiki
