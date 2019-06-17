@@ -27,7 +27,7 @@
 
 * vue
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/vue-%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0">vue-页面之间传多个参数</a>
-    * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E5%BE%AE%E4%BF%A1%EF%BC%88vue%EF%BC%89">微信（vue）</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%89%AB%E4%B8%80%E6%89%AB%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%88vue%EF%BC%89">微信公众号扫一扫兼容问题（vue）</a>
 
 * 小程序
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%85%E5%B5%8Chtml-%E5%88%86%E4%BA%AB%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">小程序内嵌html-分享注意事项</a>
