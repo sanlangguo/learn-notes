@@ -46,6 +46,7 @@
 * 移动Web
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Hybrid-App-应用概述</a>
 
-
+* 程序猿入坑的爱恨情仇
+    * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">初次接触程序的我</a>
 
 
