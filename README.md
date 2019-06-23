@@ -30,7 +30,7 @@
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%89%AB%E4%B8%80%E6%89%AB%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%88vue%EF%BC%89">微信公众号扫一扫兼容问题（vue）</a>
  
 * React 
-    * 使用技巧将要更新
+    * <a href="https://github.com/sanlangguo/learn-notes/wiki/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3">React 生命周期的理解</a>
 
 * 小程序
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%85%E5%B5%8Chtml-%E5%88%86%E4%BA%AB%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">小程序内嵌html-分享注意事项</a>
