@@ -20,6 +20,7 @@
 * JS
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/this-%E7%90%86%E8%A7%A3">this-理解</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Web-Worker">Web Worker</a>
+    * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Web-Worker">JS 垃圾回收机制简单概述</a>
 
 * vue
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/vue-%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0">vue-页面之间传多个参数</a>
