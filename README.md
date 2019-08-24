@@ -25,7 +25,8 @@
 * vue
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/vue-%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0">vue-页面之间传多个参数</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%89%AB%E4%B8%80%E6%89%AB%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%88vue%EF%BC%89">微信公众号扫一扫兼容问题（vue）</a>
- 
+    * <a href="https://github.com/sanlangguo/learn-notes/wiki/vue-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B8%B2%E6%9F%93%E9%A1%BA%E5%BA%8F">vue f父子组件的生命周期渲染顺序</a>
+
 * React 
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3">React 生命周期的理解</a>
 
