@@ -50,11 +50,7 @@
 
 * 网络协议
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP-HTTPS">HTTP与HTTPS</a>
-    * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP-HTTPS">HTTP返回状态码</a>
-
-
-* 程序猿入坑的爱恨情仇
-    * 初次接触程序的我。。。将要更新
+    * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E7%A0%81">HTTP返回状态码</a>
     
  * 算法
      * 将要更新
