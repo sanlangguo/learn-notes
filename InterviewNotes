@@ -6,3 +6,53 @@
 4.算法
 5.Map,Set,WeakMap
 6.css 居中方式
+
+
+1.js 如何获取demo元素
+2.动画的简单动效 （圆圈画圆过程）
+
+
+掌门一对一
+
+1.h5是什么
+2.var let const 的区别
+3.如何三栏布局兼容问题
+
+云仓
+
+1.数组map和 forEach 区别， Array.form （便捷数组操作），数组求和
+2.css居中的方式
+3.margin,padding
+4.深拷贝 
+
+快云
+
+1.css 上下三栏布局，底部一直在页面底部
+2.js 原型
+3.wekpack 的原理
+4.node js
+
+诺亚财富
+
+1.css 左右布局，左固定 兼容写法
+2.js 各种循环的理解
+3.css box-sizing
+4.webpack 多页面配置
+5.vue 组件之间的传值
+6.js 大文件上传
+7.vuex更改组件状态，刷新状态是否改变
+8.终止循环 break return continue
+
+JD （偏向原理和基础）
+
+1.rem em vh vw 原理
+2. vue文件编译原理
+3.css 五种不同颜色圆环
+4.js 和 底层（ios android） 沟通原理
+5.this.nextTick() 原理 100次更新dem 执行一次
+6. 盒模型理解
+7. 1像素问题
+8. 小程序原理
+9. BFC 实现方式 解决了哪些问题
+
+
