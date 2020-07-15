@@ -49,7 +49,7 @@ JD （偏向原理和基础）
 2. vue文件编译原理
 3.css 五种不同颜色圆环
 4.js 和 底层（ios android） 沟通原理
-5.this.nextTick() 原理 100次更新dem 执行一次
+5.this.nextTick() 原理 100次更新dem 执行一次 (更新dom 为什么是异步的)
 6. 盒模型理解
 7. 1像素问题
 8. 小程序原理
