@@ -47,12 +47,17 @@ JD （偏向原理和基础）
 
 1.rem em vh vw 原理
 2. vue文件编译原理
+  https://cloud.tencent.com/developer/article/1601614
+  https://github.com/berwin/Blog/issues/18
 3.css 五种不同颜色圆环
+  参考 https://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/
+  dom地址 https://codepen.io/sanlangguo/pen/abdaqWP
 4.js 和 底层（ios android） 沟通原理
 5.this.nextTick() 原理 100次更新dem 执行一次 (更新dom 为什么是异步的)
-6. 盒模型理解
+6. 盒模型理解 BFC 实现方式 解决了哪些问题
 7. 1像素问题
+  https://www.jianshu.com/p/fa670b737a29
 8. 小程序原理
-9. BFC 实现方式 解决了哪些问题
+
 
 
