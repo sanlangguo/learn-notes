@@ -42,6 +42,7 @@
 6.js 大文件上传
 7.vuex更改组件状态，刷新状态是否改变
 8.终止循环 break return continue
+  https://blog.csdn.net/XXJ19950917/article/details/78310346
 
 JD （偏向原理和基础）
 
@@ -53,6 +54,7 @@ JD （偏向原理和基础）
   参考 https://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/
   dom地址 https://codepen.io/sanlangguo/pen/abdaqWP
 4.js 和 底层（ios android） 沟通原理
+
 5.this.nextTick() 原理 100次更新dem 执行一次 (更新dom 为什么是异步的)
 6. 盒模型理解 BFC 实现方式 解决了哪些问题
 7. 1像素问题
