@@ -93,11 +93,14 @@ JD （偏向原理和基础）
 7.cookie HTTP-only 不能获取cookie
 8.vue 双向绑定原理
 9.vue-router hash history 核心理解
+10.减少回流
 
 
 上海银科 二面
 
-1. url浏览器详细渲染
+1.url浏览器详细渲染
 2.直播相关技术
 3.前端安全
 4.git flow
+5.ssl openssl
+  https://www.zhihu.com/question/23341334

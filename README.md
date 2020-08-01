@@ -10,6 +10,7 @@
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/XSS-%E6%94%BB%E5%87%BB">XSS-攻击</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/SSRF-%E6%94%BB%E5%87%BB">SSRF-攻击</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%BB%E5%87%BB">上传文件攻击</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP-%E5%93%8D%E5%BA%94%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB">HTTP 响应截断攻击</a>
 * css
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/css%E5%B1%85%E4%B8%AD">css居中</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/footer-%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%BA%95%E9%83%A8%E4%BD%8D%E7%BD%AE">footer 一直在底部位置</a>
