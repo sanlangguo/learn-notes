@@ -111,6 +111,7 @@ JD （偏向原理和基础）
 1.vue react 区别
 2.computed watch methods 区别
 3.css 进度条
+  https://cloud.tencent.com/developer/article/1572870
 4.promise 异步原理
 6.react native 原理
 7.vue 文件编译原理
@@ -119,4 +120,3 @@ JD （偏向原理和基础）
 10.node 中间件
 11.react hooks
 12.react setState 同步或者异步
-
