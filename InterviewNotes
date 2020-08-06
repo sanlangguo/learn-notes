@@ -123,11 +123,14 @@ JD （偏向原理和基础）
 
 美团
 
-1.跨域
+1.跨域 cros
 2.webpack 原理和 plugin
 3.如何提高 webpack 打包速度
 4.vue react 生命周期的不同
 5.native 怎么 h5沟通
 6.h5 怎么沟通 native
 8.前端性能指标
+
 9.前端埋点
+10.http 请求post, put
+11.复杂请求和简单请求 http
