@@ -3,7 +3,7 @@ title: js 红宝书4版学习笔记
 ---
 
 ## 第二章
-## 🌟 [[New to Logseq?]]
+## [[script 元素]]
 ### [[Testimonials]]
 ### [[Create new page]]
 ### [[Getting started]]
