@@ -3,7 +3,14 @@ title: js 红宝书4版学习笔记
 ---
 
 ## 第二章
-``` code 测试 ```
+## 🌟 [[New to Logseq?]]
+### [[Testimonials]]
+### [[Create new page]]
+### [[Getting started]]
+## [[Changelog]]
+## [[https://github.com/logseq/logseq/projects/1][Roadmap]]
+## [[Videos]]
+## ❓[[FAQ]]
 ##
 ##
 ##
