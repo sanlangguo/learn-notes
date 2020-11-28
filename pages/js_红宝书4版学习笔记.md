@@ -4,7 +4,7 @@ title: js 红宝书4版学习笔记
 
 ## 第二章
 ## [[script 元素]]
-### [[async 元素: 可选]]
+### [[async 元素: 可选。]]
 ### [[Create new page]]
 ### [[Getting started]]
 ## [[Changelog]]
