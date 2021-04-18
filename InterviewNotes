@@ -11,6 +11,13 @@
 1.js 如何获取demo元素
 2.动画的简单动效 （圆圈画圆过程）
 
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(75, 75, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+
+
 
 掌门一对一
 
