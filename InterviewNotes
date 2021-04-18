@@ -24,10 +24,17 @@
 1.h5是什么
 2.var let const 的区别
 3.如何三栏布局兼容问题
+https://segmentfault.com/a/1190000019269901
 
 云仓
 
 1.数组map和 forEach 区别， Array.form （便捷数组操作），数组求和
+到底有什么区别呢？forEach()方法不会返回执行结果，而是undefined。也就是说，forEach()会修改原来的数组。而map()方法会得到一个新的数组并返回。
+
+数组求和: 
+https://blog.csdn.net/YANG_Gang2017/article/details/72571505
+eval([1,2,4].join("+"))
+
 2.css居中的方式
 3.margin,padding
 4.深拷贝 
@@ -35,14 +42,20 @@
 快云
 
 1.css 上下三栏布局，底部一直在页面底部
+  https://codepen.io/una/pen/bGVXPWB
+  https://github.com/sanlangguo/learn-notes/wiki/footer-%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%BA%95%E9%83%A8%E4%BD%8D%E7%BD%AE
+
 2.js 原型
+
 3.wekpack 的原理
+
 4.node js
 
 诺亚财富
 
 1.css 左右布局，左固定 兼容写法
 2.js 各种循环的理解
+
 3.css box-sizing
 4.webpack 多页面配置
 5.vue 组件之间的传值
@@ -64,17 +77,45 @@ JD （偏向原理和基础）
   https://www.zoo.team/article/jsbridge
 
 5.this.nextTick() 原理 100次更新dem 执行一次 (更新dom 为什么是异步的)
-6. 盒模型理解 BFC 实现方式 解决了哪些问题
-7. 1像素问题
-  https://www.jianshu.com/p/fa670b737a29
-8. 小程序原理
+https://github.com/berwin/Blog/issues/22
 
+6. 盒模型理解 BFC 实现方式 解决了哪些问题
+
+CSS中组成一个块级盒子需要:
+  Content box: 这个区域是用来显示内容，大小可以通过设置 width 和 height.
+  Padding box: 包围在内容区域外部的空白区域； 大小通过 padding 相关属性设置。
+  Border box: 边框盒包裹内容和内边距。大小通过 border 相关属性设置。
+  Margin box: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 margin 相关属性设置。
+  
+产生BFC的方法：
+  float有值且不为空。
+  overflow有值且不为visible。
+  display有值为：inline-block，table-cell，flow-root，table-caption，inline-flex中的一个。
+  position有值为absolute或者fixed。
+  
+BFC可以解决哪些问题：
+  1、BFC全称：Block Formatting Context，译为块级格式化上下文，它是CSS2.1规范定义的，关于CSS渲染定位的一个概念
+  2、能够解决因浮动造成的父元素塌陷问题
+  3、能够解决div浮动造成的遮盖问题【overflow:hidden; 触发bfc来解决遮挡问题】
+  4、解决margin塌陷问题【overflow:hidden; 产生bfc来解决】
+  
+
+7. 1像素问题
+  https://segmentfault.com/a/1190000007604842
+  
+8. 小程序原理
+https://zhaomenghuan.js.org/blog/wechat-miniprogram-principle-analysis.html#%E5%89%8D%E8%A8%80
 
 银科
 
 1.js 数组的方法
 2.深浅拷贝
+https://segmentfault.com/a/1190000018874254
+
 3.AMD/CMD
+https://juejin.cn/post/6844903576309858318#heading-0
+https://es6.ruanyifeng.com/#docs/module-loader
+
 4.SSR/SEO
 5.css居中
 6.最小像素
