@@ -1,5 +1,9 @@
 #  learn notes
 
+* 移动端汇总
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/8">H5打开APP指定页面</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/7">移动端兼容问题记录</a>
+
 * 前端性能
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/AMP-HTML">AMP-HTML</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%EF%BC%88%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%89">高性能网站建设指南（前端性能优化）</a>
