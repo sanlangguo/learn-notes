@@ -1,9 +1,14 @@
 #  learn notes
 
+* 移动端汇总
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/8">H5打开APP指定页面</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/7">移动端兼容问题记录</a>
+
 * 前端性能
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/AMP-HTML">AMP-HTML</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE%E6%8C%87%E5%8D%97%EF%BC%88%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%89">高性能网站建设指南（前端性能优化）</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5">移动端浏览器前端优化策略</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/5">详细分析 web 性能优化</a>
 
 * 前端安全
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/CSRF-%E6%94%BB%E5%87%BB">CSRF-攻击</a>
@@ -49,6 +54,7 @@
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93">浏览器渲染</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E7%BD%91%E7%AB%99%E5%AD%97%E4%BC%98%E5%8C%96%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C%EF%BC%8C%E7%BD%91%E7%AB%99%E9%A2%84%E8%AE%BE%E5%AD%97%E4%BD%93%E7%9A%84CSS%E6%9C%80%E4%BD%B3%E5%86%99%E6%B3%95">网站字优化阅读体验，网站预设字体的CSS最佳写法</a>
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E8%B0%83%E5%8F%96%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%AD%E6%96%87%EF%BC%8Cutf-8%EF%BC%8C%E8%A6%81%E8%BD%AC%E7%A0%81">调取后台接口，如果有中文，utf-8，要转码</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/6">微前端</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%89%8D%E7%AB%AF%E6%97%A5%E5%BF%97%E4%B8%8A%E4%BC%A0">前端日志上传</a>
 * 移动Web
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Hybrid-App-应用概述</a>
