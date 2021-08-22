@@ -48,4 +48,46 @@ box-sizing 属性可以被用来调整这些表现:
 - content-box 是默认值。如果你设置一个元素的宽为100px，那么这个元素的内容区会有100px 宽，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。
 - border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在width内的。也就是说，如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区的实际宽度是width减去(border + padding)的值。大多数情况下，这使得我们更容易地设定一个元素的宽高。
 
-  
+
+
+
+#####  画一条 0.5px 的线
+
+- 采用 meta viewport 的方式
+```
+<meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no" />
+```
+这样html的宽高就是设备的2倍，此时依然使用css board为1像素的话，肉眼看到页面线条就相当于transform:scale(0.5)的效果，即为0.5像素.
+但是这种方式涉及到页面整体布局规划以及图片大小的制作，所以若采用这个方式还是事先确定为好.
+
+
+- 采用 border-image 的方式
+
+这个其实就比较简单了，直接制作一个0.5像素的线条和其搭配使用的背景色的图片即可
+
+- 采用 transform: scale()的方式
+就是将绘制出来的线条的高度进行半倍的缩放
+```
+p {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: red;
+  -webkit-transform: scale(1,0.5);
+  transform: scale(1,0.5);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
