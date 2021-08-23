@@ -1,4 +1,4 @@
-##### BFC理解
+#### BFC理解
 
 ```
   块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
@@ -24,7 +24,7 @@
     当一个元素同时被设置了 flex-basis (除值为 auto 外) 和 width (或者在 flex-direction: column 情况下设置了height) , flex-basis 具有更高的优先级.
   ```
   
-#####  标准盒模型
+###  标准盒模型
 
 
 在标准模型中，如果你给盒设置 width 和 height，实际设置的是 content box。 padding 和 border 再加上设置的宽高一起决定整个盒子的大小。
@@ -51,7 +51,7 @@ box-sizing 属性可以被用来调整这些表现:
 
 
 
-#####  画一条 0.5px 的线
+###  画一条 0.5px 的线
 
 - 采用 meta viewport 的方式
 ```
@@ -79,13 +79,13 @@ p {
 }
 ```
 
-##### transition 和 animation 的区别
+### transition 和 animation 的区别
 Animation和transition大部分属性是相同的，他们都是随时间改变元素的属性值，他们的主要区别是transition需要触发一个事件才能改变属性，而animation不需要触发任何事件的情况下才会随时间改变属性值，并且transition为2帧，从from .... to，而animation可以一帧一帧的。
 
 - CSS的transition只有两个状态：开始状态 和 结束状态；但animation可能是多个状态，有帧的概念
 - CSS的transition需要借助别的方式来触发，比如CSS的状态选择器（如:hover）或 借助JavaScript来触发；animation可以自动触发
 
-##### 关于js动画和css3动画的差异性你了解吗？请简单谈一下
+### 关于js动画和css3动画的差异性你了解吗？请简单谈一下
 
 - transform: css transform 属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改CSS视觉格式化模型的坐标空间来实现的。
 - requestAnimationFrame: window.requestAnimationFrame() 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行.
