@@ -100,10 +100,69 @@ Animation和transition大部分属性是相同的，他们都是随时间改变�
 
 - 所以，综合考虑，简单的交互动画就用css3实现，控制比较复杂、比较繁琐的交互动画可以交由js实现。
 
+### 浮动清除
+  
+- 方法一：使用带 clear 属性的空元素 在浮动元素后使用一个空元素如
+```
+  <div class="clear"></div>，并在 CSS 中赋 予.clear{clear:both;}属性即可清理浮动。亦可使用<br class="clear" />或<hr class="clear" /> 
+来进行清理。 
+```
+- 方法二：使用 CSS 的 overflow 属性 给浮动元素的容器添加 overflow:hidden;或 overflow:auto;可以清除浮动，另外在 IE6 中还 需要触发 hasLayout ，例如为父元素设置容器宽高或设置 zoom:1。 在添加 overflow 属性后，浮动元素又回到了容器层，把容器高度撑起，达到了清理浮动 的效果。 
+- 方法三：给浮动的元素的容器添加浮动 给浮动元素的容器也添加上浮动属性即可清除内部浮动，但是这样会使其整体浮动，影响布局，不推荐使用。 
+- 方法四：使用邻接元素处理 什么都不做，给浮动元素后面的元素添加 clear 属性。 
+- 方法五：使用 CSS 的:after 伪元素 结合:after 伪元素（注意这不是伪类，而是伪元素，代表一个元素之后最近的元素）和 IEhack ，可以完美兼容当前主流的各大浏览器，这里的 IEhack 指的是触发 hasLayout。 给浮动元素的容器添加一个 clearfix 的 class，然后给这个 class 添加一个:after 伪元素实 现元素末尾添加一个看不见的块元素（Block element）清理浮动。 参考 https://www.cnblogs.com/ForEvErNoME/p/3383539.html
 
+### CSS3新增的属性有哪些：
+CSS 用于控制网页的样式和布局。
 
+CSS3 是最新的 CSS 标准。
 
+CSS3新增了很多的属性，下面一起来分析一下新增的一些属性：
 
+- CSS3边框：
+
+border-radius：CSS3圆角边框。在 CSS2 中添加圆角矩形需要技巧，我们必须为每个圆角使用不同的图片，在 CSS3 中，创建圆角是非常容易的，在 CSS3 中，border-radius 属性用于创建圆角。border：2px solid;
+box-shadow：CSS3边框阴影。在 CSS3 中，box-shadow 用于向方框添加阴影。box-shadow:10px 10px 5px #888888;
+border-image：CSS3边框图片。通过 CSS3 的 border-image 属性，您可以使用图片来创建边框。border-image：url(border.png) 30 30 round;
+- CSS3背景：
+
+background-size： 属性规定背景图片的尺寸。在 CSS3 之前，背景图片的尺寸是由图片的实际尺寸决定的。在 CSS3 中，可以规定背景图片的尺寸，这就允许我们在不同的环境中重复使用背景图片。您能够以像素或百分比规定尺寸。如果以百分比规定尺寸，那么尺寸相对于父元素的宽度和高度。
+background-origin ：属性规定背景图片的定位区域。背景图片可以放置于 content-box、padding-box 或 border-box 区域。
+- CSS3文字效果：
+
+text-shadow：在 CSS3 中，text-shadow 可向文本应用阴影。text-shadow:5px 5px 5px #FFFFFF;
+word-wrap :单词太长的话就可能无法超出某个区域，允许对长单词进行拆分，并换行到下一行：p{word-wrap:break-word;}
+- CSS3 2D转换：
+
+　　transform：通过 CSS3 转换，我们能够对元素进行移动、缩放、转动、拉长或拉伸。
+
+translate()：元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数：transform：translate（50px,100px）;值 translate(50px,100px) 把元素从左侧移动 50 像素，从顶端移动 100 像素。
+rotate()：元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。transform:rotate(30deg);值 rotate(30deg) 把元素顺时针旋转 30 度。
+scale():元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数：transform:scale(2,4);值 scale(2,4) 把宽度转换为原始尺寸的 2 倍，把高度转换为原始高度的 4 倍。
+skew():元素转动给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数：transform:skew(30deg,20deg);值 skew(30deg,20deg) 围绕 X 轴把元素转动 30 度，围绕 Y 轴转动 20 度。
+matrix() :
+matrix() 方法把所有 2D 转换方法组合在一起。
+
+matrix() 方法需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
+
+- CSS3 3D转换：
+
+rotateX()：元素围绕其 X 轴以给定的度数进行旋转。transform：rotateX(120deg);
+rotateY()：元素围绕其 Y 轴以给定的度数进行旋转。transform：rotateY(120deg);
+- CSS3 过渡：当元素从一种样式变换为另一种样式时为元素添加效果。
+
+- CSS3动画：通过 CSS3，我们能够创建动画，这可以在许多网页中取代动画图片、Flash 动画以及 JavaScript。
+
+- CSS3多列：
+
+column-count：属性规定元素应该被分隔的列数。
+column-gap：属性规定列之间的间隔。
+column-rule ：属性设置列之间的宽度、样式和颜色规则。
+- CSS3用户界面：
+
+resize：属性规定是否可由用户调整元素尺寸。
+box-sizing：属性允许您以确切的方式定义适应某个区域的具体内容。
+outline-offset ：属性对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓。
 
 
 
