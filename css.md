@@ -26,7 +26,6 @@
   
 ###  标准盒模型
 
-
 在标准模型中，如果你给盒设置 width 和 height，实际设置的是 content box。 padding 和 border 再加上设置的宽高一起决定整个盒子的大小。
 ```
 .box {
@@ -104,10 +103,11 @@ Animation和transition大部分属性是相同的，他们都是随时间改变�
   
 - 方法一：使用带 clear 属性的空元素 在浮动元素后使用一个空元素如
 ```
-  <div class="clear"></div>，并在 CSS 中赋 予.clear{clear:both;}属性即可清理浮动。亦可使用<br class="clear" />或<hr class="clear" /> 
+  <div class="clear"></div>，并在CSS中赋予.clear{clear:both;}属性即可清理浮动。亦可使用<br class="clear" />或<hr class="clear" /> 
 来进行清理。 
 ```
 - 方法二：使用 CSS 的 overflow 属性 给浮动元素的容器添加 overflow:hidden;或 overflow:auto;可以清除浮动，另外在 IE6 中还 需要触发 hasLayout ，例如为父元素设置容器宽高或设置 zoom:1。 在添加 overflow 属性后，浮动元素又回到了容器层，把容器高度撑起，达到了清理浮动 的效果。 
+- 为什么加入overflow:hidden,即可清除浮动呢？那是因为overflow:hidden属性相当于是让父级紧贴内容，这样即可紧贴其对象内内容（包括使用float的div盒子），从而实现了清除浮动
 - 方法三：给浮动的元素的容器添加浮动 给浮动元素的容器也添加上浮动属性即可清除内部浮动，但是这样会使其整体浮动，影响布局，不推荐使用。 
 - 方法四：使用邻接元素处理 什么都不做，给浮动元素后面的元素添加 clear 属性。 
 - 方法五：使用 CSS 的:after 伪元素 结合:after 伪元素（注意这不是伪类，而是伪元素，代表一个元素之后最近的元素）和 IEhack ，可以完美兼容当前主流的各大浏览器，这里的 IEhack 指的是触发 hasLayout。 给浮动元素的容器添加一个 clearfix 的 class，然后给这个 class 添加一个:after 伪元素实 现元素末尾添加一个看不见的块元素（Block element）清理浮动。 参考 https://www.cnblogs.com/ForEvErNoME/p/3383539.html
@@ -243,12 +243,33 @@ $(document).ready(function() {
  
 - 块元素：独占一行，并且有自动填满父元素，可以设置 margin 和 pading 以及高度和宽度
 - 行元素：不会独占一行，width 和 height 会失效，并且在垂直方向的 padding 和 margin 会失效。
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+### calc 属性, support 属性
+- calc() 函数用于动态计算长度值。 calc()函数支持 "+", "-", "*", "/" 运算；
+- support 主要是用于检测浏览器是否支持CSS的某个属性，其实就是条件判断，如果支持某个属性，你可以写一套样式，如果不支持某个属性，你也可以提供另外一套样式作为替补。
+
+```
+@supports (display: grid) {
+  div {
+    display: grid;
+  }
+}
+ 
+@supports not (display: grid) {
+  div {
+    float: right;
+  }
+}
+```
+### 画一个三角形？
+```
+.a {
+  width: 0;
+  height: 0;
+  border-width: 100px;
+  border-style: solid;
+  border-color: #0099CC;
+}
+
+<div class="a"></div>
+```
