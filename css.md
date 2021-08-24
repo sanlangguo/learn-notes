@@ -173,3 +173,82 @@ outline-offset ：属性对轮廓进行偏移，并在超出边框边缘的位�
 - 粘性定位 sticky： 元素先按照普通文档流定位，然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。而后，元素定位表现为在跨越特定阈值前为相对定 位，之后为固定定位。 
 - 默认定位 Static： 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声 明）。 
 - inherit: 规定应该从父元素继承 position 属性的值。
+
+### visibility=hidden, opacity=0，display:none 区别
+
+- opacity=0，该元素隐藏起来了，但不会改变页面布局，并且，如果该元素已经绑定一些 事件，如 click 事件，那么点击该区域，也能触发点击事件的 
+- visibility=hidden，该元素 隐藏起来了，但不会改变页面布局，但是不会触发该元素已经绑定的事件 
+- display=none， 把元素隐藏起来，并且会改变页面布局，可以理解成在页面中把该元素删除掉一样。
+
+### 双边距重叠问题（外边距折叠）
+- 多个相邻（兄弟或者父子关系）普通流的块元素垂直方向 marigin 会重叠 折叠的结果为： 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 
+- 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 
+- 两个外边距一正一负时，折叠结果是两者的相加的和。
+  
+### 多行元素的文本省略号
+
+- 方法一,对于多行文本，一种方法是使用webkit的css扩展属性，该方法适用于Safari、chrome和大多数移动端浏览器。
+
+```
+p {
+  width: 300px;
+  overflow: hidden;
+  /*将对象作为弹性伸缩盒子模型显示*/
+  display: -webkit-box;
+  /*设置子元素排列方式*/
+  -webkit-box-orient: vertical;
+  /*设置显示的行数，多出的部分会显示为...*/
+  -webkit-line-clamp: 3;
+}
+```
+- 方法二,使用伪元素实现，将伪元素放在最后一个字的上方，达到显示省略号的目的。该方法兼容性较好，但文字未超出的情况下也会出现省略号。
+```
+p {
+  position: relative;
+  line-height: 1.2em;
+  max-height: 3.6em;
+  width: 300px;
+  /*设置文本为两端对齐*/
+  text-align: justify;
+  overflow: hidden;
+}
+
+p::after {
+  content: "...";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /*将省略号的大小设置为1个字体大小*/
+  width: 1em;
+  /*设置背景，将最后一个字覆盖掉*/
+  background: #fff;
+}
+```
+- 方法三：使用插件jQuery.dotdotdot，下载及详细文档地址：http://dotdotdot.frebsite.nl/。
+```
+p {
+  width: 300px;
+  max-height: 3em;
+  text-align: justify;
+  overflow: hidden;
+}
+
+// js部分代码
+$(document).ready(function() {
+  $("p").dotdotdot();
+});
+```
+
+### 说一下块元素和行元素
+ 
+- 块元素：独占一行，并且有自动填满父元素，可以设置 margin 和 pading 以及高度和宽度
+- 行元素：不会独占一行，width 和 height 会失效，并且在垂直方向的 padding 和 margin 会失效。
+  
+  
+  
+  
+  
+  
+  
+  
+  
