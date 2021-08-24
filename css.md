@@ -273,3 +273,29 @@ $(document).ready(function() {
 
 <div class="a"></div>
 ```
+### line-height 和 height 的区别, vertical-align基本概念与应用
+
+  ![image](https://user-images.githubusercontent.com/30766629/130578839-67a83511-cc3e-439e-91a8-748bd0a1ef7c.png)
+  
+- line-height 行高是指文本行基线baseline之间的垂直距离
+行高是可以被继承的，数字可以直接被继承，然后在计算行高；而百分比是先计算出行高，在以px继承行高line-height实际上只影响行内元素和其他行内内容，而不会直接影响块级元素，也可以为一个块级元素设置line-height，但这个值只是应用到块级元素的内联内容时才会有影响。在块级元素上声明line-height会为该块级元素的内容设置一个最小行框高度
+
+  
+- vertical-align基本概念与应用
+  
+vertical-align的百分比值不是相对于字体大小或者其他什么属性计算的，而是相对于line-height计算的。
+
+![image](https://user-images.githubusercontent.com/30766629/130578918-1d2b2daa-b19c-498c-a9e7-d355831440b0.png)
+
+- 图像元素在块级元素底部为什么留有空白？
+  
+原因是行内元素默认都受vertical-align（垂直对齐方式）和line-height（行高）的影响， 而vertical-align默认的对齐方式是baseline,即基线对齐。 这个基线就是span标签里的字母X的下边沿，故图片底部是与字母底部相对齐的（不是与span标签的背景对齐）。 又因为字母本身有line-height（行高）值，所以span标签加上背景后比字母要高一些。
+
+  解决方法：（四种方法任意一种都可解决该问题）
+- （1）、将整个p内的font-size设置为0；
+- （2）、将图片img变为块级元素，即设置其为display:block;
+- （3）、给p设置一个行高（值尽量小些），设置为line-height:5px;
+- （4）、设置图片img垂直对齐方式vertical-align,值为top/middle/bottom任意一个都可以（为了覆盖默认的值baseline）;
+
+
+
