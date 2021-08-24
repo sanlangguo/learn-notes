@@ -335,13 +335,20 @@ vertical-align的百分比值不是相对于字体大小或者其他什么属性
 - 避免在 CSS中使用 JavaScript 表达式（仅限 IE）
   
   
+### inline-block、inline 和 block 的区别；
+
+- Block 是块级元素，其前后都会有换行符，能设置宽度，高度，margin/padding 水平垂直 方向都有效。 
+- Inline：设置 width 和 height 无效，margin 在竖直方向上无效，padding 在水平方向垂直 方向都有效，前后无换行符 
+- Inline-block：能设置宽度高度，margin/padding 水平垂直方向 都有效，前后无换行符
   
+### 为什么 img 是 inline 还可以设置宽高
   
-  
-  
-  
-  
-  
-  
+简单介绍：
+- img、input 属于替换元素，替换元素一般有内在尺寸和宽高比(auto时起作用)，所以具有width和height，可以设定。
+
+详细介绍
+- 几乎所有的替换元素都是行内元素，例如<img>、<input>等等。不过元素的类型也不是固定的，通过设定CSS 的display属性，可以使行内元素变为块级元素，也可以让块级元素变为行内元素。
+- 替换元素一般有内在尺寸，所以具有width和height，可以设定。例如你不指定img的width和height时，就按其内在尺寸显示，也就是图片被保存的时候的宽度和高度。对于表单元素，浏览器也有默认的样式，包括宽度和高度。
+
   
   
