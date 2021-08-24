@@ -268,7 +268,7 @@ $(document).ready(function() {
   height: 0;
   border-width: 100px;
   border-style: solid;
-  border-color: #0099CC;
+  border-color: #0099CC transparent transparent;
 }
 
 <div class="a"></div>
