@@ -292,10 +292,10 @@ vertical-align的百分比值不是相对于字体大小或者其他什么属性
 原因是行内元素默认都受vertical-align（垂直对齐方式）和line-height（行高）的影响， 而vertical-align默认的对齐方式是baseline,即基线对齐。 这个基线就是span标签里的字母X的下边沿，故图片底部是与字母底部相对齐的（不是与span标签的背景对齐）。 又因为字母本身有line-height（行高）值，所以span标签加上背景后比字母要高一些。
 
   解决方法：（四种方法任意一种都可解决该问题）
-- （1）、将整个p内的font-size设置为0；
-- （2）、将图片img变为块级元素，即设置其为display:block;
-- （3）、给p设置一个行高（值尽量小些），设置为line-height:5px;
-- （4）、设置图片img垂直对齐方式vertical-align,值为top/middle/bottom任意一个都可以（为了覆盖默认的值baseline）;
+- 将整个p内的font-size设置为0；
+- 将图片img变为块级元素，即设置其为display:block;
+- 给p设置一个行高（值尽量小些），设置为line-height:5px;
+- 设置图片img垂直对齐方式vertical-align,值为top/middle/bottom任意一个都可以（为了覆盖默认的值baseline）;
 
 
 
