@@ -275,13 +275,18 @@ $(document).ready(function() {
 ```
 ### line-height 和 height 的区别, vertical-align基本概念与应用
 
-  ![image](https://user-images.githubusercontent.com/30766629/130578839-67a83511-cc3e-439e-91a8-748bd0a1ef7c.png)
+![image](https://user-images.githubusercontent.com/30766629/130578839-67a83511-cc3e-439e-91a8-748bd0a1ef7c.png)
   
 - line-height 行高是指文本行基线baseline之间的垂直距离
 行高是可以被继承的，数字可以直接被继承，然后在计算行高；而百分比是先计算出行高，在以px继承行高line-height实际上只影响行内元素和其他行内内容，而不会直接影响块级元素，也可以为一个块级元素设置line-height，但这个值只是应用到块级元素的内联内容时才会有影响。在块级元素上声明line-height会为该块级元素的内容设置一个最小行框高度
-
+- height则是定义元素自身的高度
   
-- vertical-align基本概念与应用
+```
+  <p>text, text,text,text,text,text,text</p>
+  假如定义p标签的行高为line-heigth:20px; 文字在浏览器中显示为一行时，这个p标签的高度会为20px，如果为两行，则p标签的高度为40px;行高20px;
+```
+  
+- vertical-align 基本概念与应用
   
 vertical-align的百分比值不是相对于字体大小或者其他什么属性计算的，而是相对于line-height计算的。
 
@@ -297,5 +302,46 @@ vertical-align的百分比值不是相对于字体大小或者其他什么属性
 - 给p设置一个行高（值尽量小些），设置为line-height:5px;
 - 设置图片img垂直对齐方式vertical-align,值为top/middle/bottom任意一个都可以（为了覆盖默认的值baseline）;
 
+### 设置一个元素的背景颜色，背景颜色会填充哪些区域？
+- background-color 设置的背景颜色会填充元素的 content、padding、border 区域。
 
+### 知道属性选择器和伪类选择器的优先级吗
+  
+- 属性选择器和伪类选择器优先级相同
+  
+### 了解重绘和重排(回流)吗，知道怎么去减少重绘和重排吗
 
+回流这一阶段主要是计算节点的位置和几何信息，那么当页面布局和几何信息发生变化的时候，就需要回流. 比如以下情况：
+
+- 调整窗口大小
+- 更改字体
+- 添加或删除样式表
+- 内容更改，例如用户键入文本,输入框
+- 激活 CSS 伪类，如 ：hover（在 IE 中激活兄弟姐妹的伪类）
+- 操纵类属性
+- 操纵 DOM 的脚本
+- 计算偏移宽和偏移海特
+- 设置样式属性的属性
+
+注意：回流一定会触发重绘，而重绘不一定会回流
+  
+如何避免回流或至少将其对性能的影响降至最低？
+  
+- 更改风格元素的类（在 dom 树中尽可能低）
+- 避免设置多个内联样式
+- 将动画应用于固定或绝对位置的元素
+- 交易平滑度以加快速度
+- 避免布局表
+- 避免在 CSS中使用 JavaScript 表达式（仅限 IE）
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
