@@ -14,6 +14,10 @@
 
 [参考链接](https://www.cnblogs.com/penghuwan/p/7359026.html#_label0_1)
 
+### 闭包
+
+[参考链接](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)
+
 
 
 
