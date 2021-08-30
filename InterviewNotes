@@ -3,8 +3,10 @@
 1.HTTP 和 HTTPS 详细握手和HTTP缓存
 2.浏览器的垃圾回收机制和浏览器的渲染原理
 3.Html 块级元素和行内元素的区别，替换元素（input）的特点
+https://segmentfault.com/a/1190000006835284
 4.算法
 5.Map,Set,WeakMap
+
 6.css 居中方式
 
 
@@ -54,6 +56,7 @@ eval([1,2,4].join("+"))
 诺亚财富
 
 1.css 左右布局，左固定 兼容写法
+https://www.cxyzjd.com/article/yinkaihui/49851773
 2.js 各种循环的理解
 
 3.css box-sizing
@@ -61,15 +64,18 @@ eval([1,2,4].join("+"))
 5.vue 组件之间的传值
 6.js 大文件上传
 7.vuex更改组件状态，刷新状态是否改变
+https://www.huaweicloud.com/articles/13698538.html
 8.终止循环 break return continue
   https://blog.csdn.net/XXJ19950917/article/details/78310346
 
 JD （偏向原理和基础）
 
 1.rem em vh vw 原理
+https://zhuanlan.zhihu.com/p/96721026
 2. vue文件编译原理
   https://cloud.tencent.com/developer/article/1601614
   https://github.com/berwin/Blog/issues/18
+  https://www.cnblogs.com/skywind/p/14653339.html#12-vuejs-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86
 3.css 五种不同颜色圆环
   参考 https://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/
   dom地址 https://codepen.io/sanlangguo/pen/abdaqWP
