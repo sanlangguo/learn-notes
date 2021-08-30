@@ -196,3 +196,47 @@ uclund
 2.强缓存和弱缓存
 3.图片 url 自定义请求头
 4.强刷新，不缓存
+
+
+2021-08-30
+得物app
+1.vue 响应式原理
+2.object.defineProperty() 优缺点
+3.vue watcher 原理
+4.react hook 原理--- 为什么是单链表
+5.map object 的区别
+6.async/await 与 promise 区别
+7.事件循环
+9.settimeout 内有 promiese.then, 里面的执行顺序
+10. get post 区别
+11. url 输入的过程
+12. 哪些情况会阻塞 dom 的 渲染
+13. 加载中文字体--》
+14. webpack 构建过程和优化
+15. 强缓存和弱缓存
+16. proxy 的使用场景和使用
+17. dns 预加载
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
