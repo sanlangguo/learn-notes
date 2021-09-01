@@ -202,10 +202,12 @@ uclund
 得物app
 1.vue 响应式原理
 2.object.defineProperty() 优缺点
-3.vue watcher 原理
+3.vue3 watcher 原理
+https://originalix.github.io/2021/06/16/Vue3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E5%8D%81-watch-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/#
 4.react hook 原理--- 为什么是单链表
 5.map object 的区别
 6.async/await 与 promise 区别
+http://www.ruanyifeng.com/blog/2015/05/async.html
 7.事件循环
 9.settimeout 内有 promiese.then, 里面的执行顺序
 10. get post 区别
