@@ -213,6 +213,7 @@ http://www.ruanyifeng.com/blog/2015/05/async.html
 9.settimeout 内有 promiese.then, 里面的执行顺序
 10. get post 区别
 11. url 输入的过程
+https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 12. 哪些情况会阻塞 dom 的 渲染
 13. 加载中文字体--》
 14. webpack 构建过程和优化
