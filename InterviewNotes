@@ -229,7 +229,9 @@ https://www.coderxing.com/dns-prefetch.html
 2.computed watch methods 区别, watch -> 相同一次的修改 例如 name ===1 重复修改，watch 会多次触发嘛
 3.vue2 组建通信方式，(可以拓展到 vue3), 以及 vuex
 4.documentFragment 理解
+https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment
 5.flex 1
+https://zhuanlan.zhihu.com/p/136223806
 6.左侧图片宽度固定，右侧文字显示，填充剩余空间，过长显示 。。。
 7.浏览器首次渲染的过程，已经怎么去优化
 8.在工作当中做的优化工作
@@ -240,8 +242,9 @@ https://www.coderxing.com/dns-prefetch.html
 13.怎样实现 bind，call 
 14.js 继承的理解，怎么实现继承的
 15.小程序为什么做事件校验，以及小程序的原理
+https://developers.weixin.qq.com/community/develop/article/doc/0008a4c4f28f30fe3eb863b2750813
 16.闭包 理解 for (var i =0 ..) 
-
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
 for (var i = 0; i < 5; i++) {
   (function(i) {
    setTimeout(() => {
