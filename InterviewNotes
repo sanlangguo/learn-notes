@@ -238,6 +238,7 @@ https://zhuanlan.zhihu.com/p/136223806
 9.怎么定位内存泄漏问题
 10.项目中前端安全， AES key value 值的获取
 11.前端跨域问题
+https://segmentfault.com/a/1190000022398875
 12.ES6 新属性，promise 理解，多个并发怎么处理
 13.怎样实现 bind，call 
 14.js 继承的理解，怎么实现继承的
@@ -258,6 +259,10 @@ or let
 17.怎样终止 ajax 请求
 https://axios-http.com/zh/docs/cancellation
 https://juejin.cn/post/6844903933735878663#heading-1
+https://www.cnblogs.com/echolun/p/15204279.html
+
+18.iframe 怎么通信
+https://segmentfault.com/a/1190000021683182
 
 
 
