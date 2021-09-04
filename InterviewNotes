@@ -224,6 +224,23 @@ https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 https://www.coderxing.com/dns-prefetch.html
 
 
+微盟和平安
+1.vue 响应式原理/ vue3， setTimeout, this.$nextTick(), 哪一个先执行
+2.computed watch methods 区别, watch -> 相同一次的修改 例如 name ===1 重复修改，watch 会多次触发嘛
+3.vue2 组建通信方式，(可以拓展到 vue3), 以及 vuex
+4.documentFragment 理解
+5.flex 1
+6.左侧图片宽度固定，右侧文字显示，填充剩余空间，过长显示 。。。
+7.浏览器首次渲染的过程，已经怎么去优化
+8.在工作当中做的优化工作
+9.怎么定位内存泄漏问题
+10.项目中前端安全， AES key value 值的获取
+11.前端跨域问题
+12.ES6 新属性，promise 理解，多个并发怎么处理
+13.怎样实现 bind，call 
+14.js 继承的理解，怎么实现继承的
+15.小程序为什么做事件校验，以及小程序的原理
+16.闭包 理解 for (var i =0 ..) 
 
 
 
