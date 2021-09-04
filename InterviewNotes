@@ -242,7 +242,19 @@ https://www.coderxing.com/dns-prefetch.html
 15.小程序为什么做事件校验，以及小程序的原理
 16.闭包 理解 for (var i =0 ..) 
 
+for (var i = 0; i < 5; i++) {
+  (function(i) {
+   setTimeout(() => {
+    console.log(i)
+  }, 100)
+  })(i)
+}
 
+or let
+
+17.怎样终止 ajax 请求
+https://axios-http.com/zh/docs/cancellation
+https://juejin.cn/post/6844903933735878663#heading-1
 
 
 
