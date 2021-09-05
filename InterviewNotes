@@ -242,6 +242,7 @@ https://juejin.cn/post/6844904048961781774#heading-0
 https://segmentfault.com/a/1190000022398875
 12.ES6 新属性，promise 理解，多个并发怎么处理
 13.怎样实现 bind，call 
+https://zhuanlan.zhihu.com/p/94068275
 14.js 继承的理解，怎么实现继承的
 15.小程序为什么做事件校验，以及小程序的原理
 https://developers.weixin.qq.com/community/develop/article/doc/0008a4c4f28f30fe3eb863b2750813
@@ -265,8 +266,10 @@ https://www.cnblogs.com/echolun/p/15204279.html
 18.iframe 怎么通信
 https://segmentfault.com/a/1190000021683182
 
+19. js 如何监听 css trasition
+https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/transitionend_event
 
-
+20.js 设计模式
 
 
 
