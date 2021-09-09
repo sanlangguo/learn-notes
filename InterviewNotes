@@ -274,10 +274,14 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/transitionend_event
 
 2021-09-08 平安二面复试
 1.为什么选用vuex, 不用 object 的根本原因
+可以使用，vuex 提供的是一种完整的解决方案，看个人怎么选择，在团队开发当中，统一规范
+https://vuex.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E6%88%91%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-vuex%EF%BC%9F
 2.对技术选型的把握
 3.浏览器缓存有几种和区别
+https://segmentfault.com/a/1190000017185195
 4.前端大数据怎么处理
-5.
+异步，web worker
+https://juejin.cn/post/6844903821278199822#comment
 
 微盟二面
 1.怎么做缩放
