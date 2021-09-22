@@ -8,6 +8,25 @@
 
   [2.参考链接](https://zhuanlan.zhihu.com/p/25321647)
 
+#### 盒模型理解 BFC 实现方式 解决了哪些问题
+
+CSS中组成一个块级盒子需要:
+  Content box: 这个区域是用来显示内容，大小可以通过设置 width 和 height.
+  Padding box: 包围在内容区域外部的空白区域； 大小通过 padding 相关属性设置。
+  Border box: 边框盒包裹内容和内边距。大小通过 border 相关属性设置。
+  Margin box: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 margin 相关属性设置。
+  
+产生BFC的方法：
+  float有值且不为空。
+  overflow有值且不为visible。
+  display有值为：inline-block，table-cell，flow-root，table-caption，inline-flex中的一个。
+  position有值为absolute或者fixed。
+  
+BFC可以解决哪些问题：
+  1、BFC全称：Block Formatting Context，译为块级格式化上下文，它是CSS2.1规范定义的，关于CSS渲染定位的一个概念
+  2、能够解决因浮动造成的父元素塌陷问题
+  3、能够解决div浮动造成的遮盖问题【overflow:hidden; 触发bfc来解决遮挡问题】
+  4、解决margin塌陷问题【overflow:hidden; 产生bfc来解决】
 
 ##### css居中的方式
 
@@ -350,5 +369,54 @@ vertical-align的百分比值不是相对于字体大小或者其他什么属性
 - 几乎所有的替换元素都是行内元素，例如img、input等等。不过元素的类型也不是固定的，通过设定CSS 的display属性，可以使行内元素变为块级元素，也可以让块级元素变为行内元素。
 - 替换元素一般有内在尺寸，所以具有width和height，可以设定。例如你不指定img的width和height时，就按其内在尺寸显示，也就是图片被保存的时候的宽度和高度。对于表单元素，浏览器也有默认的样式，包括宽度和高度。
 
+### Html 块级元素和行内元素的区别，替换元素（input）的特点
+  
+  [参考链接01](https://segmentfault.com/a/1190000013497383)
+  
+  [参考链接02](https://segmentfault.com/a/1190000006835284)
+  
+### 动画的简单动效 （圆圈画圆过程）
+  
+```
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(75, 75, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+  
+```
+
+### 如何三栏布局兼容问题
+  
+  [参考链接](https://segmentfault.com/a/1190000019269901)
+  
+### css 上下三栏布局，底部一直在页面底部
+  
+  [参考链接](https://codepen.io/una/pen/bGVXPWB)
+  
+  [参考链接](https://github.com/sanlangguo/learn-notes/wiki/footer-%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%BA%95%E9%83%A8%E4%BD%8D%E7%BD%AE)
+  
+### css 左右布局，左固定 兼容写法
+  [参考链接](https://www.cxyzjd.com/article/yinkaihui/49851773)
+
+### rem em vh vw 原理
+  [参考链接](https://zhuanlan.zhihu.com/p/96721026)
+  
+### css 五种不同颜色圆环
+  [参考链接](https://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/)
+  
+  [dom地址](https://codepen.io/sanlangguo/pen/abdaqWP)
+  
+  
+### 1像素问题
+  [参考链接](https://segmentfault.com/a/1190000007604842)
+  
+### css 进度条
+  [参考链接](https://cloud.tencent.com/developer/article/1572870)
+  
+### flex 1
+  [参考链接](https://zhuanlan.zhihu.com/p/136223806)
+  
+  
   
   
