@@ -35,6 +35,9 @@ or let
 
 defer与async的区别是：defer要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；async一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，defer是“渲染完再执行”，async是“下载完就执行”。另外，如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的。
 
+[参考链接](https://www.jianshu.com/p/c7c331ea4fe8)
+
+
 ### js 如何获取demo元素
 [参考链接](https://www.jianshu.com/p/6fefda57b51f)
 
@@ -160,8 +163,6 @@ console.log(sum(arr));//6
 
 ### js 作用域的理解
 [参考链接](http://www.imooc.com/article/286497)
-
-
 
 
 
