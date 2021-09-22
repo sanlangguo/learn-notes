@@ -212,6 +212,7 @@ https://juejin.cn/post/6844903909698306056#heading-0
 uclund
 1.xcrf 攻击防护
 2.强缓存和弱缓存
+https://segmentfault.com/a/1190000015245578
 3.图片 url 自定义请求头
 4.强刷新，不缓存
 
@@ -242,6 +243,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 13. 加载中文字体--》
 14. webpack 构建过程和优化
 15. 强缓存和弱缓存
+https://segmentfault.com/a/1190000015245578
 16. proxy 的使用场景和使用
 17. dns 预加载
 https://www.coderxing.com/dns-prefetch.html
