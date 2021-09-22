@@ -158,7 +158,8 @@ console.log(sum(arr));//6
 [参考链接](https://www.cnblogs.com/echolun/p/10287616.html)
 
 
-
+### js 作用域的理解
+[参考链接](http://www.imooc.com/article/286497)
 
 
 
