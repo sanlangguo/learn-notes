@@ -199,6 +199,8 @@ outline-offset ：属性对轮廓进行偏移，并在超出边框边缘的位�
 - visibility=hidden，该元素 隐藏起来了，但不会改变页面布局，但是不会触发该元素已经绑定的事件 
 - display=none， 把元素隐藏起来，并且会改变页面布局，可以理解成在页面中把该元素删除掉一样。
 
+  [参考链接](https://github.com/sanlangguo/learn-notes/wiki/display-none-visibility-hidden-opacity-0-%E5%8C%BA%E5%88%AB)
+  
 ### 双边距重叠问题（外边距折叠）
 - 多个相邻（兄弟或者父子关系）普通流的块元素垂直方向 marigin 会重叠 折叠的结果为： 两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 
 - 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 
