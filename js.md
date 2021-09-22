@@ -154,6 +154,8 @@ console.log(sum(arr));//6
 [参考链接](https://juejin.cn/post/6925320069522128909#heading-0)
 
 
+### JS判断是否是数组的四种做法
+[参考链接](https://www.cnblogs.com/echolun/p/10287616.html)
 
 
 
