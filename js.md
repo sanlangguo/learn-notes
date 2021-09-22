@@ -150,9 +150,8 @@ console.log(sum(arr));//6
 [参考链接](https://juejin.cn/post/6844904021552005128#heading-6)
 
 
-
-
-
+### Map Set WeakMap WeakSet 场景
+[参考链接](https://juejin.cn/post/6925320069522128909#heading-0)
 
 
 
