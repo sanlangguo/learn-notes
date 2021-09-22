@@ -36,8 +36,13 @@ https://segmentfault.com/a/1190000019269901
 到底有什么区别呢？forEach()方法不会返回执行结果，而是undefined。也就是说，forEach()会修改原来的数组。而map()方法会得到一个新的数组并返回。
 
 数组求和: 
-https://blog.csdn.net/YANG_Gang2017/article/details/72571505
-eval([1,2,4].join("+"))
+https://segmentfault.com/a/1190000023556599
+
+var arr = [1,2,3];
+function sum(arr) {
+  return eval(arr.join("+"));
+};
+console.log(sum(arr));//6
 
 2.css居中的方式
 3.margin,padding
