@@ -9,5 +9,5 @@
 
 #### 输入 url 的浏览器渲染过程
 
-[浏览器的强缓存与弱缓存](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
+[渲染页面：浏览器的工作原理 mdn](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
 
