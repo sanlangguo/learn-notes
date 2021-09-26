@@ -14,3 +14,8 @@
 #### 浏览器缓存原理以及本地存储
 [浏览器缓存原理以及本地存储](https://segmentfault.com/a/1190000017185195)
 
+#### wekpack 5 的更新内容
+[wekpack 官网介绍](https://webpack.docschina.org/blog/#popular-posts)
+
+#### wekpack 原理及常见的面试题
+[2020年webpack面试题](https://blog.csdn.net/Aria_Miazzy/article/details/106235716)
