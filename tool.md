@@ -19,3 +19,6 @@
 
 #### wekpack 原理及常见的面试题
 [2020年webpack面试题](https://blog.csdn.net/Aria_Miazzy/article/details/106235716)
+
+#### webpack如何提高打包速度和工程优化
+[webpack如何提高打包速度](https://www.cnblogs.com/Joe-and-Joan/p/12701767.html)
