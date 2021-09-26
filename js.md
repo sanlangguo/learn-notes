@@ -165,4 +165,11 @@ console.log(sum(arr));//6
 [参考链接](http://www.imooc.com/article/286497)
 
 
+### 内存管理
+[内存管理 mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
+
+
+
+
+
 
