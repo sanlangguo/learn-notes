@@ -169,7 +169,7 @@ console.log(sum(arr));//6
 [内存管理 mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
 
 
-
-
+### 前端中的事件流
+[事件流](https://segmentfault.com/a/1190000013265547)
 
 
