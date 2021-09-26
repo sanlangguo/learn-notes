@@ -11,3 +11,6 @@
 
 [渲染页面：浏览器的工作原理 mdn](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
 
+#### 浏览器缓存原理以及本地存储
+[浏览器缓存原理以及本地存储](https://segmentfault.com/a/1190000017185195)
+
