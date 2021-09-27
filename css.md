@@ -394,9 +394,9 @@ vertical-align的百分比值不是相对于字体大小或者其他什么属性
   
 ### css 上下三栏布局，底部一直在页面底部
   
-  [参考链接](https://codepen.io/una/pen/bGVXPWB)
+  [上下三栏布局](https://codepen.io/una/pen/bGVXPWB)
   
-  [参考链接](https://github.com/sanlangguo/learn-notes/wiki/footer-%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%BA%95%E9%83%A8%E4%BD%8D%E7%BD%AE)
+  [一直在底部位置](https://github.com/sanlangguo/learn-notes/wiki/footer-%E4%B8%80%E7%9B%B4%E5%9C%A8%E5%BA%95%E9%83%A8%E4%BD%8D%E7%BD%AE)
   
 ### css 左右布局，左固定 兼容写法
   [参考链接](https://www.cxyzjd.com/article/yinkaihui/49851773)
