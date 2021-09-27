@@ -98,8 +98,10 @@ console.log(sum(arr));//6
 ### js 事件循环
 
 [参考链接 mdn](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+
 [参考链接 segmentfault](https://segmentfault.com/a/1190000022805523) 
 
+[JS 事件循环 重点](https://ustbhuangyi.github.io/vue-analysis/v2/reactive/next-tick.html#js-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6)
 
 ### settimeout 内有 promiese.then, 里面的执行顺序
 
