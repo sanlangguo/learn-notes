@@ -74,6 +74,9 @@
 [参考链接](https://juejin.cn/post/6858899262596448270#heading-21)
 
 
+### vue 组件传值
+[vue组件之间相互传值的方式](https://segmentfault.com/a/1190000022700216)
+
 
 
 
