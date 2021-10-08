@@ -6,6 +6,8 @@
 
 [浏览器的强缓存与弱缓存](https://segmentfault.com/a/1190000015245578)
 
+[浏览器的缓存机制](https://cdn.nlark.com/yuque/0/2020/svg/305942/1594865601171-c0ee042f-2c1b-4ab8-8a15-73025d7988be.svg)
+
 
 #### 输入 url 的浏览器渲染过程
 
