@@ -64,6 +64,8 @@ console.log(sum(arr));//6
 
 [参考链接 2](https://segmentfault.com/a/1190000039399746)
 
+![image](https://user-images.githubusercontent.com/30766629/136643557-0a0fe875-c441-4c8c-9626-254e102ce535.png)
+
 
 
 ### js 大文件上传
