@@ -175,3 +175,11 @@ console.log(sum(arr));//6
 [事件流](https://segmentfault.com/a/1190000013265547)
 
 
+### typeOf object ,typeOf function
+[mdn typeof 理解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
+
+
+
+
+
+
