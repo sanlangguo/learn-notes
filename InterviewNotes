@@ -363,13 +363,18 @@ https://juejin.cn/post/6844904021552005128#heading-6
 众安保险面试2面
 1.组件弹框层级(组件设计)
 2.typeOf object ,typeOf function
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof
+
 3. 指令 和 组件区别，以及使用场景
+组件和自定义指令基本无区别,都是将页面中出现的重复的UI和数据处理,封装起来,提高代码的复用性,同时在项目开发过程中,积累大量封装好的自定义指令或者组件,在后续的项目开发时直接使用,提高开发效率。
 
 
+使用场景：
+代码复用和抽象的主要形式是组件
+当需要对普通 DOM 元素进行底层操作，此时就会用到自定义指令
+但是，对于大幅度的 DOM 变动，还是应该使用组件
 
-
-
-
+https://segmentfault.com/a/1190000020082673
 
 
 
