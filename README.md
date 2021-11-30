@@ -66,6 +66,7 @@
 * 网络协议
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP-HTTPS">HTTP与HTTPS</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E7%A0%81">HTTP返回状态码</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/15">axios 动态切换域名</a>
     
  * 算法
      * 将要更新
