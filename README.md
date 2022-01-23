@@ -60,6 +60,8 @@
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E8%B0%83%E5%8F%96%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%AD%E6%96%87%EF%BC%8Cutf-8%EF%BC%8C%E8%A6%81%E8%BD%AC%E7%A0%81">调取后台接口，如果有中文，utf-8，要转码</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/6">微前端</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%89%8D%E7%AB%AF%E6%97%A5%E5%BF%97%E4%B8%8A%E4%BC%A0">前端日志上传</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/13">Vite 原理</a>
+
 * 移动Web
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Hybrid-App-应用概述</a>
 
