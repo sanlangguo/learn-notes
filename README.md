@@ -6,6 +6,7 @@
 * 浏览器
     * <a href="https://github.com/sanlangguo/learn-notes/issues/17">导航流程：从输入URL到页面展示，这中间发生了什么？</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/18">渲染流程（上）：HTML、CSS和JavaScript，是如何变成页面的？</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/19">渲染流程（下）：HTML、CSS和JavaScript，是如何变成页面的？</a>
 
 * 前端性能
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/AMP-HTML">AMP-HTML</a>
