@@ -42,6 +42,8 @@
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/vue-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B8%B2%E6%9F%93%E9%A1%BA%E5%BA%8F">vue 父子组件的生命周期渲染顺序</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/vue-%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC">vue组件通信</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/9">vue 2.6xx 源码学习笔记</a>
+    * <a href="https://sanlangguo.github.io/learn-notes/vue3/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86.html">vue3 响应式原理(极客时间)</a>
+    vue3/vue3响应式原理.html
     
 * React 
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3">React 生命周期的理解</a>
