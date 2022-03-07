@@ -41,8 +41,23 @@ defer与async的区别是：defer要等到整个页面在内存中正常渲染�
 - preload   是告诉浏览器页面必定需要的资源，浏览器一定会加载这些资源；
 - prefetch 是告诉浏览器页面可能需要的资源，浏览器不一定会加载这些资源
 
+可以预加载哪些类型的内容？
 
-[参考链接](https://www.jianshu.com/p/c7c331ea4fe8)
+* audio：音频文件，通常用于 `<audio>`
+* document: 旨在由`<frame>`或嵌入的 HTML 文档 `<iframe>`。
+* embed：要嵌入到 `<embed>`元素中的资源。
+* fetch：要通过 fetch 或 XHR 请求访问的资源，例如 ArrayBuffer 或 JSON 文件。
+* font: 字体文件。
+* image： 图像文件。
+* object：要嵌入到`<object>`元素中的资源。
+* script: JavaScript 文件。
+* style: CSS 样式表。
+* track: WebVTT 文件。
+* worker：一个 JavaScript 网络工作者或共享工作者。
+* video：视频文件，通常用于 `<video>`。
+<br>
+
+[参考链接](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload)
 
 
 ### js 如何获取demo元素
