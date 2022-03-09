@@ -202,6 +202,21 @@ console.log(sum(arr));//6
 ### typeOf object ,typeOf function
 [mdn typeof 理解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
 
+### 为什么typeof null是object？
+简单来说，`typeof null`的结果为Object的原因是一个`bug`。在 javascript 的最初版本中，使用的 32位系统，js为了性能优化，使用低位来存储变量的类型信息。
+
+
+| ****数据类型**** | ****机器码标识**** |
+|------------------|--------------------|
+| 对象(Object)     | 000                |
+| 整数             | 1                  |
+| 浮点数           | 010                |
+| 布尔             | 110                |
+| undefined        | -2^31(即全为1)     |
+| null             | 000                |
+
+在判断数据类型时，是根据机器码低位标识来判断的，而`null`的机器码标识为全`0`，而对象的机器码低位标识为`000`。所以`typeof null`的结果被误判为`Object`。
+
 
 
 
