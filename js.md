@@ -171,15 +171,28 @@ console.log(sum(arr));//6
 
 
 ### 箭头函数， function 区别
-[参考链接](https://blog.csdn.net/fish_skyyyy/article/details/113945502)
 
+注意点：
+* 函数体内的`this`对象，就是定义时所在的对象，而不是使用时所在的对象
+* 不可以当作构造函数，也就是说，不可以使用`new`命令，否则会抛出一个错误
+* 不可以使用`arguments`对象，该对象在函数体内不存在。如果要用，可以用 `rest` 参数代替
+* 不可以使用`yield`命令，因此箭头函数不能用作 `Generator` 函数
+
+[参考链接](https://blog.csdn.net/fish_skyyyy/article/details/113945502)
 
 ### 移动端响应式如何做
 
 [参考链接](https://juejin.cn/post/6844904021552005128#heading-6)
 
-
 ### Map Set WeakMap WeakSet 场景
+
+**set, map 产生的原因**
+
+`JavaScript`的默认对象表示方式`{}`可以视为其他语言中的`Map`或`Dictionary`的数据结构，即一组键值对。
+
+但是`JavaScript`的对象有个小问题，就是键必须是字符串。但实际上`Number`或者其他数据类型作为键也是非常合理的。为了解决这个问题，最新的ES6规范引入了新的数据类型`Map`和`set`.
+
+[参考链接](https://juejin.cn/post/6844904024509054984#comment)
 [参考链接](https://juejin.cn/post/6925320069522128909#heading-0)
 
 
