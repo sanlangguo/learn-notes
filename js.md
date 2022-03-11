@@ -41,8 +41,23 @@ defer与async的区别是：defer要等到整个页面在内存中正常渲染�
 - preload   是告诉浏览器页面必定需要的资源，浏览器一定会加载这些资源；
 - prefetch 是告诉浏览器页面可能需要的资源，浏览器不一定会加载这些资源
 
+可以预加载哪些类型的内容？
 
-[参考链接](https://www.jianshu.com/p/c7c331ea4fe8)
+* audio：音频文件，通常用于 `<audio>`
+* document: 旨在由`<frame>`或嵌入的 HTML 文档 `<iframe>`。
+* embed：要嵌入到 `<embed>`元素中的资源。
+* fetch：要通过 fetch 或 XHR 请求访问的资源，例如 ArrayBuffer 或 JSON 文件。
+* font: 字体文件。
+* image： 图像文件。
+* object：要嵌入到`<object>`元素中的资源。
+* script: JavaScript 文件。
+* style: CSS 样式表。
+* track: WebVTT 文件。
+* worker：一个 JavaScript 网络工作者或共享工作者。
+* video：视频文件，通常用于 `<video>`。
+<br>
+
+[参考链接](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload)
 
 
 ### js 如何获取demo元素
@@ -156,15 +171,31 @@ console.log(sum(arr));//6
 
 
 ### 箭头函数， function 区别
-[参考链接](https://blog.csdn.net/fish_skyyyy/article/details/113945502)
+作用:
+* 更简短的函数；
+* 更直观的作用域和this的绑定(不绑定this)
 
+注意点：
+* 函数体内的`this`对象，就是定义时所在的对象，而不是使用时所在的对象
+* 不可以当作构造函数，也就是说，不可以使用`new`命令，否则会抛出一个错误
+* 不可以使用`arguments`对象，该对象在函数体内不存在。如果要用，可以用 `rest` 参数代替
+* 不可以使用`yield`命令，因此箭头函数不能用作 `Generator` 函数
+
+[参考链接](https://blog.csdn.net/fish_skyyyy/article/details/113945502)
 
 ### 移动端响应式如何做
 
 [参考链接](https://juejin.cn/post/6844904021552005128#heading-6)
 
-
 ### Map Set WeakMap WeakSet 场景
+
+**set, map 产生的原因**
+
+`JavaScript`的默认对象表示方式`{}`可以视为其他语言中的`Map`或`Dictionary`的数据结构，即一组键值对。
+
+但是`JavaScript`的对象有个小问题，就是键必须是字符串。但实际上`Number`或者其他数据类型作为键也是非常合理的。为了解决这个问题，最新的ES6规范引入了新的数据类型`Map`和`set`.
+
+[参考链接](https://juejin.cn/post/6844904024509054984#comment)
 [参考链接](https://juejin.cn/post/6925320069522128909#heading-0)
 
 
@@ -186,6 +217,21 @@ console.log(sum(arr));//6
 
 ### typeOf object ,typeOf function
 [mdn typeof 理解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
+
+### 为什么typeof null是object？
+简单来说，`typeof null`的结果为Object的原因是一个`bug`。在 javascript 的最初版本中，使用的 32位系统，js为了性能优化，使用低位来存储变量的类型信息。
+
+
+| ****数据类型**** | ****机器码标识**** |
+|------------------|--------------------|
+| 对象(Object)     | 000                |
+| 整数             | 1                  |
+| 浮点数           | 010                |
+| 布尔             | 110                |
+| undefined        | -2^31(即全为1)     |
+| null             | 000                |
+
+在判断数据类型时，是根据机器码低位标识来判断的，而`null`的机器码标识为全`0`，而对象的机器码低位标识为`000`。所以`typeof null`的结果被误判为`Object`。
 
 
 
