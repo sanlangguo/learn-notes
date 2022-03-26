@@ -36,6 +36,7 @@
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Web-Worker">Web Worker</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/JS-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E7%AE%80%E5%8D%95%E6%A6%82%E8%BF%B0">JS 垃圾回收机制简单概述</a>
     * <a href="https://sanlangguo.github.io/learn-notes/js/const-let.html">const let 作用域介绍</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/20">JS ES5-10 常用新增特性</a>
     * js azure storage blob 上传
     
 * vue
