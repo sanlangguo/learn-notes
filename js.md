@@ -1,4 +1,4 @@
-### Array 有哪些方法
+# ### Array 有哪些方法
 
   [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
@@ -34,6 +34,23 @@ or let
 ### defer与async
 
 defer与async的区别是：defer要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；async一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，defer是“渲染完再执行”，async是“下载完就执行”。另外，如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的。
+
+浏览器遇到 async 脚本时不会阻塞页面渲染，而是直接下载然后运行。这样脚本的运行次序就无法控制，只是脚本不会阻止剩余页面的显示。当页面的脚本之间彼此独立，且不依赖于本页面的其它任何脚本时，async 是最理想的选择。
+
+使用 defer 属性，脚本将按照在页面中出现的顺序加载和运行
+
+脚本调用策略小结：
+* 如果脚本无需等待页面解析，且无依赖独立运行，那么应使用 `async`
+* 如果脚本需要等待页面解析，且依赖于其它脚本，调用这些脚本时应使用 `defer`，将关联的脚本按所需顺序置于 `HTML` 中。
+
+```
+<script defer src="js/vendor/jquery.js"></script>
+
+<script async src="js/script3.js"></script>
+
+```
+
+
 
 ### 用 preload 预加载页面资源
 
