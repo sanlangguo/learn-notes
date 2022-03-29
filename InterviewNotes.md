@@ -1,3 +1,4 @@
+
 ### 上海享物说
 
 * HTTP 和 HTTPS 详细握手和HTTP缓存
@@ -237,8 +238,8 @@ https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 
 - CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染。
 - JS 阻塞 DOM 解析，但浏览器会"偷看"DOM，预先下载相关资源。
-- 浏览器遇到 <script>且没有defer或async属性的 标签时，会触发页面渲染，因而如果前面CSS资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
-- <script>最好放底部，<link>最好放头部，如果头部同时有<script>与<link>的情况下，最好将<script>放在<link>
+- 浏览器遇到 `<script>且没有defer或async属性的 标签时，会触发页面渲染，因而如果前面CSS资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本`。
+- `<script>最好放底部，<link>最好放头部，如果头部同时有<script>与<link>的情况下，最好将<script>放在<link>`
 
 13. 加载中文字体--》
 14. webpack 构建过程和优化
@@ -319,7 +320,6 @@ https://blog.csdn.net/qq_17757973/article/details/54604625
 https://v3.cn.vuejs.org/guide/migration/introduction.html#%E6%A6%82%E8%A7%88
 
 
---
 补充：常见的算法
 https://juejin.cn/post/6947842412102287373#heading-104
 
@@ -376,15 +376,38 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/type
 
 https://segmentfault.com/a/1190000020082673
 
+
 ### 携程 2022-03-29
 
 * react 函数组建如何实现->componentWillUnmount
+```
+
+useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+```
 * ts 剔除一个属性
+```
+interface Contact{
+  name: string; // 姓名
+  phone: string; // 手机
+}
+// 剔除 phone
+type OmitEmailContact = Omit<Contact, 'phone'>;
+
+```
 * 静态资源更新的完美解决方案
-1.配置超长时间的本地缓存 —— 节省带宽，提高性能
-2.采用内容摘要作为缓存更新依据 —— 精确的缓存控制
-3.静态资源CDN部署 —— 优化网络请求
-4.更资源发布路径实现非覆盖式发布 —— 平滑升级
+1. 配置超长时间的本地缓存 —— 节省带宽，提高性能
+2. 采用内容摘要作为缓存更新依据 —— 精确的缓存控制
+3. 静态资源CDN部署 —— 优化网络请求
+4. 更资源发布路径实现非覆盖式发布 —— 平滑升级
 
 
 
