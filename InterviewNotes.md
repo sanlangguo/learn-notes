@@ -1,17 +1,16 @@
-上海享物说
+### 上海享物说
 
-1.HTTP 和 HTTPS 详细握手和HTTP缓存
-2.浏览器的垃圾回收机制和浏览器的渲染原理
-3.Html 块级元素和行内元素的区别，替换元素（input）的特点
+* HTTP 和 HTTPS 详细握手和HTTP缓存
+* 浏览器的垃圾回收机制和浏览器的渲染原理
+* Html 块级元素和行内元素的区别，替换元素（input）的特点
 https://segmentfault.com/a/1190000013497383
 https://segmentfault.com/a/1190000006835284
-4.算法
+* 算法
 5.Map,Set,WeakMap
-
 6.css 居中方式
 
 
-1.js 如何获取demo元素
+* js 如何获取demo元素
 2.动画的简单动效 （圆圈画圆过程）
 
   var canvas = document.getElementById("canvas");
@@ -22,7 +21,7 @@ https://segmentfault.com/a/1190000006835284
 
 
 
-掌门一对一
+### 掌门一对一
 
 1.h5是什么
 2.var let const 的区别
@@ -30,7 +29,7 @@ https://www.jianshu.com/p/4e9cd99ecbf5
 3.如何三栏布局兼容问题
 https://segmentfault.com/a/1190000019269901
 
-云仓
+### 云仓
 
 1.数组map和 forEach 区别， Array.form （便捷数组操作），数组求和
 到底有什么区别呢？forEach()方法不会返回执行结果，而是undefined。也就是说，forEach()会修改原来的数组。而map()方法会得到一个新的数组并返回。
@@ -48,7 +47,7 @@ console.log(sum(arr));//6
 3.margin,padding
 4.深拷贝 
 
-快云
+### 快云
 
 1.css 上下三栏布局，底部一直在页面底部
   https://codepen.io/una/pen/bGVXPWB
@@ -64,7 +63,7 @@ https://webpack.docschina.org/blog/#popular-posts
 
 4.node js
 
-诺亚财富
+### 诺亚财富
 
 1.css 左右布局，左固定 兼容写法
 https://www.cxyzjd.com/article/yinkaihui/49851773
@@ -81,7 +80,7 @@ https://www.huaweicloud.com/articles/13698538.html
 8.终止循环 break return continue
   https://blog.csdn.net/XXJ19950917/article/details/78310346
 
-JD （偏向原理和基础）
+### JD （偏向原理和基础）
 
 1.rem em vh vw 原理
 https://zhuanlan.zhihu.com/p/96721026
@@ -125,7 +124,7 @@ BFC可以解决哪些问题：
 8. 小程序原理
 https://zhaomenghuan.js.org/blog/wechat-miniprogram-principle-analysis.html#%E5%89%8D%E8%A8%80
 
-银科
+### 银科
 
 1.js 数组的方法
 2.深浅拷贝
@@ -149,7 +148,7 @@ https://es6.ruanyifeng.com/#docs/module-loader
 15.断点续传
 
 
-上海汇付
+### 上海汇付
 
 1.原型和继承
 2.this
@@ -165,7 +164,7 @@ https://www.jianshu.com/p/3b4abc20ae0f
 10.减少回流
 
 
-上海银科 二面
+### 上海银科 二面
 
 1.url浏览器详细渲染
 2.直播相关技术
@@ -175,7 +174,7 @@ https://www.jianshu.com/p/3b4abc20ae0f
   https://www.zhihu.com/question/23341334
 
 
-信也科技（拍拍贷）
+### 信也科技（拍拍贷）
 
 1.vue react 区别
 https://blog.csdn.net/xgangzai/article/details/115301290
@@ -193,7 +192,7 @@ https://github.com/mrdulin/blog/issues/42
 https://juejin.cn/post/6844903909698306056#heading-0
 12.react setState 同步或者异步
 
-美团
+### 美团
 
 1.跨域 cros
 2.webpack 原理和 plugin
@@ -208,7 +207,7 @@ https://juejin.cn/post/6844903909698306056#heading-0
 11.复杂请求和简单请求 http
 
 
-2021-05-08
+### 2021-05-08
 uclund
 1.xcrf 攻击防护
 2.强缓存和弱缓存
@@ -217,8 +216,9 @@ https://segmentfault.com/a/1190000015245578
 4.强刷新，不缓存
 
 
+
+### 得物app
 2021-08-30
-得物app
 1.vue 响应式原理
 2.object.defineProperty() 优缺点
 3.vue3 watcher 原理
@@ -249,7 +249,7 @@ https://segmentfault.com/a/1190000015245578
 https://www.coderxing.com/dns-prefetch.html
 
 
-微盟和平安
+### 微盟和平安
 1.vue 响应式原理/ vue3， setTimeout, this.$nextTick(), 哪一个先执行
 2.computed watch methods 区别, watch -> 相同一次的修改 例如 name ===1 重复修改，watch 会多次触发嘛
 3.vue2 组建通信方式，(可以拓展到 vue3), 以及 vuex
@@ -297,18 +297,18 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/transitionend_event
 20.js 设计模式
 
 
-2021-09-08 平安二面复试
-1.为什么选用vuex, 不用 object 的根本原因
+### 2021-09-08 平安二面复试
+* 为什么选用vuex, 不用 object 的根本原因
 可以使用，vuex 提供的是一种完整的解决方案，看个人怎么选择，在团队开发当中，统一规范
 https://vuex.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E6%88%91%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-vuex%EF%BC%9F
-2.对技术选型的把握
+* 对技术选型的把握
 3.浏览器缓存有几种和区别
 https://segmentfault.com/a/1190000017185195
 4.前端大数据怎么处理
 异步，web worker
 https://juejin.cn/post/6844903821278199822#comment
 
-微盟二面
+### 微盟二面
 1.怎么判断缩放的大小比例
 https://www.zhangxinxu.com/wordpress/2021/02/js-if-page-zoom/
 2.日期组件的设计
@@ -334,7 +334,7 @@ https://juejin.cn/post/6858899262596448270#heading-21
 --
 
 
-阿里本地生活一面
+### 阿里本地生活一面
 1.let var 区别
 https://www.jianshu.com/p/9f7f053f7204
 2.箭头函数， function 区别
@@ -354,14 +354,14 @@ https://juejin.cn/post/6844904021552005128#heading-6
 
 
 
-众安保险面试1面
+### 众安保险面试1面
 
 1.UI 组件库怎么控制版本号，或者版本内的依赖升级
 2.强缓存和弱缓存
+* 
 
-
-众安保险面试2面
-1.组件弹框层级(组件设计)
+### 众安保险面试2面
+* 组件弹框层级(组件设计)
 2.typeOf object ,typeOf function
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof
 
@@ -375,6 +375,20 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/type
 但是，对于大幅度的 DOM 变动，还是应该使用组件
 
 https://segmentfault.com/a/1190000020082673
+
+### 携程 2022-03-29
+
+* react 函数组建如何实现->componentWillUnmount
+* ts 剔除一个属性
+* 静态资源更新的完美解决方案
+1.配置超长时间的本地缓存 —— 节省带宽，提高性能
+2.采用内容摘要作为缓存更新依据 —— 精确的缓存控制
+3.静态资源CDN部署 —— 优化网络请求
+4.更资源发布路径实现非覆盖式发布 —— 平滑升级
+
+
+
+
 
 
 
