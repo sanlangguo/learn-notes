@@ -409,6 +409,25 @@ type OmitEmailContact = Omit<Contact, 'phone'>;
 3. 静态资源CDN部署 —— 优化网络请求
 4. 更资源发布路径实现非覆盖式发布 —— 平滑升级
 
+* 项目上的经验
+
+```
+1. i18 懒加载
+2. 
+```
+
+
+* proxy 的兼容性，有没有降级方案
+
+Babel 的 transpiled 和 polyfilled 都没办法支持 Proxy 的功能特性。ES6 是 ES5 的后浪，不是闹的。JS 的世界还有 Babel 搞不定的东西。
+核心只有一句：由于 ES5 的限制，Proxy 功能特性无法用 ES5的语法写出来（Proxies cannot be transpiled or polyfilled）
+
+
+[ios 10, ie 等问题所以导致不升级 vue3](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy#%25E6%25B5%258F%25E8%25A7%2588%25E5%2599%25A8%25E5%2585%25BC%25E5%25AE%25B9%25E6%2580%25A7)
+
+
+
+
 
 
 
