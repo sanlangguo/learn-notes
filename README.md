@@ -55,6 +55,8 @@
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/react-proxy">React 代理</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/11">React basename 设置</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/12">React 性能优化</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/23">React 17.02 自定义弹框</a>
+    
 
 * 小程序
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%85%E5%B5%8Chtml-%E5%88%86%E4%BA%AB%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">小程序内嵌html-分享注意事项</a>
