@@ -74,6 +74,7 @@
     * <a href="https://github.com/sanlangguo/learn-notes/issues/6">微前端</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%89%8D%E7%AB%AF%E6%97%A5%E5%BF%97%E4%B8%8A%E4%BC%A0">前端日志上传</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/13">Vite 原理</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/25">lerna 项目实践（解决多项目共享组件问题）</a>
 
 * 移动Web
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Hybrid-App-应用概述</a>
