@@ -93,4 +93,7 @@
   * 工作遇到的问题
      * <a href="https://github.com/sanlangguo/learn-notes/issues/3">工作中遇到的问题（不局限于技术）</a>
 
+  * 工作需求汇总
+     * <a href="https://github.com/sanlangguo/img-to-gif-demo">企业微信表情包不显示，尝试使用 gif 格式</a>
+
 
