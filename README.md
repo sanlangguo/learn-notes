@@ -47,12 +47,16 @@
     * <a href="https://github.com/sanlangguo/learn-notes/issues/9">vue 2.6xx 源码学习笔记</a>
     * <a href="https://sanlangguo.github.io/learn-notes/vue3/vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86.html">vue3 响应式原理(极客时间)</a>
     * <a href="https://sanlangguo.github.io/learn-notes/vue3/Vue-Compiler模块全解析.html">vue3 编辑原理(极客时间)</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/21">pinia 入门使用指南</a>
+    
     
 * React 
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/React-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3">React 生命周期的理解</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/react-proxy">React 代理</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/11">React basename 设置</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/12">React 性能优化</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/23">React 17.02 自定义弹框</a>
+    
 
 * 小程序
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%85%E5%B5%8Chtml-%E5%88%86%E4%BA%AB%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">小程序内嵌html-分享注意事项</a>
@@ -70,6 +74,7 @@
     * <a href="https://github.com/sanlangguo/learn-notes/issues/6">微前端</a>
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/%E5%89%8D%E7%AB%AF%E6%97%A5%E5%BF%97%E4%B8%8A%E4%BC%A0">前端日志上传</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/13">Vite 原理</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/issues/25">lerna 项目实践（解决多项目共享组件问题）</a>
 
 * 移动Web
     * <a href="https://github.com/sanlangguo/chenzongqiang/wiki/Hybrid-App-%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Hybrid-App-应用概述</a>
@@ -87,5 +92,8 @@
      
   * 工作遇到的问题
      * <a href="https://github.com/sanlangguo/learn-notes/issues/3">工作中遇到的问题（不局限于技术）</a>
+
+  * 工作需求汇总
+     * <a href="https://github.com/sanlangguo/img-to-gif-demo">企业微信表情包不显示，尝试使用 gif 格式</a>
 
 
