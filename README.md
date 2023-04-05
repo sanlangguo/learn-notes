@@ -84,7 +84,7 @@
     * <a href="https://github.com/sanlangguo/learn-notes/wiki/HTTP%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E7%A0%81">HTTP返回状态码</a>
     * <a href="https://github.com/sanlangguo/learn-notes/issues/15">axios 动态切换域名</a>
 * 随手记
-    * <a href="https://github.com/sanlangguo/learn-notes/随手记/如何系统学习一个新知识.md">如何系统学习一个新知识.md</a>
+    * <a href="https://github.com/sanlangguo/learn-notes/blob/master/%E9%9A%8F%E6%89%8B%E8%AE%B0/%E5%A6%82%E4%BD%95%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9F%A5%E8%AF%86.md">如何系统学习一个新知识.md</a>
     
  * 算法
      * 将要更新
