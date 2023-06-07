@@ -2,6 +2,7 @@
 module.exports = {
     title: '记录学习，记录生活',
     description: '记录学习，记录生活',
+    base: '/learn-notes/',
     locales: {
         '/': {
             lang: 'zh-CN'
