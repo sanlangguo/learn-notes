@@ -1,4 +1,4 @@
-#  learn notes
+#  知识汇总
 
 * 移动端汇总
     * <a href="https://github.com/sanlangguo/learn-notes/issues/8">H5打开APP指定页面</a>

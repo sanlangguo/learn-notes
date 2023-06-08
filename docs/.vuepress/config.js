@@ -10,6 +10,7 @@ module.exports = {
     },
     themeConfig: {
         subSidebar: 'auto',
+        activeHeaderLinks: false,
         // 导航
         nav: [
             { text: '首页', link: '/' },
@@ -27,12 +28,12 @@ module.exports = {
                 collapsable: false, // 不折叠
             },
             {
-                title: "基础学习",
-                path: '/handbook/ConditionalTypes',
+                title: "移动端",
+                path: '/mobile/h5-jump-app',
                 collapsable: false, // 不折叠
                 children: [
-                    { title: "条件类型", path: "/handbook/ConditionalTypes" },
-                    { title: "泛型", path: "/handbook/Generics" }
+                    { title: "H5打开APP指定页面", path: "https://github.com/sanlangguo/learn-notes/issues/8" },
+                    { title: "移动端兼容问题记录", path: "https://github.com/sanlangguo/learn-notes/issues/7" }
                 ],
             }
         ]
