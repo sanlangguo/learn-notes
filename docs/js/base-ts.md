@@ -39,7 +39,7 @@
     
     例如，我们可以定义一个包含多个数据类型的元组：
     
-    ```
+    ``` js
     
     let tuple: [string, number, boolean];
     tuple = ["hello", 123, true];
@@ -50,7 +50,7 @@
     
     在访问元组元素时，可以使用下标来进行索引：
     
-    ```
+    ``` js
     
     console.log(tuple[0]);// 输出 "hello"console.log(tuple[1]);// 输出 123console.log(tuple[2]);// 输出 true
     ```
@@ -63,7 +63,7 @@
     
     在 TypeScript 中，枚举类型可以使用关键字 `enum` 定义，如下所示：
     
-    ```
+    ``` js
     
     enum Color {
       Red,
@@ -77,7 +77,7 @@
     
     使用枚举类型时，可以通过常量名或常量值来引用枚举常量。例如：
     
-    ```
+    ``` js
     
     const color1 = Color.Red;// 常量 color1 的值为 0const color2 = Color[1];// 常量 color2 的值为 'Green'
     ```
@@ -86,7 +86,7 @@
     
     另外，我们还可以指定每个枚举常量的数字值。例如：
     
-    ```
+    ``` js
     
     enum Color {
       Red = 1,
@@ -108,7 +108,7 @@
     
     Any 类型的变量可以接受任何类型的值，例如：
     
-    ```
+   ``` js
     
     let anyValue: any;
     anyValue = 123;
@@ -127,7 +127,7 @@
     
     例如，下面的函数声明返回类型为 Void：
     
-    ```
+    ``` js
     function logMessage(message: string): void {
       console.log(message);
     }
@@ -137,7 +137,7 @@
     
     需要注意的是，Void 类型只能用于函数的返回值类型，不能用于变量的类型。如果一个变量的类型为 Void，那么它只能被赋值为 undefined 或 null：
     
-    ```
+    ``` js
     
     let voidValue: void;
     voidValue = undefined;
@@ -152,7 +152,7 @@
     
     `null` 类型表示一个空对象指针或者不存在的对象，表示一个变量已经被赋予了一个空值。在 TypeScript 中，`null` 是一个独立的数据类型，可以使用关键字 `null` 来表示，例如：
     
-    ```
+    ``` js
     
     let a: null = null;
     ```
@@ -161,7 +161,7 @@
     
     `undefined` 类型表示一个未定义的值或者缺省值，表示一个变量没有被赋值或者对象没有定义相应的属性。在 TypeScript 中，`undefined` 也是一个独立的数据类型，可以使用关键字 `undefined` 来表示，例如：
     
-    ```
+   ``` js
     
     let b: undefined = undefined;
     
@@ -171,7 +171,7 @@
     
     需要注意的是，`null` 和 `undefined` 常常作为其他数据类型的子类型使用，表示这些类型的变量既可以存储对应的值，也可以存储 `null` 或 `undefined`。例如，下面的代码演示了如何使用 `null` 和 `undefined` 作为其他类型的子类型：
     
-    ```
+    ``` js
     
     let c: string | null = null;
     // 变量 c 的类型为 string 或 nulllet d: number | undefined;
@@ -181,7 +181,7 @@
     
     除了可以将 `null` 和 `undefined` 作为其他类型的子类型使用之外，我们还可以使用 `void` 类型来表示一个函数没有返回值，即返回值为 `undefined`。例如：
     
-    ```
+   ``` js
     
     function sayHello(): void {
         console.log("Hello");
@@ -199,7 +199,7 @@
     
     在实际开发中，我们需要定义一些函数或方法，当输入参数无法处理时，就会抛出异常或终止程序的执行，此时就可以使用 `never` 类型作为返回值类型。下面是一个示例：
     
-    ```
+    ``` js
     
     function throwError(message: string): never {
         throw new Error(message);
@@ -211,7 +211,7 @@
     
     另外，当函数内部出现无限循环、无法到达终止点或者调用了一个也返回 `never` 类型的函数时，函数的返回类型也应该是 `never`。例如：
     
-    ```
+    ``` js
     
     function infiniteLoop(): never {
         while (true) {}
@@ -230,7 +230,7 @@
     
     尖括号语法：
     
-    ```
+   ``` js
     
     let someValue: any = "hello world";
     let strLength: number = (<string>someValue).length;
@@ -238,7 +238,7 @@
     
     as 语法：
     
-    ```
+    ``` js
     
     let someValue: any = "hello world";
     let strLength: number = (someValue as string).length;
@@ -258,7 +258,7 @@
 
 `let` 声明用于声明一个块级作用域的变量，可以通过赋值语句来初始化变量的值。例如：
 
-```
+``` js
 
 let a: number = 10;
 ```
@@ -271,7 +271,7 @@ let a: number = 10;
 
 `const` 声明用于声明一个常量，一旦被赋值之后就不能再被修改。例如：
 
-```
+``` js
 
 const b: string = "hello";
 ```
@@ -284,7 +284,7 @@ const b: string = "hello";
 
 `var` 声明用于声明一个全局或函数作用域的变量，可以通过赋值语句来初始化变量的值。例如：
 
-```
+``` js
 
 var c: string = "world";
 ```
@@ -307,7 +307,7 @@ var c: string = "world";
 
 在 TypeScript 中，我们可以使用 `class` 关键字来定义类。下面是一个示例：
 
-```
+``` js
 
 class Person {
   private name: string;
@@ -325,7 +325,7 @@ class Person {
 
 我们可以通过以下方式来使用这个类：
 
-```
+``` js
 
 const person = new Person("张三");
 console.log(person.getName());// 输出：张三
@@ -335,7 +335,7 @@ console.log(person.getName());// 输出：张三
 
 在 TypeScript 中，类还支持继承。通过继承，我们可以让一个类从另一个类中继承属性和方法。下面是一个示例：
 
-```
+``` js
 
 class Student extends Person {
   private grade: number;
@@ -354,7 +354,7 @@ class Student extends Person {
 
 我们可以通过以下方式来使用这个类：
 
-```
+``` js
 
 const student = new Student("李四", 90);
 console.log(student.getName());
@@ -365,7 +365,7 @@ console.log(student.getName());
 
 在 TypeScript 中，我们也可以使用抽象类来定义一些不能直接实例化的类。抽象类只能用作其他类的基类，不能直接用于创建对象。下面是一个示例：
 
-```
+``` js
 
 abstract class Animal {
   public abstract makeSound(): void;
@@ -377,7 +377,7 @@ abstract class Animal {
 
 我们可以通过派生类来实现抽象方法：
 
-```
+``` js
 
 class Dog extends Animal {
   public makeSound(): void {
@@ -393,7 +393,7 @@ class Dog extends Animal {
 
 在 TypeScript 中，我们可以使用接口来描述对象的形状。接口定义了对象应该具有哪些属性和方法，但不提供具体的实现。下面是一个示例：
 
-```
+``` js
 
 interface Person {
   name: string;
@@ -407,7 +407,7 @@ interface Person {
 
 我们可以通过以下方式来使用这个接口：
 
-```
+``` js
 
 const person: Person = {
   name: "张三",
@@ -440,7 +440,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     下面是一个示例：
     
-    ```
+    ``` js
     
     function identity<T>(arg: T): T {
       return arg;
@@ -451,7 +451,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     我们可以通过以下方式来调用这个函数：
     
-    ```
+    ``` js
     
     const result1 = identity("hello");
     // 返回值类型为 string 
@@ -465,7 +465,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     在 TypeScript 中，函数的定义和使用与 JavaScript 类似。下面是一个示例：
     
-    ```
+   ``` js
     
     function greet(name: string): void {
       console.log(`Hello, ${name}!`);
@@ -479,7 +479,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     在 TypeScript 中，函数也有自己的类型。函数类型包含函数输入参数类型和返回值类型的定义。下面是一个示例：
     
-    ```
+    ``` js
     
     type GreetFunction = (name: string) => void;
     const greet: GreetFunction = function(name: string): void {
@@ -499,7 +499,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     下面是一个示例：
     
-    ```
+   ``` js
     
     function greet(name: string, age?: number, message: string = "Hello"): void {
       const greeting = `${message}, ${name}`;
@@ -519,7 +519,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     下面是一个示例：
     
-    ```
+    ``` js
     
     function sum(...numbers: number[]): number {
       return numbers.reduce((total, num) => total + num, 0);
@@ -533,7 +533,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     在 TypeScript 中，泛型用于描述不同类型之间的相似性，可以使用泛型类型参数来定义函数、类等通用的数据结构和算法。下面是一个示例：
     
-    ```
+    ``` js
     
     function identity<T>(arg: T): T {
     	  return arg;
@@ -549,7 +549,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     下面是一个示例：
     
-    ```
+    ``` js
     
     interface Lengthwise {
       length: number;
@@ -583,7 +583,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     模块的定义使用 export 关键字，例如：
     
-    ```
+    ``` js
     
     // person.ts
     export class Person {
@@ -605,7 +605,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     在另一个文件中，可以使用 import 关键字导入该模块：
     
-    ```
+    ``` js
     
     // main.ts
     import { Person } from "./person";
@@ -621,7 +621,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     模块的导入和导出使用 import 和 export 关键字，例如：
     
-    ```
+    ``` js
     
     // person.ts
     export class Person {
@@ -641,7 +641,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     命名空间的定义使用 namespace 关键字，例如：
     
-    ```
+   ``` js
     
     namespace MyNamespace {
       export class MyClass {
@@ -653,7 +653,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     上面的代码定义了一个名为 MyNamespace 的命名空间，并在其中定义了一个 MyClass 类。在另一个文件中，可以使用该命名空间中的类：
     
-    ```
+    ``` js
     
     import { MyNamespace } from "./mynamespace";
     
@@ -678,7 +678,7 @@ person.sayHi();// 输出：我叫张三，今年18岁
 
 装饰器使用 @ 符号，例如：
 
-```
+``` js
 
 function log(target: any) {
   console.log(target);
@@ -707,7 +707,7 @@ class Person {
 
 类装饰器是应用于类声明的装饰器。类装饰器可以用来检查类的定义是否符合规范，或者修改类的行为。
 
-```
+``` js
 
 function log(target: any) {
   console.log(target);
@@ -736,7 +736,7 @@ class Person {
 
 方法装饰器是应用于方法声明的装饰器。方法装饰器可以用来检查方法的定义是否符合规范，或者修改方法的行为。
 
-```
+``` js
 
 function log(target: any, name: string, descriptor: PropertyDescriptor) {
   console.log(target);
@@ -767,7 +767,7 @@ class Person {
 
 属性装饰器是应用于属性声明的装饰器。属性装饰器可以用来检查属性的定义是否符合规范，或者修改属性的行为。
 
-```
+``` js
 
 function log(target: any, name: string) {
   console.log(target);
@@ -797,7 +797,7 @@ class Person {
 
 参数装饰器是应用于参数声明的装饰器。参数装饰器可以用来检查参数的定义是否符合规范，或者修改参数的行为。
 
-```
+``` js
 
 function log(target: any, name: string, index: number) {
   console.log(target);
@@ -837,8 +837,7 @@ class Person {
 
 在 TypeScript 中，可以将命名空间和模块混合使用，以实现更好的代码组织和复用。例如：
 
-```
-typescript复制
+``` js
 // shapes.ts
 export namespace Shapes {
   export class Rectangle {
