@@ -1,14 +1,20 @@
 <template><div><h1 id="ts学习笔记" tabindex="-1"><a class="header-anchor" href="#ts学习笔记" aria-hidden="true">#</a> TS学习笔记</h1>
-<p>第一部分：基础知识</p>
+<h2 id="第一部分-基础知识" tabindex="-1"><a class="header-anchor" href="#第一部分-基础知识" aria-hidden="true">#</a> 第一部分：基础知识</h2>
+<h3 id="第1章-介绍typescript" tabindex="-1"><a class="header-anchor" href="#第1章-介绍typescript" aria-hidden="true">#</a> 第1章：介绍TypeScript</h3>
 <ul>
 <li>
-<p>第1章：介绍TypeScript</p>
-<ul>
-<li>TypeScript是什么</li>
-<li>TypeScript的优点</li>
-<li>TypeScript的缺点</li>
-<li>TypeScript和JavaScript的关系</li>
-</ul>
+<p>TypeScript是什么</p>
+</li>
+<li>
+<p>TypeScript的优点</p>
+</li>
+<li>
+<p>TypeScript的缺点</p>
+</li>
+<li>
+<p>TypeScript和JavaScript的关系</p>
+</li>
+<li>
 <p>优点：</p>
 <ol>
 <li>静态类型检查：TypeScript可以在编译时检查代码的类型错误，可以避免在运行时出现类型错误，提高了代码的可靠性和可维护性。</li>
@@ -17,6 +23,8 @@
 <li>更好的可维护性：TypeScript可以让代码更易于维护，因为它可以提供更好的类型检查和代码结构。</li>
 <li>更好的生态系统：TypeScript可以让开发者更容易地使用JavaScript库和框架，因为它可以提供更好的类型定义和类型检查。</li>
 </ol>
+</li>
+<li>
 <p>缺点：</p>
 <ol>
 <li>学习成本高：TypeScript需要学习新的语法和类型系统，对于新手来说可能需要一些时间来适应。</li>
@@ -31,11 +39,11 @@
 <p>TypeScript是建立在JavaScript之上的，它可以使用JavaScript中的所有特性，同时还可以添加一些新的特性。TypeScript代码可以通过编译器编译成JavaScript代码，这意味着TypeScript代码可以在任何支持JavaScript的环境中运行，如浏览器、Node.js等。</p>
 <p>总的来说，TypeScript和JavaScript是密切相关的，TypeScript扩展了JavaScript的语法和特性，同时又保持了与JavaScript的兼容性，这使得TypeScript成为了一种非常有用的编程语言。</p>
 </li>
-<li>
-<p>第3章：基本类型和变量声明</p>
-<ul>
-<li>元组类型</li>
 </ul>
+<h3 id="第3章-基本类型和变量声明" tabindex="-1"><a class="header-anchor" href="#第3章-基本类型和变量声明" aria-hidden="true">#</a> 第3章：基本类型和变量声明</h3>
+<ul>
+<li>
+<p>元组类型</p>
 <p>在TypeScript中，元组（tuple）类型是一种特殊的数组，它允许表示一个已知长度和元素类型的数组，每个元素的类型可以不同。</p>
 <p>元组类型的语法是使用方括号 [] 定义一个数组，其中包含每个元素的类型，如 [type1, type2, ..., typeN]，可以通过使用下标进行访问。</p>
 <p>例如，我们可以定义一个包含多个数据类型的元组：</p>
@@ -46,8 +54,10 @@ tuple <span class="token operator">=</span> <span class="token punctuation">[</s
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码中定义了一个元组变量 tuple，包含三个元素，分别是字符串类型、数字类型和布尔类型，然后给该变量赋值为一个具体的元素数组。</p>
 <p>在访问元组元素时，可以使用下标来进行索引：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 "hello"console.log(tuple[1]);// 输出 123console.log(tuple[2]);// 输出 true</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>需要注意的是，元组类型可以作为参数传递给函数和返回值类型。在使用元组时，请确保访问的元素不越界，否则会导致运行时错误。</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 "hello"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 123</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 true</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要注意的是，元组类型可以作为参数传递给函数和返回值类型。在使用元组时，请确保访问的元素不越界，否则会导致运行时错误。</p>
 <ul>
 <li>枚举类型</li>
 </ul>
@@ -63,8 +73,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码中，定义了一个名为 <code v-pre>Color</code> 的枚举类型，其中包含三个枚举常量 <code v-pre>Red</code>、<code v-pre>Green</code> 和 <code v-pre>Blue</code>，它们默认对应数字值 <code v-pre>0</code>、<code v-pre>1</code> 和 <code v-pre>2</code>。</p>
 <p>使用枚举类型时，可以通过常量名或常量值来引用枚举常量。例如：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
-<span class="token keyword">const</span> color1 <span class="token operator">=</span> Color<span class="token punctuation">.</span>Red<span class="token punctuation">;</span><span class="token comment">// 常量 color1 的值为 0const color2 = Color[1];// 常量 color2 的值为 'Green'</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>以上代码中，常量 <code v-pre>color1</code> 的值为枚举常量 <code v-pre>Red</code> 的默认数字值 <code v-pre>0</code>，而常量 <code v-pre>color2</code> 的值为数字值 <code v-pre>1</code> 对应的枚举常量 <code v-pre>Green</code> 的名称字符串 <code v-pre>'Green'</code>。</p>
+<span class="token keyword">const</span> color1 <span class="token operator">=</span> Color<span class="token punctuation">.</span>Red<span class="token punctuation">;</span><span class="token comment">// 常量 color1 的值为 0</span>
+<span class="token keyword">const</span> color2 <span class="token operator">=</span> Color<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// 常量 color2 的值为 'Green'</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>以上代码中，常量 <code v-pre>color1</code> 的值为枚举常量 <code v-pre>Red</code> 的默认数字值 <code v-pre>0</code>，而常量 <code v-pre>color2</code> 的值为数字值 <code v-pre>1</code> 对应的枚举常量 <code v-pre>Green</code> 的名称字符串 <code v-pre>'Green'</code>。</p>
 <p>另外，我们还可以指定每个枚举常量的数字值。例如：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
 <span class="token keyword">enum</span> Color <span class="token punctuation">{</span>
@@ -190,16 +201,13 @@ voidValue <span class="token operator">=</span> <span class="token keyword">null
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>c</code> 的变量，类型为 <code v-pre>string</code>，并将其赋值为 <code v-pre>&quot;world&quot;</code>。</p>
 <p>需要注意的是，<code v-pre>var</code> 声明的变量存在变量提升的特性，在函数内部使用 <code v-pre>var</code> 声明的变量会被提升到函数的顶部。此外，由于 <code v-pre>var</code> 存在变量提升的特性，也可能会导致多次声明同名变量而不会引发编译错误。</p>
 <p>综上所述，<code v-pre>let</code>、<code v-pre>const</code> 和 <code v-pre>var</code> 是 TypeScript 中用于声明变量的关键字，它们分别用于声明块级作用域变量、常量和全局或函数作用域变量。在实际开发中，我们应该根据实际需求来选择合适的声明方式。</p>
-<p>第二部分：面向对象编程</p>
-<ul>
-<li>第4章：类和接口
+<h2 id="第二部分-面向对象编程" tabindex="-1"><a class="header-anchor" href="#第二部分-面向对象编程" aria-hidden="true">#</a> 第二部分：面向对象编程</h2>
+<h3 id="第4章-类和接口" tabindex="-1"><a class="header-anchor" href="#第4章-类和接口" aria-hidden="true">#</a> 第4章：类和接口</h3>
 <ul>
 <li>类的定义和使用</li>
 <li>类的继承</li>
 <li>抽象类</li>
 <li>接口的定义和使用</li>
-</ul>
-</li>
 </ul>
 <h3 id="类的定义和使用" tabindex="-1"><a class="header-anchor" href="#类的定义和使用" aria-hidden="true">#</a> 类的定义和使用</h3>
 <p>在 TypeScript 中，我们可以使用 <code v-pre>class</code> 关键字来定义类。下面是一个示例：</p>
@@ -278,9 +286,7 @@ abstract <span class="token keyword">class</span> <span class="token class-name"
 person<span class="token punctuation">.</span><span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：我叫张三，今年18岁</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要注意的是，接口只描述了对象应该具有哪些属性和方法，而并不限制对象的具体实现方式。因此，我们可以自由地在对象上添加其他属性和方法。</p>
 <p>综上所述，类和接口是 TypeScript 中非常重要的概念，可以帮助我们更好地组织代码，提高代码的可读性和可维护性。我们应该根据实际需求来选择合适的声明方式</p>
-<ul>
-<li>
-<p>第5章：函数和泛型</p>
+<h3 id="第5章-函数和泛型" tabindex="-1"><a class="header-anchor" href="#第5章-函数和泛型" aria-hidden="true">#</a> 第5章：函数和泛型</h3>
 <ul>
 <li>函数的定义和使用</li>
 <li>函数类型</li>
@@ -292,9 +298,11 @@ person<span class="token punctuation">.</span><span class="token function">sayHi
 <h3 id="函数和泛型" tabindex="-1"><a class="header-anchor" href="#函数和泛型" aria-hidden="true">#</a> 函数和泛型</h3>
 <p>在 TypeScript 中，函数和泛型都是一等公民，可以被灵活地使用。</p>
 <ul>
-<li>函数：函数是一个可执行的代码块，它接收输入参数并返回输出参数。</li>
-<li>泛型：泛型是一种通用的类型，可以用于描述不同类型之间的相似性，并使代码更加灵活和可重用。</li>
-</ul>
+<li>
+<p>函数：函数是一个可执行的代码块，它接收输入参数并返回输出参数。</p>
+</li>
+<li>
+<p>泛型：泛型是一种通用的类型，可以用于描述不同类型之间的相似性，并使代码更加灵活和可重用。</p>
 <p>下面是一个示例：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
 <span class="token keyword">function</span> identity<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span>arg<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span> <span class="token punctuation">{</span>
@@ -316,21 +324,27 @@ person<span class="token punctuation">.</span><span class="token function">sayHi
  <span class="token punctuation">}</span>
  <span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, world!</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>greet</code> 的函数，接收一个类型为 <code v-pre>string</code> 的参数 <code v-pre>name</code>，并输出一句问候语。</p>
+</li>
+</ul>
 <h3 id="函数类型" tabindex="-1"><a class="header-anchor" href="#函数类型" aria-hidden="true">#</a> 函数类型</h3>
 <p>在 TypeScript 中，函数也有自己的类型。函数类型包含函数输入参数类型和返回值类型的定义。下面是一个示例：</p>
-<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
-type <span class="token function-variable function">GreetFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">name</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">void</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token literal-property property">greet</span><span class="token operator">:</span> <span class="token function-variable function">GreetFunction</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">name</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, world!</span>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>    
+    type <span class="token function-variable function">GreetFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">name</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token literal-property property">greet</span><span class="token operator">:</span> <span class="token function-variable function">GreetFunction</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">name</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, world!</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码先使用 <code v-pre>type</code> 关键字定义了一个名为 <code v-pre>GreetFunction</code> 的函数类型，接着定义了一个名为 <code v-pre>greet</code> 的函数，并将其赋值给一个类型为 <code v-pre>GreetFunction</code> 的变量。这样可以明确指定函数类型，从而提高代码的可读性和可维护性。</p>
 <h3 id="可选参数和默认参数" tabindex="-1"><a class="header-anchor" href="#可选参数和默认参数" aria-hidden="true">#</a> 可选参数和默认参数</h3>
-<p>在 TypeScript 中，函数的参数可以有两种类型：可选参数和默认参数。</p>
 <ul>
-<li>可选参数：通过在参数名后面添加 <code v-pre>?</code> 标记来表示该参数是可选的。</li>
-<li>默认参数：通过在参数名后面添加等号 <code v-pre>=</code> 和默认值来表示该参数的默认值。</li>
-</ul>
+<li>
+<p>在 TypeScript 中，函数的参数可以有两种类型：可选参数和默认参数。</p>
+</li>
+<li>
+<p>可选参数：通过在参数名后面添加 <code v-pre>?</code> 标记来表示该参数是可选的。</p>
+</li>
+<li>
+<p>默认参数：通过在参数名后面添加等号 <code v-pre>=</code> 和默认值来表示该参数的默认值。</p>
 <p>下面是一个示例：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code> 
  <span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token operator">:</span> string<span class="token punctuation">,</span> age<span class="token operator">?</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> string <span class="token operator">=</span> <span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
@@ -340,8 +354,10 @@ type <span class="token function-variable function">GreetFunction</span> <span c
    <span class="token punctuation">}</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span>
  <span class="token punctuation">}</span>
- <span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, Alicegreet("Bob", 25);// 输出：Hello, Bob, age 25greet("Charlie", 30, "Hi");// 输出：Hi, Charlie, age 30</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>greet</code> 的函数，接收三个参数：<code v-pre>name</code>、<code v-pre>age</code> 和 <code v-pre>message</code>。其中，<code v-pre>age</code> 和 <code v-pre>message</code> 是可选的，默认值分别是 <code v-pre>undefined</code> 和 <code v-pre>&quot;Hello&quot;</code>。如果传入了 <code v-pre>age</code> 参数，会在输出中加入对年龄的说明。</p>
+ <span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, </span>
+ <span class="token function">Alicegreet</span><span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hello, Bob, age 25</span>
+ <span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">"Charlie"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token string">"Hi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：Hi, Charlie, age 30</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>greet</code> 的函数，接收三个参数：<code v-pre>name</code>、<code v-pre>age</code> 和 <code v-pre>message</code>。其中，<code v-pre>age</code> 和 <code v-pre>message</code> 是可选的，默认值分别是 <code v-pre>undefined</code> 和 <code v-pre>&quot;Hello&quot;</code>。如果传入了 <code v-pre>age</code> 参数，会在输出中加入对年龄的说明。</p>
 <h3 id="剩余参数" tabindex="-1"><a class="header-anchor" href="#剩余参数" aria-hidden="true">#</a> 剩余参数</h3>
 <p>在 TypeScript 中，我们还可以使用剩余参数语法来接收任意数量的参数，并将它们作为一个数组来处理。剩余参数可以在参数列表的最后一个位置使用，通过 <code v-pre>...</code> 来标记。</p>
 <p>下面是一个示例：</p>
@@ -349,16 +365,19 @@ type <span class="token function-variable function">GreetFunction</span> <span c
 <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>numbers<span class="token operator">:</span> number<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span><span class="token operator">:</span> number <span class="token punctuation">{</span>
   <span class="token keyword">return</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">total<span class="token punctuation">,</span> num</span><span class="token punctuation">)</span> <span class="token operator">=></span> total <span class="token operator">+</span> num<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：0console.log(sum(1, 2, 3));// 输出：6console.log(sum(4, 5, 6, 7));// 输出：22</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>sum</code> 的函数，接收任意数量的数字参数，并返回它们的总和。</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：6</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：22</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>sum</code> 的函数，接收任意数量的数字参数，并返回它们的总和。</p>
 <h3 id="泛型的定义和使用" tabindex="-1"><a class="header-anchor" href="#泛型的定义和使用" aria-hidden="true">#</a> 泛型的定义和使用</h3>
 <p>在 TypeScript 中，泛型用于描述不同类型之间的相似性，可以使用泛型类型参数来定义函数、类等通用的数据结构和算法。下面是一个示例：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
 <span class="token keyword">function</span> identity<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span>arg<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span> <span class="token punctuation">{</span>
 	  <span class="token keyword">return</span> arg<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">identity</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：helloconsole.log(identity(123));// 输出：123</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>identity</code> 的函数，使用了泛型类型参数 <code v-pre>T</code>。该函数接收一个类型为 <code v-pre>T</code> 的参数 <code v-pre>arg</code>，并返回该参数的值。调用时可以明确指定泛型参数的类型，也可以让 TypeScript 根据参数类型自动推断出泛型参数的类型。</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">identity</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：hello</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">identity</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：123</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>identity</code> 的函数，使用了泛型类型参数 <code v-pre>T</code>。该函数接收一个类型为 <code v-pre>T</code> 的参数 <code v-pre>arg</code>，并返回该参数的值。调用时可以明确指定泛型参数的类型，也可以让 TypeScript 根据参数类型自动推断出泛型参数的类型。</p>
 <h3 id="泛型约束" tabindex="-1"><a class="header-anchor" href="#泛型约束" aria-hidden="true">#</a> 泛型约束</h3>
 <p>在 TypeScript 中，我们还可以使用泛型约束来限制泛型类型参数的类型范围。泛型约束可以使用 <code v-pre>extends</code> 关键字来定义。</p>
 <p>下面是一个示例：</p>
@@ -370,21 +389,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">length of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>arg<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>arg<span class="token punctuation">.</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> arg<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">loggingIdentity</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：length of hello: 5console.log(loggingIdentity([1, 2, 3]));// 输出：length of 1,2,3: 3console.log(loggingIdentity({ length: 4 }));// 输出：length of [object Object]: 4</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>Lengthwise</code> 的接口，包含一个数字属性 <code v-pre>length</code>。接着定义了一个名为 <code v-pre>loggingIdentity</code> 的函数，使用了泛型类型参数 <code v-pre>T</code>，并使用了泛型约束 <code v-pre>extends Lengthwise</code>，表示泛型类型参数必须符合 <code v-pre>Lengthwise</code> 接口的要求。</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">loggingIdentity</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：length of hello: 5</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">loggingIdentity</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：length of 1,2,3: 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">loggingIdentity</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出：length of [object Object]: 4</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>Lengthwise</code> 的接口，包含一个数字属性 <code v-pre>length</code>。接着定义了一个名为 <code v-pre>loggingIdentity</code> 的函数，使用了泛型类型参数 <code v-pre>T</code>，并使用了泛型约束 <code v-pre>extends Lengthwise</code>，表示泛型类型参数必须符合 <code v-pre>Lengthwise</code> 接口的要求。</p>
 <p>调用 <code v-pre>loggingIdentity</code> 函数时，传入了三个不同类型的参数：字符串、数组和一个自定义对象。由于它们都符合 <code v-pre>Lengthwise</code> 接口的要求，因此可以正常输出结果。</p>
 <p>综上所述，函数和泛型是 TypeScript 中非常重要的概念，可以帮助我们更好地组织代码，提高代码的可读性和可维护性。我们应该根据实际需求来选择合适的声明方式，并善于使用泛型约束等技巧来提高代码的类型安全性和健壮性。</p>
 </li>
 </ul>
-<p>第三部分：高级特性</p>
+<h2 id="第三部分-高级特性" tabindex="-1"><a class="header-anchor" href="#第三部分-高级特性" aria-hidden="true">#</a> 第三部分：高级特性</h2>
+<h3 id="第6章-模块" tabindex="-1"><a class="header-anchor" href="#第6章-模块" aria-hidden="true">#</a> 第6章：模块</h3>
 <ul>
 <li>
-<p>第6章：模块</p>
-<ul>
-<li>模块的概念和使用</li>
-<li>模块的导入和导出</li>
-<li>命名空间</li>
-</ul>
+<p>模块的概念和使用</p>
+</li>
+<li>
+<p>模块的导入和导出</p>
+</li>
+<li>
+<p>命名空间</p>
 <h3 id="模块" tabindex="-1"><a class="header-anchor" href="#模块" aria-hidden="true">#</a> <strong>模块</strong></h3>
 <p>在 TypeScript 中，模块是一种组织代码的方式，它将相关的代码放在一个独立的文件中，从而实现代码的复用和分离。</p>
 <h3 id="模块的概念和使用" tabindex="-1"><a class="header-anchor" href="#模块的概念和使用" aria-hidden="true">#</a> <strong>模块的概念和使用</strong></h3>
@@ -444,16 +467,14 @@ person<span class="token punctuation">.</span><span class="token function">sayHe
 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码中，使用 import 关键字导入了 MyNamespace 命名空间，并通过 MyNamespace.MyClass 的方式访问其中的类。</p>
 </li>
-<li>
-<p>第7章：装饰器</p>
+</ul>
+<h3 id="第7章-装饰器" tabindex="-1"><a class="header-anchor" href="#第7章-装饰器" aria-hidden="true">#</a> 第7章：装饰器</h3>
 <ul>
 <li>装饰器的概念和使用</li>
 <li>类装饰器</li>
 <li>方法装饰器</li>
 <li>属性装饰器</li>
 <li>参数装饰器</li>
-</ul>
-</li>
 </ul>
 <h3 id="装饰器" tabindex="-1"><a class="header-anchor" href="#装饰器" aria-hidden="true">#</a> <strong>装饰器</strong></h3>
 <p>在 TypeScript 中，装饰器是一种特殊的声明，它可以被附加到类声明、方法、属性或参数上，以修改类的行为。</p>
@@ -576,13 +597,10 @@ person<span class="token punctuation">.</span><span class="token function">sayHe
 <span class="token punctuation">}</span>
 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个 log 装饰器，并应用于 Person 类中的 age 参数。</p>
-<ul>
-<li>第8章：命名空间和模块的混合使用
+<h3 id="第8章-命名空间和模块的混合使用" tabindex="-1"><a class="header-anchor" href="#第8章-命名空间和模块的混合使用" aria-hidden="true">#</a> 第8章：命名空间和模块的混合使用</h3>
 <ul>
 <li>命名空间和模块的区别</li>
 <li>命名空间和模块的混合使用</li>
-</ul>
-</li>
 </ul>
 <h3 id="命名空间和模块的区别" tabindex="-1"><a class="header-anchor" href="#命名空间和模块的区别" aria-hidden="true">#</a> <strong>命名空间和模块的区别</strong></h3>
 <p>在 TypeScript 中，命名空间和模块都是用来组织代码的方式，但它们有一些区别。</p>

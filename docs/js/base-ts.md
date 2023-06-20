@@ -1,27 +1,27 @@
 # TS学习笔记
 
-第一部分：基础知识
+## 第一部分：基础知识
 
-- 第1章：介绍TypeScript
-    - TypeScript是什么
-    - TypeScript的优点
-    - TypeScript的缺点
-    - TypeScript和JavaScript的关系
+### 第1章：介绍TypeScript
+- TypeScript是什么
+- TypeScript的优点
+- TypeScript的缺点
+- TypeScript和JavaScript的关系
     
-    优点：
+- 优点：
     
     1. 静态类型检查：TypeScript可以在编译时检查代码的类型错误，可以避免在运行时出现类型错误，提高了代码的可靠性和可维护性。
     2. 更好的IDE支持：TypeScript提供了更好的IDE支持，可以提供更好的代码补全、错误提示和重构功能等。
     3. 更好的可读性：TypeScript可以让代码更易读，因为它可以提供更好的类型注释和代码结构。
     4. 更好的可维护性：TypeScript可以让代码更易于维护，因为它可以提供更好的类型检查和代码结构。
     5. 更好的生态系统：TypeScript可以让开发者更容易地使用JavaScript库和框架，因为它可以提供更好的类型定义和类型检查。
-    
-    缺点：
-    
+
+- 缺点：
     1. 学习成本高：TypeScript需要学习新的语法和类型系统，对于新手来说可能需要一些时间来适应。
     2. 开发效率低：由于需要编写类型注释和类型定义，TypeScript开发的效率可能比JavaScript低。
     3. 集成问题：TypeScript需要与其他工具和框架进行集成，可能需要一些额外的配置和学习成本。
     4. 运行时性能问题：由于需要进行类型检查和转换，TypeScript的运行时性能可能比JavaScript低。
+
 - TypeScript和JavaScript的关系
 
     TypeScript和JavaScript有着密切的关系，可以说TypeScript是JavaScript的超集。具体来说，TypeScript扩展了JavaScript的语法，为JavaScript添加了一些新的特性，如静态类型检查、类和接口等面向对象编程的特性。同时，TypeScript还可以编译成JavaScript代码，这意味着TypeScript代码可以在任何支持JavaScript的环境中运行。
@@ -30,8 +30,8 @@
 
     总的来说，TypeScript和JavaScript是密切相关的，TypeScript扩展了JavaScript的语法和特性，同时又保持了与JavaScript的兼容性，这使得TypeScript成为了一种非常有用的编程语言。
 
-- 第3章：基本类型和变量声明
-    - 元组类型
+### 第3章：基本类型和变量声明
+- 元组类型
     
     在TypeScript中，元组（tuple）类型是一种特殊的数组，它允许表示一个已知长度和元素类型的数组，每个元素的类型可以不同。
     
@@ -52,7 +52,9 @@
     
     ``` js
     
-    console.log(tuple[0]);// 输出 "hello"console.log(tuple[1]);// 输出 123console.log(tuple[2]);// 输出 true
+    console.log(tuple[0]);// 输出 "hello"
+    console.log(tuple[1]);// 输出 123
+    console.log(tuple[2]);// 输出 true
     ```
     
     需要注意的是，元组类型可以作为参数传递给函数和返回值类型。在使用元组时，请确保访问的元素不越界，否则会导致运行时错误。
@@ -79,7 +81,8 @@
     
     ``` js
     
-    const color1 = Color.Red;// 常量 color1 的值为 0const color2 = Color[1];// 常量 color2 的值为 'Green'
+    const color1 = Color.Red;// 常量 color1 的值为 0
+    const color2 = Color[1];// 常量 color2 的值为 'Green'
     ```
     
     以上代码中，常量 `color1` 的值为枚举常量 `Red` 的默认数字值 `0`，而常量 `color2` 的值为数字值 `1` 对应的枚举常量 `Green` 的名称字符串 `'Green'`。
@@ -295,13 +298,14 @@ var c: string = "world";
 
 综上所述，`let`、`const` 和 `var` 是 TypeScript 中用于声明变量的关键字，它们分别用于声明块级作用域变量、常量和全局或函数作用域变量。在实际开发中，我们应该根据实际需求来选择合适的声明方式。
 
-第二部分：面向对象编程
+## 第二部分：面向对象编程
 
-- 第4章：类和接口
-    - 类的定义和使用
-    - 类的继承
-    - 抽象类
-    - 接口的定义和使用
+### 第4章：类和接口
+
+- 类的定义和使用
+- 类的继承
+- 抽象类
+- 接口的定义和使用
 
 ### 类的定义和使用
 
@@ -423,20 +427,20 @@ person.sayHi();// 输出：我叫张三，今年18岁
 
 综上所述，类和接口是 TypeScript 中非常重要的概念，可以帮助我们更好地组织代码，提高代码的可读性和可维护性。我们应该根据实际需求来选择合适的声明方式
 
-- 第5章：函数和泛型
-    - 函数的定义和使用
-    - 函数类型
-    - 可选参数和默认参数
-    - 剩余参数
-    - 泛型的定义和使用
-    - 泛型约束
+### 第5章：函数和泛型
+- 函数的定义和使用
+- 函数类型
+- 可选参数和默认参数
+- 剩余参数
+- 泛型的定义和使用
+- 泛型约束
     
-    ### 函数和泛型
+### 函数和泛型
     
-    在 TypeScript 中，函数和泛型都是一等公民，可以被灵活地使用。
+在 TypeScript 中，函数和泛型都是一等公民，可以被灵活地使用。
     
-    - 函数：函数是一个可执行的代码块，它接收输入参数并返回输出参数。
-    - 泛型：泛型是一种通用的类型，可以用于描述不同类型之间的相似性，并使代码更加灵活和可重用。
+- 函数：函数是一个可执行的代码块，它接收输入参数并返回输出参数。
+- 泛型：泛型是一种通用的类型，可以用于描述不同类型之间的相似性，并使代码更加灵活和可重用。
     
     下面是一个示例：
     
@@ -475,27 +479,27 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     上面的代码定义了一个名为 `greet` 的函数，接收一个类型为 `string` 的参数 `name`，并输出一句问候语。
     
-    ### 函数类型
+### 函数类型
     
-    在 TypeScript 中，函数也有自己的类型。函数类型包含函数输入参数类型和返回值类型的定义。下面是一个示例：
+在 TypeScript 中，函数也有自己的类型。函数类型包含函数输入参数类型和返回值类型的定义。下面是一个示例：
     
-    ``` js
+``` js
     
     type GreetFunction = (name: string) => void;
     const greet: GreetFunction = function(name: string): void {
       console.log(`Hello, ${name}!`);
     };
     greet("world");// 输出：Hello, world!
-    ```
+```
+
+上面的代码先使用 `type` 关键字定义了一个名为 `GreetFunction` 的函数类型，接着定义了一个名为 `greet` 的函数，并将其赋值给一个类型为 `GreetFunction` 的变量。这样可以明确指定函数类型，从而提高代码的可读性和可维护性。
     
-    上面的代码先使用 `type` 关键字定义了一个名为 `GreetFunction` 的函数类型，接着定义了一个名为 `greet` 的函数，并将其赋值给一个类型为 `GreetFunction` 的变量。这样可以明确指定函数类型，从而提高代码的可读性和可维护性。
+### 可选参数和默认参数
     
-    ### 可选参数和默认参数
+- 在 TypeScript 中，函数的参数可以有两种类型：可选参数和默认参数。
     
-    在 TypeScript 中，函数的参数可以有两种类型：可选参数和默认参数。
-    
-    - 可选参数：通过在参数名后面添加 `?` 标记来表示该参数是可选的。
-    - 默认参数：通过在参数名后面添加等号 `=` 和默认值来表示该参数的默认值。
+- 可选参数：通过在参数名后面添加 `?` 标记来表示该参数是可选的。
+- 默认参数：通过在参数名后面添加等号 `=` 和默认值来表示该参数的默认值。
     
     下面是一个示例：
     
@@ -508,7 +512,9 @@ person.sayHi();// 输出：我叫张三，今年18岁
       }
       console.log(greeting);
     }
-    greet("Alice");// 输出：Hello, Alicegreet("Bob", 25);// 输出：Hello, Bob, age 25greet("Charlie", 30, "Hi");// 输出：Hi, Charlie, age 30
+    greet("Alice");// 输出：Hello, 
+    Alicegreet("Bob", 25);// 输出：Hello, Bob, age 25
+    greet("Charlie", 30, "Hi");// 输出：Hi, Charlie, age 30
     ```
     
     上面的代码定义了一个名为 `greet` 的函数，接收三个参数：`name`、`age` 和 `message`。其中，`age` 和 `message` 是可选的，默认值分别是 `undefined` 和 `"Hello"`。如果传入了 `age` 参数，会在输出中加入对年龄的说明。
@@ -524,7 +530,9 @@ person.sayHi();// 输出：我叫张三，今年18岁
     function sum(...numbers: number[]): number {
       return numbers.reduce((total, num) => total + num, 0);
     }
-    console.log(sum());// 输出：0console.log(sum(1, 2, 3));// 输出：6console.log(sum(4, 5, 6, 7));// 输出：22
+    console.log(sum());// 输出：0
+    console.log(sum(1, 2, 3));// 输出：6
+    console.log(sum(4, 5, 6, 7));// 输出：22
     ```
     
     上面的代码定义了一个名为 `sum` 的函数，接收任意数量的数字参数，并返回它们的总和。
@@ -538,7 +546,8 @@ person.sayHi();// 输出：我叫张三，今年18岁
     function identity<T>(arg: T): T {
     	  return arg;
     }
-    console.log(identity("hello"));// 输出：helloconsole.log(identity(123));// 输出：123
+    console.log(identity("hello"));// 输出：hello
+    console.log(identity(123));// 输出：123
     ```
     
     上面的代码定义了一个名为 `identity` 的函数，使用了泛型类型参数 `T`。该函数接收一个类型为 `T` 的参数 `arg`，并返回该参数的值。调用时可以明确指定泛型参数的类型，也可以让 TypeScript 根据参数类型自动推断出泛型参数的类型。
@@ -558,7 +567,9 @@ person.sayHi();// 输出：我叫张三，今年18岁
       console.log(`length of ${arg}: ${arg.length}`);
       return arg;
     }
-    console.log(loggingIdentity("hello"));// 输出：length of hello: 5console.log(loggingIdentity([1, 2, 3]));// 输出：length of 1,2,3: 3console.log(loggingIdentity({ length: 4 }));// 输出：length of [object Object]: 4
+    console.log(loggingIdentity("hello"));// 输出：length of hello: 5
+    console.log(loggingIdentity([1, 2, 3]));// 输出：length of 1,2,3: 3
+    console.log(loggingIdentity({ length: 4 }));// 输出：length of [object Object]: 4
     ```
     
     上面的代码定义了一个名为 `Lengthwise` 的接口，包含一个数字属性 `length`。接着定义了一个名为 `loggingIdentity` 的函数，使用了泛型类型参数 `T`，并使用了泛型约束 `extends Lengthwise`，表示泛型类型参数必须符合 `Lengthwise` 接口的要求。
@@ -568,12 +579,12 @@ person.sayHi();// 输出：我叫张三，今年18岁
     综上所述，函数和泛型是 TypeScript 中非常重要的概念，可以帮助我们更好地组织代码，提高代码的可读性和可维护性。我们应该根据实际需求来选择合适的声明方式，并善于使用泛型约束等技巧来提高代码的类型安全性和健壮性。
     
 
-第三部分：高级特性
+## 第三部分：高级特性
 
-- 第6章：模块
-    - 模块的概念和使用
-    - 模块的导入和导出
-    - 命名空间
+### 第6章：模块
+- 模块的概念和使用
+- 模块的导入和导出
+- 命名空间
     
     ### **模块**
     
@@ -663,12 +674,12 @@ person.sayHi();// 输出：我叫张三，今年18岁
     
     上面的代码中，使用 import 关键字导入了 MyNamespace 命名空间，并通过 MyNamespace.MyClass 的方式访问其中的类。
     
-- 第7章：装饰器
-    - 装饰器的概念和使用
-    - 类装饰器
-    - 方法装饰器
-    - 属性装饰器
-    - 参数装饰器
+### 第7章：装饰器
+- 装饰器的概念和使用
+- 类装饰器
+- 方法装饰器
+- 属性装饰器
+- 参数装饰器
 
 ### **装饰器**
 
@@ -823,9 +834,9 @@ class Person {
 
 上面的代码定义了一个 log 装饰器，并应用于 Person 类中的 age 参数。
 
-- 第8章：命名空间和模块的混合使用
-    - 命名空间和模块的区别
-    - 命名空间和模块的混合使用
+### 第8章：命名空间和模块的混合使用
+- 命名空间和模块的区别
+- 命名空间和模块的混合使用
 
 ### **命名空间和模块的区别**
 
