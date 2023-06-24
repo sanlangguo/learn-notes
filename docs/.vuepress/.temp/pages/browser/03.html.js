@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-72cbe0b6\",\"path\":\"/browser/03.html\",\"title\":\"\",\"lang\":\"zh-CN\",\"frontmatter\":{},\"headers\":[{\"level\":2,\"title\":\"03-HTTP请求流程：为什么很多站点第二次打开速度会很快？\",\"slug\":\"_03-http请求流程-为什么很多站点第二次打开速度会很快\",\"link\":\"#_03-http请求流程-为什么很多站点第二次打开速度会很快\",\"children\":[]}],\"git\":{\"updatedTime\":null,\"contributors\":[]},\"filePathRelative\":\"browser/03.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
