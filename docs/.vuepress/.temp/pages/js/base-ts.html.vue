@@ -58,9 +58,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 123</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tuple<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 输出 true</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要注意的是，元组类型可以作为参数传递给函数和返回值类型。在使用元组时，请确保访问的元素不越界，否则会导致运行时错误。</p>
-<ul>
-<li>枚举类型</li>
-</ul>
+</li>
+<li>
+<p>枚举类型</p>
 <p>在 TypeScript 中，枚举类型是一种特殊的数据类型，用于定义命名常量的集合。使用枚举类型可以使代码更加清晰和易读。</p>
 <p>在 TypeScript 中，枚举类型可以使用关键字 <code v-pre>enum</code> 定义，如下所示：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
@@ -87,9 +87,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码中，枚举常量 <code v-pre>Red</code> 的值为 <code v-pre>1</code>，<code v-pre>Green</code> 的值为 <code v-pre>2</code>，<code v-pre>Blue</code> 的值为 <code v-pre>4</code>。在 TypeScript 中，枚举常量可以是数字或字符串类型。</p>
 <p>总结：</p>
 <p>TypeScript 中的枚举类型是用于定义命名常量集合的特殊数据类型，使用关键字 <code v-pre>enum</code> 定义。每个枚举常量对应一个数字或字符串值，默认从 <code v-pre>0</code> 开始递增。我们也可以手动指定每个枚举常量的值。</p>
-<ul>
-<li>Any类型</li>
-</ul>
+</li>
+<li>
+<p>Any类型</p>
 <p>在 TypeScript 中，Any 类型表示任何类型，即可以是任意类型的值。使用 Any 类型可以在编写代码时不对类型进行限制，从而实现更灵活的编程。</p>
 <p>Any 类型的变量可以接受任何类型的值，例如：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code> 
@@ -100,9 +100,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
  
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在使用 Any 类型时需要注意，因为 Any 类型可以表示任何类型，所以它的值在编译时不会进行类型检查，这意味着任何类型的值都可以赋给 Any 类型的变量，也可以从 Any 类型的变量中获取任何类型的值。这种灵活性可能会导致一些潜在的类型错误，在使用 Any 类型时需要谨慎。</p>
 <p>另外，如果使用 Any 类型过于频繁，会导致代码的可读性和可维护性降低，因为无法清楚地知道变量的实际类型。因此，在编写 TypeScript 代码时应该尽量避免使用 Any 类型，而是使用更具体的类型来进行类型限制。</p>
-<ul>
-<li>Void类型</li>
-</ul>
+</li>
+<li>
+<p>Void类型</p>
 <p>在 TypeScript 中，Void 类型表示没有任何类型，即函数没有返回值。使用 Void 类型可以在函数声明时指定函数不返回任何值。</p>
 <p>例如，下面的函数声明返回类型为 Void：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">logMessage</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">message</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
@@ -115,9 +115,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 voidValue <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
 voidValue <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>因为 Void 类型表示没有任何类型，所以它的主要作用是在函数声明时指定函数没有返回值，从而提高代码的可读性和可维护性。</p>
-<ul>
-<li>Null和Undefined类型</li>
-</ul>
+</li>
+<li>
+<p>Null和Undefined类型</p>
 <p><code v-pre>null</code> 和 <code v-pre>undefined</code> 是 TypeScript 中的特殊数据类型，用来表示缺少值或者非法值。</p>
 <p><code v-pre>null</code> 类型表示一个空对象指针或者不存在的对象，表示一个变量已经被赋予了一个空值。在 TypeScript 中，<code v-pre>null</code> 是一个独立的数据类型，可以使用关键字 <code v-pre>null</code> 来表示，例如：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
@@ -142,9 +142,9 @@ voidValue <span class="token operator">=</span> <span class="token keyword">null
  
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码定义了一个名为 <code v-pre>sayHello</code> 的函数，该函数没有返回值，即返回值类型为 <code v-pre>void</code>。</p>
 <p>综上所述，<code v-pre>null</code> 和 <code v-pre>undefined</code> 是 TypeScript 中用来表示缺少和非法值的特殊数据类型，常常作为其他类型的子类型使用，用于表示变量既可以存储对应的值，也可以存储 <code v-pre>null</code> 或 <code v-pre>undefined</code>。<code v-pre>void</code> 类型表示一个函数没有返回值，即返回值为 <code v-pre>undefined</code>。</p>
-<ul>
-<li>Never类型</li>
-</ul>
+</li>
+<li>
+<p>Never类型</p>
 <p>在 TypeScript 中，<code v-pre>never</code> 类型表示永远不会出现的值的类型，通常用于表示不可能存在的错误情况或者异常情况的返回类型。它是所有类型的子类型，包括 <code v-pre>any</code> 类型。</p>
 <p>在实际开发中，我们需要定义一些函数或方法，当输入参数无法处理时，就会抛出异常或终止程序的执行，此时就可以使用 <code v-pre>never</code> 类型作为返回值类型。下面是一个示例：</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
@@ -160,9 +160,9 @@ voidValue <span class="token operator">=</span> <span class="token keyword">null
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的示例展示了一个死循环的例子，它永远不会结束，因此函数的返回类型是 <code v-pre>never</code>。</p>
 <p>总之，<code v-pre>never</code> 类型在 TypeScript 中表示不可能存在的值的类型，通常用于表示不可能存在的错误情况或异常情况的返回类型，当函数内部出现无限循环、无法到达终止点或者调用了一个也返回 <code v-pre>never</code> 类型的函数时，函数的返回类型也应该是 <code v-pre>never</code>。</p>
-<ul>
-<li>类型断言</li>
-</ul>
+</li>
+<li>
+<p>类型断言</p>
 <p>在 TypeScript 中，类型断言（Type Assertion）是一种告诉编译器变量的类型的方式。它可以用来手动指定一个值的类型，从而绕过 TypeScript 的类型检查。</p>
 <p>类型断言有两种形式：尖括号语法和 as 语法。</p>
 <p>尖括号语法：</p>
@@ -176,9 +176,9 @@ voidValue <span class="token operator">=</span> <span class="token keyword">null
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这两种形式的效果是一样的，它们都将 someValue 断言为 string 类型，然后获取其 length 属性。</p>
 <p>需要注意的是，类型断言并不会真正地转换变量的类型，它只是告诉编译器这个变量应该被当做什么类型来使用。如果类型断言不正确，就会导致运行时错误。</p>
 <p>另外，如果一个变量已经被 TypeScript 推断出了类型，那么就不需要使用类型断言了。只有在某些情况下 TypeScript 无法推断出变量类型时，才需要使用类型断言。</p>
-<ul>
-<li>变量声明</li>
-</ul>
+</li>
+<li>
+<p>变量声明</p>
 </li>
 </ul>
 <p>在 TypeScript 中，有多种方式可以声明变量，包括关键字 <code v-pre>let</code>、<code v-pre>const</code> 和 <code v-pre>var</code>。下面分别对它们进行详细介绍：</p>

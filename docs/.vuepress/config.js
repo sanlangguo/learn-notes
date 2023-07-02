@@ -19,6 +19,10 @@ module.exports = {
             text: "TS入门学习记录",
             link: "/js/base-ts.md",
           },
+          {
+            text: 'TS 使用指南',
+            link: "/ts/readonly.md",
+          }
         ],
       },
       {
@@ -41,7 +45,25 @@ module.exports = {
       '/js/': [
         {
           text: 'TS入门学习记录',
-          link: "/js/base-ts.md"
+          link: "/js/base-ts.md",
+        }
+      ],
+      '/ts/':[
+        {
+          text: 'TS API 使用指南',
+          children: [{
+            text: 'readonly',
+            link: "/ts/readonly.md",
+          },
+          {
+            text: 'pick',
+            link: "/ts/pick.md",
+          },
+          {
+            text: 'type 和 interface 区别',
+            link: "/ts/type.md",
+          }
+        ]
         }
       ],
       '/browser/': [
