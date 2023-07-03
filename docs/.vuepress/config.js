@@ -62,6 +62,14 @@ module.exports = {
           {
             text: 'type 和 interface 区别',
             link: "/ts/type.md",
+          },
+          {
+            text: 'Exclude',
+            link: "/ts/Exclude.md",
+          },
+          {
+            text: 'Omit',
+            link: "/ts/Omit.md",
           }
         ]
         }
