@@ -70,7 +70,19 @@ module.exports = {
           {
             text: 'Omit',
             link: "/ts/Omit.md",
-          }
+          },
+          {
+            text: 'AppendArgument',
+            link: "/ts/AppendArgument.md",
+          },
+          {
+            text: 'Combination',
+            link: "/ts/Combination.md",
+          },
+          {
+            text: '合并Concat',
+            link: "/ts/Concat.md",
+          },
         ]
         }
       ],
