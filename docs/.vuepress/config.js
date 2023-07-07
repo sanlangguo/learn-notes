@@ -26,6 +26,10 @@ module.exports = {
         ],
       },
       {
+        text: "常用工具",
+        link: "/tools/tl-list.md",
+      },
+      {
         text: "浏览器",
         link: "/browser/01.md",
         children: [
@@ -42,6 +46,12 @@ module.exports = {
       { text: "github", link: "https://github.com/sanlangguo/learn-notes" },
     ],
     sidebar: {
+        '/tools/': [
+            {
+              text: '常用工具',
+              link: "/tools/tl-list.md",
+            }
+          ],
       '/js/': [
         {
           text: 'TS入门学习记录',
