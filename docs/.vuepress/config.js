@@ -38,7 +38,16 @@ module.exports = {
       },
       {
         text: "常用工具",
-        link: "/tools/tl-list.md",
+        children: [
+          {
+            text: "前端学习常用网站",
+            link: "/tools/tl-list.md",
+          },
+          {
+            text: "工作中常用工具网站",
+            link: "/tools/user-tools.md",
+          },
+        ],
       },
       {
         text: "浏览器",
