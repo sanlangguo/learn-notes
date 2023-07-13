@@ -2,9 +2,9 @@ import {
   isArray,
   isFunction,
   isString
-} from "./chunk-6LKE2AJO.js";
+} from "./chunk-DDKVHXSX.js";
 
-// node_modules/.pnpm/registry.npmmirror.com+@vuepress+shared@2.0.0-beta.63/node_modules/@vuepress/shared/dist/index.js
+// node_modules/@vuepress/shared/dist/index.js
 var resolveHeadIdentifier = ([
   tag,
   attrs,

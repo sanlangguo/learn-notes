@@ -1,41 +1,41 @@
 {
-  "hash": "b77d92ad",
-  "browserHash": "df2694e0",
+  "hash": "b9cb5165",
+  "browserHash": "ce9d5d76",
   "optimized": {
     "@vue/devtools-api": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "@vue_devtools-api.js",
-      "fileHash": "320390e8",
+      "fileHash": "a8bda5b3",
       "needsInterop": false
     },
     "@vuepress/shared": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vuepress+shared@2.0.0-beta.63/node_modules/@vuepress/shared/dist/index.js",
+      "src": "../../../../node_modules/@vuepress/shared/dist/index.js",
       "file": "@vuepress_shared.js",
-      "fileHash": "f79ba43f",
+      "fileHash": "0593908e",
       "needsInterop": false
     },
     "vue": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "71bc9f9e",
+      "fileHash": "fa308a71",
       "needsInterop": false
     },
     "vue-router": {
-      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vue-router@4.2.2_vue@3.3.4/node_modules/vue-router/dist/vue-router.esm-bundler.js",
+      "src": "../../../../node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "file": "vue-router.js",
-      "fileHash": "a9d45361",
+      "fileHash": "7fc51ab6",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-HIVXQFQW": {
-      "file": "chunk-HIVXQFQW.js"
+    "chunk-RFQTXRIF": {
+      "file": "chunk-RFQTXRIF.js"
     },
-    "chunk-6LKE2AJO": {
-      "file": "chunk-6LKE2AJO.js"
+    "chunk-AQDTH7GJ": {
+      "file": "chunk-AQDTH7GJ.js"
     },
-    "chunk-IXCVSLRB": {
-      "file": "chunk-IXCVSLRB.js"
+    "chunk-DDKVHXSX": {
+      "file": "chunk-DDKVHXSX.js"
     }
   }
 }

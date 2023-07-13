@@ -1,7 +1,9 @@
 import { defaultTheme } from "vuepress";
+import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 module.exports = {
   title: "三郎过",
   base: "/learn-notes/",
+  plugins: [autoCatalogPlugin()],
   locales: {
     "/": {
       lang: "zh-CN",
@@ -23,6 +25,15 @@ module.exports = {
             text: 'TS 使用指南',
             link: "/ts/readonly.md",
           }
+        ],
+      },
+      {
+        text: "前端框架",
+        children: [
+          {
+            text: "react系统知识梳理",
+            link: "/react/contrast.md",
+          },
         ],
       },
       {
