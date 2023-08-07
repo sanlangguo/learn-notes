@@ -37,6 +37,15 @@ module.exports = {
         ],
       },
       {
+        text: "构建工具",
+        children: [
+          {
+            text: "webpack",
+            link: "https://xxpromise.gitee.io/webpack5-docs/",
+          },
+        ],
+      },
+      {
         text: "常用工具",
         children: [
           {
