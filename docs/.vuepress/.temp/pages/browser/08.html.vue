@@ -1,10 +1,10 @@
 <template><div><h2 id="_08-调用栈-为什么javascript代码会出现栈溢出" tabindex="-1"><a class="header-anchor" href="#_08-调用栈-为什么javascript代码会出现栈溢出" aria-hidden="true">#</a> 08-调用栈：为什么JavaScript代码会出现栈溢出？</h2>
 <p>本文主要讲解 JavaScript 引擎的工作原理中的调用栈相关内容。理解调用栈对于理解 JavaScript 语言本身，以及调试 JavaScript 代码非常重要。同时，在面试过程中，调用栈也是出现频率非常高的题目。</p>
 <h3 id="执行上下文的创建" tabindex="-1"><a class="header-anchor" href="#执行上下文的创建" aria-hidden="true">#</a> 执行上下文的创建</h3>
+<ul>
+<li>在 JavaScript 执行代码之前，JavaScript 引擎会对代码进行编译，并创建执行上下文。一般情况下，执行上下文会在以下三种情况下被创建：</li>
+</ul>
 <ol>
-<li>
-<p>在 JavaScript 执行代码之前，JavaScript 引擎会对代码进行编译，并创建执行上下文。一般情况下，执行上下文会在以下三种情况下被创建：</p>
-</li>
 <li>
 <p>当 JavaScript 执行全局代码时，会编译全局代码并创建全局执行上下文。在整个页面的生存周期内，全局执行上下文只有一份。</p>
 </li>
