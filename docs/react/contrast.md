@@ -53,9 +53,10 @@ React setState 引起局部重新刷新。为了达到更好的性能，React �
 
 * React
   它暴漏给开发者的事件不是原生事件，是 React 包装过合成事件，并且非常重要的一点是，合成事件是池化的。也就是说不同的事件，可能会共享一个合成事件对象。另外一个细节是，React 对所有事件都进行了代理，将所有事件都绑定 document 上。
-  
+
   React 中事件处理函数中的 this 默认不指向组件实例
 * vue
+
   Vue 事件处理函数中的 this 默认指向组件实例
 
 #### 预编译优化问题
@@ -86,42 +87,613 @@ React setState 引起局部重新刷新。为了达到更好的性能，React �
 #### JSX
 
 * JSX 原理
+
+`JSX` 是一种 `JavaScript` 的语法扩展，它允许在 `JavaScript` 代码中编写类似 `HTML` 的代码。在 `React` 中，可以使用 JSX 来描述组件的结构和外观，然后使用 `Babel` 或者其他类似的工具将 JSX 转换为普通的 `JavaScript` 代码。
+
 * JSX 自动阻止注入攻击
+
+在 `React` `中，JSX` 自动阻止注入攻击的原理是将所有输入都视为纯文本，而不是 `HTML` 代码。这意味着，如果在 `JSX` 中使用了用户输入的数据，它们将被自动转义，以避免 XSS（跨站脚本）攻击。
+
+例如，考虑以下代码：
+
+```jsx
+const user = {
+  name: '<script>alert("XSS")</script>'
+};
+
+const element = <div>Hello, {user.name}!</div>;
+```
+
+在上面的代码中，我们定义了一个名为 user 的对象，并将其中一个属性设置为包含恶意脚本的字符串。然后，我们在 `JSX` 中使用了` user.name` 属性来显示该字符串。但是，由于 `React` 自动转义了该字符串，因此它将被显示为纯文本，而不是被执行为恶意脚本。
+
+需要注意的是，`React` 只会自动转义字符串类型的数据。如果需要在 `JSX` 中使用其他类型的数据（例如数字、布尔值、对象等），则需要手动进行转义。可以使用 `ReactDOMServer.renderToString` 方法或者其他类似的工具来进行转义。
+
 
 #### 生命周期
 
-https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+[官方生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+##### Class 生命周期
+![生命周期](/img/react-life.png)
+
+##### 挂载
+
+当一个`React`组件被实例化并插入到`DOM`中时，它经历了一系列的挂载阶段，这些阶段对应着一些声明周期方法。以下是`React`挂载阶段的详细说明：
+
+`constructor()`: 构造函数，用于创建并初始化组件的状态。在组件的生命周期中只会被调用一次。
+
+`static getDerivedStateFromProps(props, state)`: 在组件实例化之后和每次接收新的`props`时被调用，用于根据`props`的变化来更新组件的`state`。
+
+`render()`: 渲染方法，用于返回组件的JSX结构。
+
+`componentDidMount()`: 在组件被渲染到`DOM`之后立即调用。常用于执行异步操作，如从服务器加载数据、启动定时器等。
+
+这些声明周期方法在`React`组件挂载阶段的顺序如下：
+
+```js
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+```
+在挂载阶段中，首先会调用`constructor()`构造函数来实例化组件，并初始化组件的状态。接下来，会调用`static getDerivedStateFromProps()`方法来更新组件的状态，这个方法会根据传入的`props`和当前的`state`返回一个新的`state`对象。然后，调用`render()`方法来渲染组件的`JSX`结构，并将其插入到`DOM`中。
+
+最后，在组件被成功渲染到`DOM`之后，会调用`componentDidMount()`方法。在这个方法中，可以执行一些需要DOM存在的操作，如向服务器发送数据请求、订阅事件、启动定时器等。
+
+需要注意的是，在挂载阶段中，`render()`方法是必须的，而且必须返回一个`React`元素或`null`。其他的声明周期方法都是可选的，可以根据需要选择性地使用它们来处理各种逻辑。
+
+
+##### 更新
+
+当`React`组件的`props`或`state`发生变化，或者调用了`forceUpdate()`方法时，组件会经历更新阶段，更新阶段涉及一系列的声明周期方法。以下是`React`更新阶段的详细说明：
+
+`static getDerivedStateFromProps(nextProps, prevState)`: 在组件接收到新的`props或state`变化时被调用，用于根据新的`props`更新组件的`state`。
+
+`shouldComponentUpdate(nextProps, nextState)`: 在组件接收到新的props或state变化时被调用，用于决定是否重新渲染组件。默认情况下，React会根据新的props和state自动重新渲染组件。可以在此方法中返回false来阻止不必要的重新渲染。
+
+`render()`: 渲染方法，用于返回组件的JSX结构。
+
+`getSnapshotBeforeUpdate(prevProps, prevState)`: 在组件更新之前被调用，用于获取更新前的`DOM`状态。此方法的返回值将作为第三个参数传递给`componentDidUpdate(prevProps, prevState, snapshot)`方法。
+
+`componentDidUpdate(prevProps, prevState, snapshot)`: 在组件更新后被调用，可以在此方法中执行与更新后的`DOM`相关的操作。
+
+这些声明周期方法在React组件更新阶段的顺序如下：
+```js
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
+```
+在更新阶段中，首先会调用`static getDerivedStateFromProps()`方法来获取新的`props`，并根据新的`props`更新组件的`state`。然后，调用`shouldComponentUpdate()`方法来决定是否重新渲染组件。如果`shouldComponentUpdate()`返回`false`，则不会继续执行后续的渲染步骤，从而节省了性能。如果`shouldComponentUpdate()`返回`true`或未定义，则会继续执行`render()`方法来重新渲染组件。
+
+接下来，调用`getSnapshotBeforeUpdate()`方法来获取更新前的`DOM`状态，可以在此方法中执行一些需要基于当前`DOM`状态的操作，比如获取滚动位置等。最后，在组件成功更新后，调用`componentDidUpdate()`方法，可以在此方法中执行与更新后的`DOM`相关的操作，如更新`DOM`、触发动画效果等。
+
+需要注意的是，在更新阶段中，`render()`方法是必须的，而其他的声明周期方法都是可选的，可以根据需要选择性地使用它们来处理各种逻辑。另外，如果使用了`React Hooks`，可以使用`useEffect`来替代`componentDidUpdate`和`componentWillUnmount`等声明周期方法。
+
+
+##### 卸载
+
+当一个`React`组件从`DOM`中被移除时，它会经历卸载阶段，卸载阶段涉及以下声明周期方法。以下是`React`卸载阶段的详细说明：
+
+`componentWillUnmount()`: 在组件被卸载之前调用，可以在此方法中进行一些清理工作，如取消定时器、取消订阅等。
+这是卸载阶段中唯一一个声明周期方法，它在组件被即将从DOM中卸载之前被调用。
+
+在卸载阶段中，组件的`componentWillUnmount()`方法会被调用，可以在此方法中执行一些清理操作，以确保组件被彻底卸载并释放相关资源。比如，可以在这个方法中取消订阅事件、清除定时器、取消网络请求等。
+
+需要注意的是，卸载阶段只有一个声明周期方法，其他的声明周期方法，如`render()`、`componentDidMount()`等，在此阶段不会被调用。因此，卸载阶段主要用于执行一些清理工作，而不是处理渲染和更新相关的逻辑。
+
+卸载阶段的触发情况包括组件从DOM中被移除，或者组件在父组件中被删除等。在这些情况下，`React`会自动调用组件的`componentWillUnmount()`方法。
+
+总结起来，在React中的卸载阶段，可以通过实现`componentWillUnmount()`方法来执行一些清理操作，以确保组件被正确地卸载和释放资源。
+
+
+#### Hooks 生命周期
+
+##### 挂载/卸载
+
+要在组件挂载时执行操作，可以在`useEffect`函数中传递一个空的依赖数组`[]`。这将告诉`React`在组件挂载后执行一次副作用操作。
+
+```jsx
+
+import React, { useEffect } from 'react';
+
+function MyComponent() {
+  useEffect(() => {
+    // 在组件挂载后执行的副作用操作
+    // 可以进行一些初始化操作、订阅事件等
+
+    return () => {
+      // 可选的清理函数
+      // 在组件卸载时执行的清理操作
+    };
+  }, []);
+
+  return <div>My Component</div>;
+}
+
+```
+
+如果在副作用操作中需要清理一些资源，也可以返回一个可选的清理函数。当组件卸载时，`React`会自动调用这个清理函数。
+
+
+##### 更新
+要在组件更新时执行操作，可以在`useEffect`函数中传递一个包含依赖项的数组。当依赖项发生变化时，`React`会重新执行`useEffect`函数内部的副作用操作。
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // 在组件更新后执行的副作用操作
+    // 可以进行一些与更新相关的操作
+
+    return () => {
+      // 可选的清理函数
+      // 在组件重新渲染前执行的清理操作
+    };
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+```
+
+我们使用`useState`钩子来定义一个名为`count`的状态变量，并使用`setCount`函数来更新它。然后，我们使用`useEffect`钩子函数定义了需要在组件更新后执行的副作用操作，并在依赖项数组中传入`count`变量。这意味着当`count`变量发生变化时，`React`会重新执行副作用操作。
+
+
 
 #### 事件处理
+React 中的事件处理基本上是在 React 元素上定义回调函数来处理的。例如，在一个按钮元素上定义一个 `onClick` 属性并将其设置为一个函数，该函数将在用户单击按钮时执行。以下是一个示例代码：
+
+```jsx
+import React from 'react';
+
+function handleClick() {
+  console.log('Button clicked');
+}
+
+function App() {
+  return (
+    <button onClick={handleClick}>Click me</button>
+  );
+}
+```
+
+在上面的代码中，我们定义了一个名为 `handleClick` 的函数，并将其作为 onClick 属性传递给 `<button>` 元素。当用户单击按钮时，`React` 将自动调用该函数。
+
+除了 `onClick` `之外，React` 还支持许多其他事件，例如 `onMouseOver、onSubmit、onKeyDown` 等。可以在 React 官方文档中查看完整的事件列表。
+
+需要注意的是，在 `React` 中，事件对象不同于原生 `DOM` 中的事件对象。React 将所有事件对象封装在合成事件对象中，以便在不同浏览器和平台上具有一致的行为。可以通过将事件对象作为参数传递给回调函数来访问合成事件对象。例如：
+
+```jsx
+import React from 'react';
+
+function handleClick(event) {
+  console.log('Button clicked');
+  console.log('Event:', event);
+}
+
+function App() {
+  return (
+    <button onClick={handleClick}>Click me</button>
+  );
+}
+```
+
+在上面的代码中，我们将事件对象作为参数传递给 handleClick 函数，并在控制台中打印了它
+
 
 #### 箭头函数
 
+在 `React` 中使用箭头函数可以简化代码，并且可以避免一些常见的错误。在箭头函数中，`this` 关键字的值是在定义函数时确定的，而不是在运行时确定的。这意味着不需要使用 `bind` 或者使用 `that = this` 这样的模式来绑定 `this`
+
+下面是一个使用箭头函数的示例：
+
+```jsx
+import React from 'react';
+
+class App extends React.Component {
+  handleClick = () => {
+    console.log('Button clicked');
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click me</button>
+    );
+  }
+}
+```
+
+在上面的代码中，我们使用箭头函数来定义 `handleClick` 方法。在类中定义的箭头函数将自动绑定到类的实例上，因此我们无需手动绑定 `this`。在 `render` 方法中，我们将 `handleClick` 方法传递给按钮元素的 `onClick` 属性。
+
+需要注意的是，在使用箭头函数时，不能使用 `arguments` 对象来访问函数的参数。如果需要访问参数，则应该使用剩余参数语法或者使用命名参数。
+
+```jsx
+import React from 'react';
+
+const Button = ({ onClick }) => (
+  <button onClick={onClick}>Click me</button>
+);
+
+const App = () => {
+  const handleClick = (event, param1, param2) => {
+    console.log('Button clicked');
+    console.log('Event:', event);
+    console.log('Param1:', param1);
+    console.log('Param2:', param2);
+  }
+
+  return (
+    <Button onClick={(event) => handleClick(event, 'foo', 'bar')} />
+  );
+}
+
+```
+
+除了在类中使用箭头函数之外，在函数式组件中使用箭头函数也非常常见。在函数式组件中，可以使用箭头函数来定义组件本身或者定义组件内部的回调函数。例如：
+
+```jsx
+import React from 'react';
+
+const Button = ({ onClick }) => (
+  <button onClick={onClick}>Click me</button>
+);
+
+const App = () => {
+  const handleClick = () => {
+    console.log('Button clicked');
+  }
+
+  return (
+    <Button onClick={handleClick} />
+  );
+}
+
+```
+
+在上面的代码中，我们定义了一个名为 `Button` 的函数式组件，并将 `onClick` 属性传递给按钮元素。在 `App` 组件中，我们定义了一个名为 `handleClick` 的箭头函数，并将其传递给 `Button` 组件的 `onClick` 属性。
+
+
+
 #### this 绑定问题
+在类组件中，this关键字指向当前组件的实例。这使得可以在组件内部访问和操作组件的状态、props和实例方法。在类组件中，this绑定是自动完成的，因此不需要显式地绑定this。
+例如：
+
+```jsx
+class MyComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  }
+
+  handleClick() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.handleClick}>Increment</button>
+      </div>
+    );
+  }
+}
+
+```
+在上述示例中，`this.handleClick`方法中的`this`指向的是当前组件的实例，因此可以通过`this.setState`来更新状态。
+
+然而，在函数组件中，this不会自动绑定到组件实例上。这意味着如果在函数组件中使用类似于上述示例中的代码，`this.handleClick`将不会正确地指向组件实例。
+
+为了解决这个问题，`React`引入了`Hooks`来处理函数组件中的状态和副作用。使用Hooks，可以通过使用`useState`和其他`Hooks`来管理组件的状态和副作用，而无需关心`this`绑定问题。
+
+例如：
+```jsx
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+
+```
+在上述示例中，我们使用`useState`来声明和管理组件的状态。我们在函数组件中定义了`handleClick`函数，并直接使用它来更新状态，而无需关心`this`绑定问题。
+
+总结起来，在`React`中，类组件的`this`绑定是自动完成的，而函数组件中没有`this`绑定问题。在函数组件中，可以使用Hooks来处理状态和副作用，而无需关心`this`绑定。无论是使用类组件还是函数组件，都可以轻松地编写和管理`React`应用程序。
 
 #### 传递参数
 
-#### 组件
+##### react 类组件父子传值
 
-* 状态 State
-* 组件生命周期
-  https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-* PropTypes 类型校验
-* 获取真实 DOM 节点
-* 和服务端交互
-* readux
-* 组件之间的状态共享
+1. 属性传递：父组件可以通过在子组件上设置属性来传递值。子组件可以通过`this.props`对象来访问父组件传递的属性值。
 
-#### hooks
+```jsx
+class ParentComponent extends React.Component {
+  render() {
+    const name = 'John';
+    return <ChildComponent name={name} />;
+  }
+}
 
-* 为什么只能在函数最外层调用 Hook？为什么不要在循环、条件判断或者子函数中调用？memoizedState 数组是按 hook定义的顺序来放置数据的，如果调用的顺序变化，链表（memoizedState） 并不会感知到
-* 自定义的 Hook 是如何影响使用它的函数组件的？共享同一个链表（memoizedState），共享同一个顺序
-* React 中是通过类似单链表的形式来代替数组的。通过 next 按顺序串联所有的 hook。react 会生成一棵组件树，树中每个节点对应了一个组件，hooks 的数据就作为组件的一个信息，存储在这些节点上，伴随组件一起出生，一起死亡
+class ChildComponent extends React.Component {
+  render() {
+    return <div>{this.props.name}</div>;
+  }
+}
+```
+2. 上下文传递：`React`允许使用上下文（context）在组件树中传递值，使得跨组件的数据共享更加方便。父组件可以通过创建上下文对象并使用`getChildContext`方法来传递值，子组件可以通过`this.context`来访问。
+
+```jsx
+const MyContext = React.createContext();
+
+class ParentComponent extends React.Component {
+  render() {
+    return (
+      <MyContext.Provider value="John">
+        <ChildComponent />
+      </MyContext.Provider>
+    );
+  }
+}
+
+class ChildComponent extends React.Component {
+  static contextType = MyContext;
+
+  render() {
+    return <div>{this.context}</div>;
+  }
+}
+```
+
+3. Refs：通过使用Refs，父组件可以直接引用子组件实例，并直接访问或操作子组件的属性和方法。
+
+```jsx
+class ParentComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.childRef = React.createRef();
+  }
+
+  handleClick = () => {
+    console.log(this.childRef.current.value);
+    this.childRef.current.focus();
+  };
+
+  render() {
+    return (
+      <div>
+        <ChildComponent ref={this.childRef} />
+        <button onClick={this.handleClick}>Click Me</button>
+      </div>
+    );
+  }
+}
+
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
+
+  focus() {
+    this.inputRef.current.focus();
+  }
+
+  render() {
+    return <input ref={this.inputRef} />;
+  }
+}
+
+```
+
+4. Redux或其他状态管理库
+
+使用状态管理库如`Redux`，可以在父组件和子组件之间共享和管理应用程序的状态。父组件可以通过将状态存储在`Redux store`中，而子组件可以通过连接`Redux store`来获取和更新状态。
+
+```jsx
+// 父组件
+import { connect } from 'react-redux';
+import { updateCount } from './actions';
+
+class ParentComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>Count: {this.props.count}</p>
+        <button onClick={this.props.updateCount}>Increment</button>
+      </>
+    );
+  }
+}
+
+```
+
+```jsx
+// actions
+const mapStateToProps = (state) => ({
+  count: state.count
+});
+
+const mapDispatchToProps = {
+  updateCount
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParentComponent);
+```
+
+```jsx
+// 子组件
+import { connect } from 'react-redux';
+
+class ChildComponent extends React.Component {
+  render() {
+    return <p>Count: {this.props.count}</p>;
+  }
+}
+
+const mapStateToProps = (state) => ({
+  count: state.count
+});
+
+export default connect(mapStateToProps)(ChildComponent);
+```
+
+####  react 类组件中, 子组件给父传值方式
+
+1. 通过回调函数：父组件可以将一个回调函数传递给子组件，子组件可以调用该回调函数并将值作为参数传递给父组件。
+
+```jsx
+class ParentComponent extends React.Component {
+  handleValue = (value) => {
+    console.log(`Received value from child: ${value}`);
+  };
+
+  render() {
+    return <ChildComponent onValueChange={this.handleValue} />;
+  }
+}
+
+class ChildComponent extends React.Component {
+  handleChange = () => {
+    this.props.onValueChange('Hello');
+  };
+
+  render() {
+    return <button onClick={this.handleChange}>Click me</button>;
+  }
+}
+```
+
+2. 使用`props`传递方法：父组件可以将一个方法作为属性传递给子组件，子组件可以在适当的时候调用该方法并将值作为参数传递给父组件。
+
+```jsx
+class ParentComponent extends React.Component {
+  handleValue = (value) => {
+    console.log(`Received value from child: ${value}`);
+  };
+
+  render() {
+    return <ChildComponent onValueChange={this.handleValue} />;
+  }
+}
+
+class ChildComponent extends React.Component {
+  handleChange = () => {
+    this.props.onValueChange('Hello');
+  };
+
+  render() {
+    return <button onClick={this.handleChange}>Click me</button>;
+  }
+}
+```
+3. 使用`Context`上下文：父组件可以创建一个上下文对象，并将其传递给子组件。子组件可以通过该上下文对象来传递值给父组件。
+
+```jsx
+const MyContext = React.createContext();
+
+class ParentComponent extends React.Component {
+  handleValue = (value) => {
+    console.log(`Received value from child: ${value}`);
+  };
+
+  render() {
+    return (
+      <MyContext.Provider value={this.handleValue}>
+        <ChildComponent />
+      </MyContext.Provider>
+    );
+  }
+}
+
+class ChildComponent extends React.Component {
+  static contextType = MyContext;
+
+  handleClick = () => {
+    this.context('Hello');
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click me</button>;
+  }
+}
+```
+4. 使用`Redux`或其他状态管理库：使用状态管理库如`Redux`，可以在子组件中通过`dispatch`一个`action`来将值传递给父组件。
+
+```jsx
+// 父组件
+import { connect } from 'react-redux';
+
+class ParentComponent extends React.Component {
+  handleValue = (value) => {
+    console.log(`Received value from child: ${value}`);
+  };
+
+  render() {
+    return <ChildComponent onValueChange={this.handleValue} />;
+  }
+}
+
+const mapDispatchToProps = {
+  onValueChange: (value) => ({ type: 'VALUE_CHANGE', payload: value })
+};
+
+export default connect(null, mapDispatchToProps)(ParentComponent);
+
+// 子组件
+import { connect } from 'react-redux';
+
+class ChildComponent extends React.Component {
+  handleClick = () => {
+    this.props.onValueChange('Hello');
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click me</button>;
+  }
+}
+
+const mapDispatchToProps = {
+  onValueChange: (value) => ({ type: 'VALUE_CHANGE', payload: value })
+};
+
+export default connect(null, mapDispatchToProps)(ChildComponent);
+```
+
+
+
+#### Hooks
+
+* 为什么只能在函数最外层调用 `Hook`？为什么不要在循环、条件判断或者子函数中调用？`memoizedState` 数组是按 `hook`定义的顺序来放置数据的，如果调用的顺序变化，链表（memoizedState） 并不会感知到
+* 自定义的` Hook` 是如何影响使用它的函数组件的？共享同一个链表（`memoizedState`），共享同一个顺序
+* React 中是通过类似单链表的形式来代替数组的。通过 `next` 按顺序串联所有的 `hook`。`react` 会生成一棵组件树，树中每个节点对应了一个组件，`hooks` 的数据就作为组件的一个信息，存储在这些节点上，伴随组件一起出生，一起死亡
  #### Hooks 能替代高阶组件和 Render Props 吗？
 
-1. 没有 Hooks 之前，高阶组件和 Render Props 本质上都是将复用逻辑提升到父组件中。而 Hooks 出现之后，我们将复用逻辑提取到组件顶层，而不是强行提升到父组件中。这样就能够避免 HOC 和 Render Props 带来的「嵌套地域」。但是，像 Context 的 <Provider/> 和 <Consumer/> 这样有父子层级关系（树状结构关系）的，还是只能使用 Render Props 或者 HOC。
-2. 对于 Hooks、Render Props 和高阶组件来说，它们都有各自的使用场景Hooks替代 Class 的大部分用例，除了 getSnapshotBeforeUpdate 和 componentDidCatch ，getDerivedStateFromError还不支持。提取复用逻辑。除了有明确父子关系的，其他场景都可以使用 Hooks
+1. 没有` Hooks` 之前，高阶组件和 `Render Props` 本质上都是将复用逻辑提升到父组件中。而 `Hooks` 出现之后，我们将复用逻辑提取到组件顶层，而不是强行提升到父组件中。这样就能够避免 `HOC` 和 `Render Props` 带来的「嵌套地域」。但是，像` Context` 的 `<Provider/> `和 `<Consumer/>` 这样有父子层级关系（树状结构关系）的，还是只能使用` Render Props` 或者 `HOC`。
+2. 对于 `Hooks、Render Props` 和高阶组件来说，它们都有各自的使用场景`Hooks替代 Class` 的大部分用例，除了 `getSnapshotBeforeUpdate 和 componentDidCatch` ，`getDerivedStateFromError`还不支持。提取复用逻辑。除了有明确父子关系的，其他场景都可以使用 Hooks
 3. Render Props在组件渲染上拥有更高的自由度，可以根据父组件提供的数据进行动态渲染。适合有明确父子关系的场景
-4. 高阶组件：适合用来做注入，并且生成一个新的可复用组件。适合用来写插件。不过，能使用 Hooks 的场景还是应该优先使用 Hooks，其次才是 Render Props 和 HOC。当然，Hooks、Render Props 和 HOC 不是对立的关系。我们既可以用 Hook 来写 Render Props 和 HOC，也可以在 HOC 中使用 Render Props 和 Hooks。
+4. 高阶组件：适合用来做注入，并且生成一个新的可复用组件。适合用来写插件。不过，能使用 `Hooks` 的场景还是应该优先使用 `Hooks`，其次才是 `Render Props 和 HOC`。当然，`Hooks、Render Props` 和` HOC` 不是对立的关系。我们既可以用` Hook 来写 Render Props 和 HOC`，也可以在 HOC 中使用 Render Props 和 Hooks。
 
 #### 使用 Hooks 时还有哪些好的实践？
 
@@ -173,11 +745,11 @@ useMemo
 
 * 如何强制更新组件
 
-`````
+```jsx
 const [state, updateState] = React.useState();
 const forceUpdate = React.useCallback(() => updateState({}), []);
 forceUpdate()
-`````
+```
 
 #### [useImperativeHandle](http://jianshu.com/p/92def9e95af5)
 
@@ -185,21 +757,16 @@ forceUpdate()
 2. 为什么使用: 因为使用forward+useRef获取子函数式组件DOM时,获取到的dom属性暴露的太多了
 3. 解决: 使用uesImperativeHandle解决,在子函数式组件中定义父组件需要进行DOM操作,减少获取DOM暴露的属性过多
 
-### 六、 [router](https://www.zhihu.com/question/38725566/answer/2530188754)
+### 六、 [源码分析](https://xiaochen1024.com/courseware/60b1b2f6cf10a4003b634718/60b1b311cf10a4003b634719)
 
 ---
 
-### 七、 [源码分析](https://xiaochen1024.com/courseware/60b1b2f6cf10a4003b634718/60b1b311cf10a4003b634719)
+### 七、 [redux toolkit](https://cn.redux.js.org/introduction/why-rtk-is-redux-today)
+
 
 ---
 
-### 八、 [redux toolkit](https://cn.redux.js.org/introduction/why-rtk-is-redux-today)
-
-### 九、基础模块-componet
-
----
-
-### 十、核心原理
+### 八、核心原理
 
 ---
 
@@ -251,26 +818,4 @@ Hooks的原理可以分为以下几个关键点：
 5. useMemo和useCallback原理：useMemo和useCallback用于优化性能，避免不必要的计算和函数创建。它们的原理是通过缓存计算结果和函数实例，以便在后续渲染中共享和复用。
 
 总结起来，React最新版本的Hooks原理主要涉及闭包的使用、调用顺序的确定以及规则的遵守。Hooks通过使用闭包来保存组件的状态和其他数据，并根据调用顺序来确定每个Hooks函数对应的数据。同时，React还提供了一些常用的Hooks函数，如useState、useEffect、useMemo和useCallback，用于方便地管理状态和处理副作用操作。通过使用Hooks，开发者可以更方便地编写逻辑清晰、可读性强的函数组件。
-
-### 十一、 设计模式
-
----
-
-#### 十二、组合模式
-
----
-
-#### 十三、render props 模式
-
----
-
-#### 十四、hoc | 装饰着模式
-
----
-
-#### 十五、提供者模式
-
----
-
-#### 十六、自定义 hooks 模式
 

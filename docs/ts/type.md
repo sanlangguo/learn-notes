@@ -77,7 +77,6 @@ type 可以使用 readonly 关键字来定义只读属性。例如：
 ```ts
 type Person = {
   readonly name: string;
-};
 }
 ```
 
