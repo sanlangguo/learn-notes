@@ -37,11 +37,15 @@ module.exports = {
         ],
       },
       {
-        text: "构建工具",
+        text: "前端工程化",
         children: [
           {
             text: "webpack",
             link: "https://xxpromise.gitee.io/webpack5-docs/",
+          },
+          {
+            text: "Lerna",
+            link: "/engineering/lerna.md",
           },
         ],
       },
