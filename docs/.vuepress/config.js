@@ -32,6 +32,10 @@ module.exports = {
             text: "vue3",
             link: "/vue/v2-v3.md",
           },
+          {
+            text: "vue3设计与实现",
+            link: "/vue/devise-realization.md",
+          }
         ],
       },
       {
