@@ -26,6 +26,15 @@ module.exports = {
         ],
       },
       {
+        text: "前端框架",
+        children: [
+          {
+            text: "vue3",
+            link: "/vue/v2-v3.md",
+          },
+        ],
+      },
+      {
         text: "常用工具",
         children: [
           {
