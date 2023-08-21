@@ -8,7 +8,12 @@
 - 命令式 和 声明式
 
 	- 命令式：关注过程
+    ![关注过程](/img/vue-command.jpg)
 	- 声明式：关注结果
+    ![关注结果](/img/vue-declare.jpg)
+
+- vue 封装了命令式的过程，对外暴露出了声明式的结果
+
 
 - 性能与可维护性的权衡
 
@@ -21,6 +26,10 @@
 		- 声明式
 
 			- 找出差异 + 直接修改
+
+        - 命令式的性能 > 声明式的性能
+
+        - 声明式的可维护性 >> 命令式的可维护性
 
 	- 原生 JavaScript、innerHTML、虚拟 DOM
 
@@ -36,24 +45,29 @@
 
 			- 原生 JavaScript < innerHTML < 虚拟 DOM
 
+        ![](/img/vue-vnode.jpg)
+
 - 运行时 和 编译时
 
 	- 运行时：runtime
 
 		- 利用 render 函数，直接把 虚拟 DOM  转化为 真实 DOM 元素
 
-			- 没有编译过程，无法分析用户提供的内容
+		- 没有编译过程，无法分析用户提供的内容
 
 	- 编译时：compiler
 
 		- 直接把 template 模板中的内容，转化为 真实 DOM 元素
 
-			- 可以分析用户提供的内容，没有运行时理论上性能会更好
+		- 可以分析用户提供的内容，没有运行时理论上性能会更好
 
 	- 运行时 + 编译时
 
 		- ① 先把 template 模板转化为 render 函数
 		- ② 再利用 render 函数，把 虚拟 DOM 转化为 真实 DOM
+    - vue 
+        - 编译时：分析用户提供的内容,
+        - 运行时：提供足够的灵活性
 
 ### 第二章：框架设计的核心要素
 
@@ -91,7 +105,11 @@
 
 	- 声明式的模板描述
 
+    ![](/img/vue-temp-description.jpg)
+
 	- 命令式的 render 函数
+    ![](/img/vue-h.jpg)
+
 
 - 初始渲染器
 
@@ -115,8 +133,18 @@
 - 组件的本质
 
 	- 一组 DOM 元素的封装
+    > 一个 JavaScript 对象（vnode），内部封装了 DOM 元素
 
 - 模板（template） 的工作原理
+
+	- 声明式的模板描述
+
+    ![](/img/vue-temp-description.jpg)
+
+	- 命令式的 render 函数
+    ![](/img/vue-h.jpg)
+
+    - Vue3 中的模板（template）是通过将模板编译为渲染函数来工作的。在编译过程中，Vue3 将模板转换为可执行的渲染函数，这个函数将用于渲染组件的虚拟 DOM 树。这种方法使得 Vue3 的渲染性能得到了很大的提升。同时，Vue3 还引入了一种新的语法糖——`<script setup>`，可以更加方便地编写组件逻辑。
 
 ## ② 响应式系统
 
@@ -137,22 +165,48 @@
 	- 核心逻辑
 
 		- 数据读取：getter 行为
+        ```js
+        document.body.innerText = obj.text
+        ```
 		- 数据修改：setter 行为
+
+        ```js
+        obj.text = 'hello vue3'
+        ```
+    - 核心 API
+
+        - vue2 Object.defineProperty
+
+        - vue3 Proxy
 
 	- 图示
 
 		- getter 行为
+        ![](/img/vue-get.jpg)
 		- setter 行为
+        ![](/img/vue-set.jpg)
+
 
 - 调度系统（scheduler）
 
 	- 响应性的可调度性
 
 		- 当数据更新的动作，触发副作用函数重新执行时，有能力决定：副作用函数（effect）执行的时机、次数以及方式
+           
+            ```js
+            1
+            2
+            '结束'
+
+            假设有需求变更，调整输出顺序
+             1
+            '结束'
+            2
+            ```
 
 			- 有能力调整输出顺序
 
-	- 实现原理
+	- 实现原理, 基于 Set 构建了队列 jobQueue，利用 Promise 的异步特性，控制执行顺序
 
 		- 异步：Promise
 		- 队列：jobQueue
@@ -163,27 +217,63 @@
 
 		- 一个属性值，当依赖的响应式数据发生变化时，重新计算
 
-	- 计算属性的实现原理
+	- 计算属性的实现原理:调度系统（scheduler)
 
 - 惰性执行（lazy）
-
-	- boolean 型的值，可以被添加到 effect 函数中，用来控制副作用的执行
-
+    - boolean 型的值，可以被添加到 effect 函数中，用来控制副作用的执行
+```js
+if (!lazy) {
+    // 执行副作用
+}
+```
+	
 - watch 的实现原理
 
 	- 本质
 
 		- 观测一个响应式数据，当数据发生变化时，通知并执行相应的回调函数
 
-	- 实现原理
+	- 实现原理: 调度系统（scheduler)
 
 - 过期的副作用
-
 	- 竞态问题
+    ```js
+    let finalData
+    
+    watch(obj, async () => {
+        // 发送并等待网络请求
 
-		- 在描述一个系统或者进程的输出，依赖于不受控制的事件出现顺序或者出现时机
+        const res = await fetch('/path/to/request')
+        // 将请求结果赋值给 data
+
+        finalData = res
+    })
+    ```
+
+    ![](/img/vue-race.jpg)
+
+    
+
+	- 在描述一个系统或者进程的输出，依赖于不受控制的事件出现顺序或者出现时机
 
 	- 解决方式
+        ```js
+            watch(obj，async (newValue，oldValue, onInvalidate) => {
+                // 定义一个标志，代表当前副作用函数是否过期，默认为 false,代表没有过期
+                let expired = false
+                // 调用 onInvalidate 函数注册一个过期回调
+                onInvalidate(() => {
+                    // 当过期时，将 expired 设置为 true
+                    expired = true
+                })
+                // 发送网络请求
+                const res = await fetch('/path/to/request')
+                // 只有当该副作用函数的执行没有过期时，才会执行后续操作
+                if (!expired) {
+                    finalData = res
+                }
+            })
+        ```
 
 		- onInvalidate：该回调函数会在副作用下一次重新执行前调用，可以用来清除无效的副作用，例如等待中的异步请求
 
@@ -211,7 +301,7 @@
 - 实现原理
 
 	- 通过 get 、set  函数标记符，让函数以属性调用的形式被触发
-
+        ![](/img/vue-ref.jpg)
 		- packages/reactivity/src/ref.ts
 		- 当访问 ref.value 属性时，本质上是  value() 函数的执行
 
@@ -225,6 +315,21 @@
 
 		- 渲染器：renderer
 		- 渲染函数：render
+    ```js
+        function createRenderer() {
+            function render(vnode, container) {
+                // ...
+            }
+            function hydrate(vnode, container) {
+                // ..
+            }
+            return {
+                render,
+                hydrate
+            }
+        }
+    ```
+    - renderer：createRenderer 的返回值; render：createRenderer 中的 render 函数
 
 - 自定义渲染器核心思路
 
@@ -232,6 +337,16 @@
 	- ② 渲染器不能与宿主环境（浏览器）产生强耦合
 
 - vnode
+
+    ```js
+    const vnode = {
+        type: 'div', // 普通标签
+        type: 'Fragment', // 代码片段
+        type: 'text' // 文本
+        // ....
+    }
+
+    ```
 
 	- 一个普通的 JavaScript 对象，代表了渲染的内容
 
@@ -265,10 +380,16 @@
 		- 分类
 
 			- HTML Attributes
+                ```js
+                    <input id='my-input' type='text' value='foo'/>
+                ```
 
 				- 定义在 HTML 标签上的属性
 
 			- DOM Properties
+                ```js
+                    const el = document.querySelector('#my-input')
+                ```
 
 				- DOM 对象下的属性
 
@@ -279,6 +400,22 @@
 
 				- el.属性名 = 属性值
 				- el[属性名] = 属性值
+            ```js
+                // 初始状态: <textarea class="test-class”type="text"></textarea>
+                // 获取 dom 实例
+                const el = document.querySelector('textarea'
+                // 1: 修改 class
+                el.setAttribute('class'，'m-class') // 成功el['class'] m-class’ // 失败
+                el.className ='m-class' // 成功
+
+                // 2: 修改 type
+                el.setAttribute('type','input') // 成功el['type'] ='input'// 失败
+
+                // 3: 修改 value
+                el.setAttribute('value'，"你好 世界') // 失败
+                el['value'] = '你好 世界' // 成功
+
+            ```
 
 	- 事件
 
@@ -319,13 +456,43 @@
 ### 第十二章：组件的实现原理
 
 - 组件对象
+```js
+const myComponent = {
+    name: "myComponent",
+    data() {
+        return { foo: 1}
+    },
+}
+
+```
 
 
 - 组件的 vnode
 
+    ```js
+    // 该 vnode 来描述组件， type 属性存储组件的选项对象
+    const vnode = {
+        type: "myComponent",
+        // ...
+    }
+
+    ```
 	- type 为组件对象的 vnode
 
 - 组件的渲染
+
+    ```js
+    const myComponent = {
+        name: "myComponent",
+        render() {
+            return { 
+                type: 'div',
+                children: '文本'
+            }
+        },
+    }
+
+    ```
 
 	- 组件对象中会包含一个 render 函数，render 函数返回值时一个 vnode。渲染组件就是渲染该 vnode
 
@@ -354,6 +521,28 @@
 - 异步组件
 
 	- 定义
+        ```vue
+            <template>
+                <CompA/>
+                <component :is="asyncComp" />
+            <template>
+            <script>
+                import { shallowRef } from 'vue
+                import CompA from 'CompA.vue'
+                export default  {
+                    components:  { CompA },
+                    setup() {
+                        const asyncComp = shallowRef(nul1)
+                        //异步加载 compB 组件
+                        import('CompB.vue') .then (CompB => asyncComp.value = CompB)
+                        return {
+                            asyncComp
+                        }
+                    }          
+                }
+            </script>
+
+        ```
 
 		- 异步加载的组件
 
@@ -436,9 +625,16 @@
 	- ③ generate：通过 generate 函数，把 JavaScript AST 转化为 渲染函数（render）
 
 ### 第十六章：解析器（parse）
-- Vue 编译流程三大步
+- Vue 3 的解析器（parse）是一个将模板字符串转换为抽象语法树（AST）的工具。在 Vue 3 中，解析器被重写以支持新的模板语法和编译器指令。
 
-    - ①  parse：通过 parse 函数，把模板编译成 AST 对象
+- 解析器的主要作用是将模板字符串转换为 AST，这个 AST 可以被用来生成渲染函数或者编译器指令。在 Vue 3 中，解析器支持以下新的语法和指令：
+
+- v-for 指令支持在 key 上使用解构语法
+- v-bind 指令支持缩写语法
+- v-on 指令支持缩写语法
+- v-slot 指令支持新的语法和缩写语法
+- v-if 和 v-for 指令支持在同一元素上使用
+- 此外，解析器还支持新的模板语法，如可选链语法、nullish 合并运算符等。这些新的语法可以让开发者更加方便地编写模板，并且可以提高代码的可读性和可维护性。
 
 
 ### 第十七章：编译优化
@@ -479,11 +675,11 @@
 
 	- CSR：客户端渲染
 
-		- 流程图
+		![](/img/vue-csr.jpg)
 
 	- SSR：服务端渲染
 
-		- 流程图
+		![](/img/vue-csr.jpg)
 
 	- 同构渲染
 
@@ -493,14 +689,17 @@
 
 			- 首次渲染
 			- 非首次渲染
+    - 对比
+    ![](/img/vue-contrast.jpg)
 
 - 服务端渲染，将虚拟 DOM  渲染为 HTML 字符串
 
 	- 解析 vnode ，进行字符串拼接
 
 - 服务端渲染，将 组件 渲染为 HTML 字符串
+
 - 客户端激活的原理
 
 	- ① 为页面中的 DOM 元素与虚拟节点对象之间建立联系
 	- ② 为页面中的 DOM 元素添加事件绑定
-
+    - renderer.hydrate() ①②
