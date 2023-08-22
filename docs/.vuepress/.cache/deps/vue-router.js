@@ -1,4 +1,7 @@
 import {
+  setupDevtoolsPlugin
+} from "./chunk-J4VLYDXT.js";
+import {
   computed,
   defineComponent,
   getCurrentInstance,
@@ -11,17 +14,15 @@ import {
   provide,
   reactive,
   ref,
+  shallowReactive,
   shallowRef,
   unref,
   watch,
   watchEffect
-} from "./chunk-HIVXQFQW.js";
-import "./chunk-6LKE2AJO.js";
-import {
-  setupDevtoolsPlugin
-} from "./chunk-IXCVSLRB.js";
+} from "./chunk-DSEQG6WU.js";
+import "./chunk-OB5VABF2.js";
 
-// node_modules/.pnpm/registry.npmmirror.com+vue-router@4.2.2_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs
+// node_modules/vue-router/dist/vue-router.mjs
 var isBrowser = typeof window !== "undefined";
 function isESModule(obj) {
   return obj.__esModule || obj[Symbol.toStringTag] === "Module";
@@ -1032,7 +1033,7 @@ function createRouterMatcher(routes, globalOptions) {
     } else if ("path" in location2) {
       path = location2.path;
       if (!path.startsWith("/")) {
-        warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://new-issue.vuejs.org/?repo=vuejs/router.`);
+        warn(`The Matcher cannot resolve relative paths but received "${path}". Unless you directly called \`matcher.resolve("${path}")\`, this is probably a bug in vue-router. Please open an issue at https://github.com/vuejs/router/issues/new/choose.`);
       }
       matcher = matchers.find((m) => m.re.test(path));
       if (matcher) {
@@ -1099,7 +1100,7 @@ function normalizeRecordProps(record) {
     propsObject.default = props;
   } else {
     for (const name in record.components)
-      propsObject[name] = typeof props === "boolean" ? props : props[name];
+      propsObject[name] = typeof props === "object" ? props[name] : props;
   }
   return propsObject;
 }
@@ -1263,7 +1264,7 @@ function useCallbacks() {
   }
   return {
     add,
-    list: () => handlers,
+    list: () => handlers.slice(),
     reset
   };
 }
@@ -2359,8 +2360,8 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       return runGuardQueue(guards);
     }).then(() => {
       guards = [];
-      for (const record of to.matched) {
-        if (record.beforeEnter && !from.matched.includes(record)) {
+      for (const record of enteringRecords) {
+        if (record.beforeEnter) {
           if (isArray(record.beforeEnter)) {
             for (const beforeEnter of record.beforeEnter)
               guards.push(guardToPromiseFn(beforeEnter, to, from));
@@ -2390,9 +2391,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     ) ? err : Promise.reject(err));
   }
   function triggerAfterEach(to, from, failure) {
-    for (const guard of afterGuards.list()) {
-      runWithContext(() => guard(to, from, failure));
-    }
+    afterGuards.list().forEach((guard) => runWithContext(() => guard(to, from, failure)));
   }
   function finalizeNavigation(toLocation, from, isPush, replace2, data) {
     const error = checkCanceledNavigation(toLocation, from);
@@ -2571,10 +2570,13 @@ ${JSON.stringify(newTargetLocation, null, 2)}
       }
       const reactiveRoute = {};
       for (const key in START_LOCATION_NORMALIZED) {
-        reactiveRoute[key] = computed(() => currentRoute.value[key]);
+        Object.defineProperty(reactiveRoute, key, {
+          get: () => currentRoute.value[key],
+          enumerable: true
+        });
       }
       app.provide(routerKey, router2);
-      app.provide(routeLocationKey, reactive(reactiveRoute));
+      app.provide(routeLocationKey, shallowReactive(reactiveRoute));
       app.provide(routerViewLocationKey, currentRoute);
       const unmountApp = app.unmount;
       installedApps.add(app);
@@ -2657,7 +2659,7 @@ export {
 
 vue-router/dist/vue-router.mjs:
   (*!
-    * vue-router v4.2.2
+    * vue-router v4.2.4
     * (c) 2023 Eduardo San Martin Morote
     * @license MIT
     *)

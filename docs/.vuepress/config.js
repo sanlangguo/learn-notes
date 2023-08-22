@@ -1,7 +1,13 @@
 import { defaultTheme } from "vuepress";
+import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
+import themeSidebar from 'vuepress-theme-sidebar';
+import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 module.exports = {
   title: "三郎过",
   base: "/learn-notes/",
+  plugins: [autoCatalogPlugin(), themeSidebar({
+    sidebarType: 'right'
+  })],
   locales: {
     "/": {
       lang: "zh-CN",
@@ -10,6 +16,7 @@ module.exports = {
   head: [["link", { rel: "icon", href: "/img/logo.jpg" }]],
   theme: defaultTheme({
     logo: "/img/logo.jpg",
+    sidebarType: "right",
     navbar: [
       { text: "首页", link: "/nav/list.md" },
       {
@@ -35,7 +42,19 @@ module.exports = {
           {
             text: "vue3设计与实现",
             link: "/vue/devise-realization.md",
-          }
+          }, {
+            text: "react系统知识梳理",
+            link: "/react/contrast.md",
+          },
+        ],
+      },
+      {
+        text: "构建工具",
+        children: [
+          {
+            text: "webpack",
+            link: "https://xxpromise.gitee.io/webpack5-docs/",
+          },
         ],
       },
       {

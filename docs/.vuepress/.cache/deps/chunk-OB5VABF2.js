@@ -1,4 +1,4 @@
-// node_modules/.pnpm/registry.npmmirror.com+@vue+shared@3.3.4/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
   const map = /* @__PURE__ */ Object.create(null);
   const list = str.split(",");
@@ -303,4 +303,4 @@ export {
   looseIndexOf,
   toDisplayString
 };
-//# sourceMappingURL=chunk-6LKE2AJO.js.map
+//# sourceMappingURL=chunk-OB5VABF2.js.map
