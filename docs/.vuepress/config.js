@@ -1,7 +1,6 @@
 import { defaultTheme } from "vuepress";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import themeSidebar from 'vuepress-theme-sidebar';
-import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 module.exports = {
   title: "三郎过",
   base: "/learn-notes/",

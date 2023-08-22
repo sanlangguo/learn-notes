@@ -1,0 +1,4 @@
+const data = JSON.parse('{"key":"v-4da2b40c","path":"/browser/21.html","title":"","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"21-Chrome开发者工具：利用网络面板做性能分析","slug":"_21-chrome开发者工具-利用网络面板做性能分析","link":"#_21-chrome开发者工具-利用网络面板做性能分析","children":[{"level":3,"title":"Chrome开发者工具","slug":"chrome开发者工具","link":"#chrome开发者工具","children":[]},{"level":3,"title":"网络面板","slug":"网络面板","link":"#网络面板","children":[]},{"level":3,"title":"其他面板","slug":"其他面板","link":"#其他面板","children":[]}]}],"git":{"updatedTime":1687593528000,"contributors":[{"name":"三郎过","email":"SanLangGuo@outlook.com","commits":1}]},"filePathRelative":"browser/21.md"}');
+export {
+  data
+};
