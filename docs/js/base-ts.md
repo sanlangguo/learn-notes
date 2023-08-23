@@ -1,7 +1,5 @@
 # TS 学习笔记
 
-## 第一部分：基础知识
-
 ### 第 1 章：介绍 TypeScript
 
 - TypeScript 是什么

@@ -1,5 +1,4 @@
 <template><div><h1 id="ts-学习笔记" tabindex="-1"><a class="header-anchor" href="#ts-学习笔记" aria-hidden="true">#</a> TS 学习笔记</h1>
-<h2 id="第一部分-基础知识" tabindex="-1"><a class="header-anchor" href="#第一部分-基础知识" aria-hidden="true">#</a> 第一部分：基础知识</h2>
 <h3 id="第-1-章-介绍-typescript" tabindex="-1"><a class="header-anchor" href="#第-1-章-介绍-typescript" aria-hidden="true">#</a> 第 1 章：介绍 TypeScript</h3>
 <ul>
 <li>
