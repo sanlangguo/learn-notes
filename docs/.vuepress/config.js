@@ -1,12 +1,8 @@
 import { defaultTheme } from "vuepress";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
-// import themeSidebar from 'vuepress-theme-sidebar';
 module.exports = {
   title: "三郎过",
   base: "/learn-notes/",
-  plugins: [autoCatalogPlugin(), themeSidebar({
-    sidebarType: 'right'
-  })],
   locales: {
     "/": {
       lang: "zh-CN",
@@ -15,7 +11,6 @@ module.exports = {
   head: [["link", { rel: "icon", href: "/img/logo.jpg" }]],
   theme: defaultTheme({
     logo: "/img/logo.jpg",
-    sidebarType: "right",
     navbar: [
       { text: "首页", link: "/nav/list.md" },
       {
@@ -26,7 +21,7 @@ module.exports = {
             link: "/js/base-ts.md",
           },
           {
-            text: 'TS 使用指南',
+            text: "TS 使用指南",
             link: "/ts/readonly.md",
           }
         ],
@@ -90,19 +85,20 @@ module.exports = {
       { text: "github", link: "https://github.com/sanlangguo/learn-notes" },
     ],
     sidebar: {
-        '/tools/': [
-            {
-              text: '常用工具',
-              link: "/tools/tl-list.md",
-            }
-          ],
+      '/tools/': [
+        {
+          text: '常用工具',
+          link: "/tools/tl-list.md",
+        }
+      ],
       '/js/': [
         {
           text: 'TS入门学习记录',
           link: "/js/base-ts.md",
+          children: [],
         }
       ],
-      '/ts/':[
+      '/ts/': [
         {
           text: 'TS API 使用指南',
           children: [{
@@ -137,7 +133,7 @@ module.exports = {
             text: '合并Concat',
             link: "/ts/Concat.md",
           },
-        ]
+          ]
         }
       ],
       '/browser/': [
@@ -299,102 +295,103 @@ module.exports = {
         }
       ],
       '/v8/': [{
-          text: 'v8学习笔记',
-          children: [
-            {
-              text: 'V8是如何执行一段JavaScript代码的',
-              link: "/v8/01.md",
-            },
-            {
-              text: '函数即对象：一篇文章彻底搞懂JavaScript的函数特点',
-              link: "/v8/02.md",
-            },
-            {
-              text: '快属性和慢属性：V8是怎样提升对象属性访问速度的',
-              link: "/v8/03.md",
-            },
-            {
-              text: '函数表达式：涉及大量概念，函数表达式到底该怎么学',
-              link: "/v8/04.md",
-            },
-            {
-              text: '原型链：V8是如何实现对象继承的',
-              link: "/v8/05.md",
-            },
-            {
-              text: '作用域链：V8是如何查找变量的',
-              link: "/v8/06.md",
-            },
-            {
-              text: '类型转换：V8是怎么实现1-“2”的',
-              link: "/v8/07.md",
-            },
-            {
-              text: '如何构建和使用V8的调试工具d8',
-              link: "/v8/08.md",
-            },
-            {
-              text: '运行时环境：运行JavaScript代码的基石',
-              link: "/v8/09.md",
-            },
-            {
-              text: '机器代码：二进制机器码究竟是如何被CPU执行的',
-              link: "/v8/10.md",
-            },
-            {
-              text: '堆和栈：函数调用是如何影响到内存布局的',
-              link: "/v8/11.md",
-            },
-            {
-              text: '延迟解析：V8是如何实现闭包的',
-              link: "/v8/12.md",
-            },
-            {
-              text: '字节码（一）：V8为什么又重新引入字节码',
-              link: "/v8/13.md",
-            },
-            {
-              text: '字节码（二）：解释器是如何解释执行字节码的',
-              link: "/v8/14.md",
-            },
-            {
-              text: '隐藏类：如何在内存中快速查找对象属性',
-              link: "/v8/15.md",
-            },
-            {
-              text: 'V8是怎么通过内联缓存来提升函数执行效率的',
-              link: "/v8/16.md",
-            },
-            {
-              text: '消息队列：V8是怎么实现回调函数的',
-              link: "/v8/17.md",
-            },
-            {
-              text: '异步编程（一）：V8是如何实现微任务的',
-              link: "/v8/18.md",
-            },
-            {
-              text: '异步编程（二）：V8是如何实现async-await的',
-              link: "/v8/19.md",
-            },
-            {
-              text: '垃圾回收（一）：V8的两个垃圾回收器是如何工作的',
-              link: "/v8/20.md",
-            },
-            {
-              text: '垃圾回收（二）：V8是如何优化垃圾回收器执行效率的',
-              link: "/v8/21.md",
-            },
-            {
-              text: '几种常见内存问题的解决策略',
-              link: "/v8/22.md",
-            },
-            {
-              text: '前端学习踩坑史',
-              link: "/v8/23.md",
-            },
-          ]
+        text: 'v8学习笔记',
+        children: [
+          {
+            text: 'V8是如何执行一段JavaScript代码的',
+            link: "/v8/01.md",
+          },
+          {
+            text: '函数即对象：一篇文章彻底搞懂JavaScript的函数特点',
+            link: "/v8/02.md",
+          },
+          {
+            text: '快属性和慢属性：V8是怎样提升对象属性访问速度的',
+            link: "/v8/03.md",
+          },
+          {
+            text: '函数表达式：涉及大量概念，函数表达式到底该怎么学',
+            link: "/v8/04.md",
+          },
+          {
+            text: '原型链：V8是如何实现对象继承的',
+            link: "/v8/05.md",
+          },
+          {
+            text: '作用域链：V8是如何查找变量的',
+            link: "/v8/06.md",
+          },
+          {
+            text: '类型转换：V8是怎么实现1-“2”的',
+            link: "/v8/07.md",
+          },
+          {
+            text: '如何构建和使用V8的调试工具d8',
+            link: "/v8/08.md",
+          },
+          {
+            text: '运行时环境：运行JavaScript代码的基石',
+            link: "/v8/09.md",
+          },
+          {
+            text: '机器代码：二进制机器码究竟是如何被CPU执行的',
+            link: "/v8/10.md",
+          },
+          {
+            text: '堆和栈：函数调用是如何影响到内存布局的',
+            link: "/v8/11.md",
+          },
+          {
+            text: '延迟解析：V8是如何实现闭包的',
+            link: "/v8/12.md",
+          },
+          {
+            text: '字节码（一）：V8为什么又重新引入字节码',
+            link: "/v8/13.md",
+          },
+          {
+            text: '字节码（二）：解释器是如何解释执行字节码的',
+            link: "/v8/14.md",
+          },
+          {
+            text: '隐藏类：如何在内存中快速查找对象属性',
+            link: "/v8/15.md",
+          },
+          {
+            text: 'V8是怎么通过内联缓存来提升函数执行效率的',
+            link: "/v8/16.md",
+          },
+          {
+            text: '消息队列：V8是怎么实现回调函数的',
+            link: "/v8/17.md",
+          },
+          {
+            text: '异步编程（一）：V8是如何实现微任务的',
+            link: "/v8/18.md",
+          },
+          {
+            text: '异步编程（二）：V8是如何实现async-await的',
+            link: "/v8/19.md",
+          },
+          {
+            text: '垃圾回收（一）：V8的两个垃圾回收器是如何工作的',
+            link: "/v8/20.md",
+          },
+          {
+            text: '垃圾回收（二）：V8是如何优化垃圾回收器执行效率的',
+            link: "/v8/21.md",
+          },
+          {
+            text: '几种常见内存问题的解决策略',
+            link: "/v8/22.md",
+          },
+          {
+            text: '前端学习踩坑史',
+            link: "/v8/23.md",
+          },
+        ]
       }]
     }
   }),
+  plugins: [autoCatalogPlugin()],
 };
