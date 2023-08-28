@@ -1,4 +1,54 @@
-# ### Array 有哪些方法
+```js
+// 模拟 call
+Function.prototype.myCall = function(context = window, ...arg) {
+  if (this === Function.prototype) {
+    return undefined
+  }
+  context = context || window;
+  const fn = Symbol();
+  context[fn] = this;
+  const result = context[fn](...arg)
+  return result;
+}
+
+// 模拟 apply
+Function.prototype.myApply = function(context = window, args) {
+  if (this === Function.prototype) {
+    return undefined
+  }
+  const fn = Symbol();
+  context[fn] = this;
+  let result;
+  if (Array.isArray(args)) {
+    result = context[fn](...args);
+  } else {
+    result = context[fn]();
+  }
+  return result
+}
+
+// 模拟实现bind
+/**
+ * 1.处理参数，返回一个闭包
+ * 2.判断是否为构造函数调用，如果是则使用new 调用当前函数
+ * 3.如果不是，使用apply,将 context 和处理好的参数传入
+ */
+Function.prototype.myBind = function(context, ...args1) {
+  if (this === Function.prototype) {
+    throw new TypeError('Error')
+  }
+  const _this = this;
+  return function F(...args2) {
+    if (this instanceof F) {
+      return new _this(...args1, ...args2)
+    }
+    return _this.apply(context, args1.concat(args2))
+  }
+}
+
+```
+
+### Array 有哪些方法
 
   [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
@@ -16,7 +66,7 @@
 
 ### 闭包
 
-```
+```js
 
 for (var i = 0; i < 5; i++) {
   (function(i) {
@@ -43,7 +93,7 @@ defer与async的区别是：defer要等到整个页面在内存中正常渲染�
 * 如果脚本无需等待页面解析，且无依赖独立运行，那么应使用 `async`
 * 如果脚本需要等待页面解析，且依赖于其它脚本，调用这些脚本时应使用 `defer`，将关联的脚本按所需顺序置于 `HTML` 中。
 
-```
+```js
 <script defer src="js/vendor/jquery.js"></script>
 
 <script async src="js/script3.js"></script>
@@ -88,7 +138,7 @@ defer与async的区别是：defer要等到整个页面在内存中正常渲染�
 到底有什么区别呢？forEach()方法不会返回执行结果，而是undefined。也就是说，forEach()会修改原来的数组。而map()方法会得到一个新的数组并返回。
 
 数组求和: [参考链接](https://segmentfault.com/a/1190000023556599)
-```
+```js
 var arr = [1,2,3];
 function sum(arr) {
   return eval(arr.join("+"));

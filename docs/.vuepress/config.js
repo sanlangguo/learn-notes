@@ -22,7 +22,7 @@ module.exports = {
           },
           {
             text: "TS 使用指南",
-            link: "/ts/readonly.md",
+            link: "/ts/list.md",
           }
         ],
       },
@@ -97,10 +97,7 @@ module.exports = {
       '/ts/': [
         {
           text: 'TS API 使用指南',
-          children: [{
-            text: 'readonly',
-            link: "/ts/readonly.md",
-          },
+          children: [
           {
             text: 'pick',
             link: "/ts/pick.md",

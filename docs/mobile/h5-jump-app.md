@@ -1,18 +1,20 @@
 ### H5 跳转应用市场
 
 只跳转到应用市场,这种场景是最简单容易实现的
-
+```js
     if ('and') {
         window.location.href = 'apk link url'
     } else if ('ios') {
         window.location.href = 'https://itunes.apple.com/cn/app/xxxx'
     }
+```
 
 ### H5 跳转 APP 原理
 
  首先，不管 iOS 还是 Android，浏览器都不可能预知本地是否安装了某个 APP 的。或者更严谨地说，我们不能通过浏览器来预知本地是否安装。其次，本质上浏览器是通过 URL scheme 打开 APP，一个 APP 可以设置一个或多个打开自己的 URL scheme。比如，Twitter 就注册自己能被「twitter://」打开。
 
 ### 针对 H5 跳转安卓 APP 指定页面
+```js
 
 根据我们的需求，不同业务场景进入页面不一样，因此需要客户端和 H5 先约定，定义多个 scheme，才能跳转 app 指定页面或者打开 app, 备注：vue
 
@@ -37,11 +39,12 @@
         window.location.replace(shareUrl); // 其实页面跳转，location.href 也是可以的，根据业务场景可自己调整
       }
     },
+```
 
 ### H5 跳转 IOS APP 指定页面
 
 sharesdk 是 ios 借助第三方平台 (mob) ，通过第三方接受 H5 传的参数，来进行页面跳转处理
-
+```js
     <style>
     // 隐藏 sharesdk 自定义下载样式，我们需求是单独设计的点击下载，所以要对第三方的样式禁用
     .mobLink-wrapper {
@@ -71,3 +74,4 @@ sharesdk 是 ios 借助第三方平台 (mob) ，通过第三方接受 H5 传的�
           ])
         }
       },
+```
