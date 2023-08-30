@@ -74,7 +74,7 @@ module.exports = {
         children: [
           {
             text: "浏览器原理(极客时间)",
-            link: "/browser/01.md",
+            link: "/browser/list.md",
           },
           {
             text: "V8原理(极客时间)",
