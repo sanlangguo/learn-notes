@@ -3,3 +3,4 @@ pnpm-lock.yaml
 echo 'node_modules' >> .gitignore
 echo '.temp' >> .gitignore
 echo '.cache' >> .gitignore
+*.DS_Store
