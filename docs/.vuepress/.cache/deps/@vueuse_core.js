@@ -36,7 +36,7 @@ import {
 } from "./chunk-QOJLJMCR.js";
 import "./chunk-74LM7OP7.js";
 
-// node_modules/.pnpm/registry.npmmirror.com+vue-demi@0.14.5_vue@3.3.4/node_modules/vue-demi/lib/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+vue-demi@0.14.6_vue@3.3.4/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false;
 var isVue3 = true;
 function set(target, key, val) {
