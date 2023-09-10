@@ -39,7 +39,7 @@
 <li>Proxy可以提供更全面的响应式能力，并且可以监听动态添加的属性。</li>
 <li>Reflect是一个内置的对象，它提供了一组处理对象的默认操作方法，可以简化对Proxy的调用。</li>
 </ul>
-<h3 id="vue-3中的v-model指9-vue-3中的v-model指令有哪些新的特性" tabindex="-1"><a class="header-anchor" href="#vue-3中的v-model指9-vue-3中的v-model指令有哪些新的特性" aria-hidden="true">#</a> Vue 3中的v-model指9. Vue 3中的v-model指令有哪些新的特性？</h3>
+<h3 id="vue-3中的v-model指令有哪些新的特性" tabindex="-1"><a class="header-anchor" href="#vue-3中的v-model指令有哪些新的特性" aria-hidden="true">#</a> Vue 3中的v-model指令有哪些新的特性？</h3>
 <ul>
 <li>在Vue 3中，v-model指令支持通过modelValue和update:modelValue来自定义组件的双向绑定。</li>
 <li>可以使用v-model简化对表单元素的绑定，无需再使用value和@input事件。</li>
