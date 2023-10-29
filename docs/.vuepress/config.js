@@ -84,6 +84,10 @@ module.exports = {
             text: "V8原理(极客时间)",
             link: "/v8/list.md",
           },
+          {
+            text: "微信公众号经验记录",
+            link: "/browser/wechat.md",
+          },
         ],
       },
       { text: "github", link: "https://github.com/sanlangguo/learn-notes" },

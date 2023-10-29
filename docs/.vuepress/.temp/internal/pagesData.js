@@ -5,6 +5,10 @@ export const pagesData = {
   "v-4261b582": () => import(/* webpackChunkName: "v-4261b582" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/engineering/lerna.html.js").then(({ data }) => data),
   // path: /engineering/vite-build.html
   "v-bf04d2c2": () => import(/* webpackChunkName: "v-bf04d2c2" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/engineering/vite-build.html.js").then(({ data }) => data),
+  // path: /mobile/h5-jump-app.html
+  "v-434a106a": () => import(/* webpackChunkName: "v-434a106a" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/mobile/h5-jump-app.html.js").then(({ data }) => data),
+  // path: /nav/list.html
+  "v-2b876a94": () => import(/* webpackChunkName: "v-2b876a94" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/nav/list.html.js").then(({ data }) => data),
   // path: /browser/01.html
   "v-6f622f78": () => import(/* webpackChunkName: "v-6f622f78" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/browser/01.html.js").then(({ data }) => data),
   // path: /browser/02.html
@@ -79,14 +83,12 @@ export const pagesData = {
   "v-169d1c56": () => import(/* webpackChunkName: "v-169d1c56" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/browser/36.html.js").then(({ data }) => data),
   // path: /browser/list.html
   "v-28e8c20a": () => import(/* webpackChunkName: "v-28e8c20a" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/browser/list.html.js").then(({ data }) => data),
+  // path: /browser/wechat.html
+  "v-43741973": () => import(/* webpackChunkName: "v-43741973" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/browser/wechat.html.js").then(({ data }) => data),
   // path: /js/base-ts.html
   "v-2f7b5caa": () => import(/* webpackChunkName: "v-2f7b5caa" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/js/base-ts.html.js").then(({ data }) => data),
   // path: /js/js.html
   "v-51df5a23": () => import(/* webpackChunkName: "v-51df5a23" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/js/js.html.js").then(({ data }) => data),
-  // path: /nav/list.html
-  "v-2b876a94": () => import(/* webpackChunkName: "v-2b876a94" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/nav/list.html.js").then(({ data }) => data),
-  // path: /mobile/h5-jump-app.html
-  "v-434a106a": () => import(/* webpackChunkName: "v-434a106a" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/mobile/h5-jump-app.html.js").then(({ data }) => data),
   // path: /react/contrast.html
   "v-671ee2ee": () => import(/* webpackChunkName: "v-671ee2ee" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/react/contrast.html.js").then(({ data }) => data),
   // path: /node/%E5%AD%A6%E4%B9%A0node%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6.html
@@ -173,14 +175,14 @@ export const pagesData = {
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /engineering/
   "v-752258f5": () => import(/* webpackChunkName: "v-752258f5" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/engineering/index.html.js").then(({ data }) => data),
+  // path: /mobile/
+  "v-99e61298": () => import(/* webpackChunkName: "v-99e61298" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/mobile/index.html.js").then(({ data }) => data),
+  // path: /nav/
+  "v-744a49e5": () => import(/* webpackChunkName: "v-744a49e5" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/nav/index.html.js").then(({ data }) => data),
   // path: /browser/
   "v-24e1b800": () => import(/* webpackChunkName: "v-24e1b800" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/browser/index.html.js").then(({ data }) => data),
   // path: /js/
   "v-2d0a9a6d": () => import(/* webpackChunkName: "v-2d0a9a6d" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/js/index.html.js").then(({ data }) => data),
-  // path: /nav/
-  "v-744a49e5": () => import(/* webpackChunkName: "v-744a49e5" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/nav/index.html.js").then(({ data }) => data),
-  // path: /mobile/
-  "v-99e61298": () => import(/* webpackChunkName: "v-99e61298" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/mobile/index.html.js").then(({ data }) => data),
   // path: /react/
   "v-dc3b2a6e": () => import(/* webpackChunkName: "v-dc3b2a6e" */"/Users/chenzongqiang/Desktop/learn/learn-notes/docs/.vuepress/.temp/pages/react/index.html.js").then(({ data }) => data),
   // path: /node/
