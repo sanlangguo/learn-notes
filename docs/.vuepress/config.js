@@ -17,6 +17,10 @@ module.exports = {
         text: "JS",
         children: [
           {
+            text: "js常见问题汇总",
+            link: "/js/js.md",
+          },
+          {
             text: "TS入门学习记录",
             link: "/js/base-ts.md",
           },

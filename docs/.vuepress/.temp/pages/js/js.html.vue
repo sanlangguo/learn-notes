@@ -1,4 +1,5 @@
-<template><div><div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token comment">// 模拟 call</span>
+<template><div><h3 id="手写-bind-call" tabindex="-1"><a class="header-anchor" href="#手写-bind-call" aria-hidden="true">#</a> 手写 bind, call</h3>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token comment">// 模拟 call</span>
 <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myCall</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context <span class="token operator">=</span> window<span class="token punctuation">,</span> <span class="token operator">...</span>arg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">undefined</span>
@@ -235,6 +236,27 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </tbody>
 </table>
 <p>在判断数据类型时，是根据机器码低位标识来判断的，而<code v-pre>null</code>的机器码标识为全<code v-pre>0</code>，而对象的机器码低位标识为<code v-pre>000</code>。所以<code v-pre>typeof null</code>的结果被误判为<code v-pre>Object</code>。</p>
+<h3 id="js-默认事件" tabindex="-1"><a class="header-anchor" href="#js-默认事件" aria-hidden="true">#</a> js 默认事件</h3>
+<p>阻止默认事件是为了在特定情况下修改或取消元素的默认行为。这样可以使开发者有更多的控制权，以便根据需求自定义用户交互体验。</p>
+<p>例如，在表单提交时，如果没有阻止默认事件，浏览器会刷新页面并将表单数据提交到服务器，这可能会打断用户的操作流程。但是，如果阻止默认事件，开发者就可以使用 JavaScript 来验证表单数据、自定义提交行为等，从而提供更好的用户体验。</p>
+<p>另一个例子是在链接点击时阻止默认事件。如果没有阻止默认事件，浏览器会跳转到链接的 URL，这可能会打断用户的浏览流程。但是，如果阻止默认事件，开发者就可以使用 JavaScript 来实现自定义的操作，例如打开链接的新窗口或者在当前页面中异步加载链接内容等。</p>
+<p>在 JavaScript 中，可以使用以下方法来阻止默认事件：</p>
+<ol>
+<li>使用 <code v-pre>event.preventDefault()</code> 方法：这个方法可以阻止元素的默认行为。例如，当点击一个链接时，可以使用 <code v-pre>event.preventDefault()</code> 来阻止浏览器跳转到链接的 URL。</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
+<li>使用 <code v-pre>return false</code>：在一些特定的情况下，可以直接在事件处理函数中使用 <code v-pre>return false</code> 来阻止默认事件。例如：</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'form'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'submit'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 执行一些自定义操作</span>
+
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要注意的是，使用 <code v-pre>return false</code> 只适用于某些特定的事件，如 <code v-pre>submit</code>、<code v-pre>click</code> 等，而不是所有事件。</p>
+<p>无论是使用 <code v-pre>event.preventDefault()</code> 还是 <code v-pre>return false</code>，都需要在事件处理函数中正确地应用它们，以达到阻止默认事件的目的。</p>
 </div></template>
 
 

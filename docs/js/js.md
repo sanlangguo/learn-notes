@@ -1,3 +1,5 @@
+### 手写 bind, call
+
 ```js
 // 模拟 call
 Function.prototype.myCall = function(context = window, ...arg) {
@@ -302,6 +304,37 @@ console.log(sum(arr));//6
 
 
 
+### js 默认事件
+
+阻止默认事件是为了在特定情况下修改或取消元素的默认行为。这样可以使开发者有更多的控制权，以便根据需求自定义用户交互体验。
+
+例如，在表单提交时，如果没有阻止默认事件，浏览器会刷新页面并将表单数据提交到服务器，这可能会打断用户的操作流程。但是，如果阻止默认事件，开发者就可以使用 JavaScript 来验证表单数据、自定义提交行为等，从而提供更好的用户体验。
+
+另一个例子是在链接点击时阻止默认事件。如果没有阻止默认事件，浏览器会跳转到链接的 URL，这可能会打断用户的浏览流程。但是，如果阻止默认事件，开发者就可以使用 JavaScript 来实现自定义的操作，例如打开链接的新窗口或者在当前页面中异步加载链接内容等。
+
+在 JavaScript 中，可以使用以下方法来阻止默认事件：
+
+1. 使用 `event.preventDefault()` 方法：这个方法可以阻止元素的默认行为。例如，当点击一个链接时，可以使用 `event.preventDefault()` 来阻止浏览器跳转到链接的 URL。
+
+```javascript
+document.querySelector('a').addEventListener('click', function(event) {
+  event.preventDefault();
+});
+```
+
+2. 使用 `return false`：在一些特定的情况下，可以直接在事件处理函数中使用 `return false` 来阻止默认事件。例如：
+
+```javascript
+document.querySelector('form').addEventListener('submit', function() {
+  // 执行一些自定义操作
+
+  return false;
+});
+```
+
+需要注意的是，使用 `return false` 只适用于某些特定的事件，如 `submit`、`click` 等，而不是所有事件。
+
+无论是使用 `event.preventDefault()` 还是 `return false`，都需要在事件处理函数中正确地应用它们，以达到阻止默认事件的目的。
 
 
 
