@@ -30,6 +30,7 @@ module.exports = {
           }
         ],
       },
+      { text: "http", link: "/http/index.md" },
       {
         text: "前端框架",
         children: [
