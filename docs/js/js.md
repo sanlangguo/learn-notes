@@ -43,6 +43,13 @@ Function.prototype.myBind = function(context, ...args) {
 };
 
 
+const person = {
+  name: 'Monica'
+};
+
+const boundGreet = greet.myBind(person, 'Alice');
+boundGreet(); // 输出：Hello, Alice! I'm Monica.
+
 ```
 
 ### Array 有哪些方法
