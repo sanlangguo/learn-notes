@@ -35,18 +35,13 @@ Function.prototype.myApply = function(context = window, args) {
  * 2.判断是否为构造函数调用，如果是则使用new 调用当前函数
  * 3.如果不是，使用apply,将 context 和处理好的参数传入
  */
-Function.prototype.myBind = function(context, ...args1) {
-  if (this === Function.prototype) {
-    throw new TypeError('Error')
-  }
-  const _this = this;
-  return function F(...args2) {
-    if (this instanceof F) {
-      return new _this(...args1, ...args2)
-    }
-    return _this.apply(context, args1.concat(args2))
-  }
-}
+Function.prototype.myBind = function(context, ...args) {
+  const func = this; // 保存原始函数的引用
+  return function(...newArgs) {
+    return func.apply(context, [...args, ...newArgs]);
+  };
+};
+
 
 ```
 
