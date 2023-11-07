@@ -415,6 +415,7 @@
 <p>Reflect</p>
 <ul>
 <li>在 Proxy 中使用 this 时，保证 this 指向 proxy，从而正确执行次数的副作用</li>
+<li>通过使用Reflect对象，可以更方便地进行对象属性的操作、构造函数的调用和校验等。它提供了一种更直接和统一的方式来处理对象的操作，并且与Proxy对象配合使用可以实现更灵活和强大的对象代理功能。</li>
 </ul>
 </li>
 </ul>
@@ -878,7 +879,7 @@
 <li>
 <p>Vue 编译流程三大步</p>
 <ul>
-<li>①  parse：通过 parse 函数，把模板编译成 AST 对象</li>
+<li>①  parse：通过 parse 函数，把模板编译成 Vue AST 对象 (专门用于描述 Vue 模板的抽象语法树)</li>
 <li>② transform：通过 transform 函数，把 AST 转化为 JavaScript AST</li>
 <li>③ generate：通过 generate 函数，把 JavaScript AST 转化为 渲染函数（render）</li>
 </ul>
