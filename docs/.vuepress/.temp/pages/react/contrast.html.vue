@@ -645,8 +645,7 @@
 <li>调度优先级改变：在Concurrent Mode中，任务的优先级是可以动态改变的。React允许在运行时动态调整任务的优先级，以便更好地响应用户交互和优化性能。</li>
 </ol>
 <p>总而言之，React最新版本的调度原理通过将组件的更新过程拆分成多个小任务，并根据任务的优先级和调度策略来决定任务的执行顺序，实现了更好的用户体验和更高的性能。Concurrent Mode的引入使得React能够更好地应对大型应用和复杂的交互场景，提供更好的用户体验。</p>
-<h4 id="hooks-原理" tabindex="-1"><a class="header-anchor" href="#hooks-原理" aria-hidden="true">#</a> hooks 原理</h4>
-<p>React最新版本（v18）的Hooks是一种用于在函数组件中使用状态和其他React特性的方式。它的设计目的是为了简化组件逻辑，使得组件更易于理解、复用和测试。</p>
+<h4 id="react-hooks-原理" tabindex="-1"><a class="header-anchor" href="#react-hooks-原理" aria-hidden="true">#</a> react hooks 原理</h4>
 <p>Hooks的原理可以分为以下几个关键点：</p>
 <ol>
 <li>闭包与调用顺序：Hooks通过使用闭包来保存组件的状态和其他数据。每个Hooks函数都会创建一个闭包，以保存该Hooks函数的数据。而且，由于Hooks函数的调用顺序是固定的，React可以根据调用顺序来确定每个Hooks函数对应的数据。</li>
@@ -656,6 +655,20 @@
 <li>useMemo和useCallback原理：useMemo和useCallback用于优化性能，避免不必要的计算和函数创建。它们的原理是通过缓存计算结果和函数实例，以便在后续渲染中共享和复用。</li>
 </ol>
 <p>总结起来，React最新版本的Hooks原理主要涉及闭包的使用、调用顺序的确定以及规则的遵守。Hooks通过使用闭包来保存组件的状态和其他数据，并根据调用顺序来确定每个Hooks函数对应的数据。同时，React还提供了一些常用的Hooks函数，如useState、useEffect、useMemo和useCallback，用于方便地管理状态和处理副作用操作。通过使用Hooks，开发者可以更方便地编写逻辑清晰、可读性强的函数组件。</p>
+<p>React Hooks 是 React 16.8 版本引入的一种新的特性，它允许我们在函数组件中使用状态（state）和其他 React 特性，而无需编写类组件。</p>
+<p>React Hooks 的内部工作原理主要涉及两个方面：函数组件的渲染和状态的管理。</p>
+<ul>
+<li>
+<p>在函数组件的渲染过程中，React Hooks 会通过 Fiber 架构来进行调度和管理。每当函数组件被调用时，React 会创建一个称为 Fiber 的数据结构来表示该组件的状态和相关信息。Fiber 架构允许 React 在渲染过程中进行中断、恢复和优先级调度，以提高性能和用户体验。</p>
+</li>
+<li>
+<p>React Hooks 的另一个关键方面是状态的管理。通过使用 useState、useEffect 和其他自定义的 Hook，我们可以在函数组件中声明和使用状态，以及处理副作用操作。useState Hook 提供了一种在函数组件中添加局部状态的方式，而 useEffect Hook 则允许我们在组件渲染后执行副作用操作（如数据获取、订阅事件等）。</p>
+</li>
+<li>
+<p>当我们在函数组件中调用 useState 或其他 Hook 时，React 会根据调用的顺序来追踪和管理状态。每个 Hook 都与特定的 Fiber 相关联，以便在组件重新渲染时正确地保留和更新状态。React 还会根据依赖项数组来决定何时重新执行副作用操作。</p>
+</li>
+</ul>
+<p>总结来说，React Hooks 的内部工作原理涉及到 Fiber 架构的调度和管理，以及 Hook 的状态追踪和更新机制。这些机制使得函数组件能够像类组件一样拥有状态和副作用的能力，同时提供了更简洁、可复用和易于测试的代码编写方式。</p>
 <h4 id="为什么-reack-hook-使用的是链表" tabindex="-1"><a class="header-anchor" href="#为什么-reack-hook-使用的是链表" aria-hidden="true">#</a> 为什么 reack hook 使用的是链表</h4>
 <p>React Hook 使用链表的数据结构来管理组件的状态和生命周期。这是为了保持状态之间的顺序和关联，并且能够高效地进行状态更新和触发相应的生命周期方法。</p>
 <p>链表是一种数据结构，其中每个节点都包含一个值和指向下一个节点的指针。在 React Hook 中，每个组件的状态和生命周期方法被表示为一个链表节点。</p>

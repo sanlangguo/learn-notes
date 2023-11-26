@@ -35,6 +35,10 @@ module.exports = {
         text: "前端框架",
         children: [
           {
+            text: "nuxt3",
+            link: "/nuxt/index.md",
+          },
+          {
             text: "vue3",
             link: "/vue/v2-v3.md",
           },
