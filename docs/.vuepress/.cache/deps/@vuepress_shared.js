@@ -2,9 +2,9 @@ import {
   isArray,
   isFunction,
   isString
-} from "./chunk-74LM7OP7.js";
+} from "./chunk-JJMAAYPU.js";
 
-// node_modules/.pnpm/registry.npmmirror.com+@vuepress+shared@2.0.0-beta.67/node_modules/@vuepress/shared/dist/index.js
+// node_modules/.pnpm/@vuepress+shared@2.0.0-rc.0/node_modules/@vuepress/shared/dist/index.js
 var resolveHeadIdentifier = ([
   tag,
   attrs,
@@ -43,11 +43,10 @@ var formatDateString = (str, defaultDateString = "") => {
   const [, yearStr, monthStr, dayStr] = dateMatch;
   return [yearStr, monthStr.padStart(2, "0"), dayStr.padStart(2, "0")].join("-");
 };
-var isLinkFtp = (link) => link.startsWith("ftp://");
 var isLinkHttp = (link) => /^(https?:)?\/\//.test(link);
 var markdownLinkRegexp = /.md((\?|#).*)?$/;
 var isLinkExternal = (link, base = "/") => {
-  if (isLinkHttp(link) || isLinkFtp(link)) {
+  if (isLinkHttp(link)) {
     return true;
   }
   if (link.startsWith("/") && !link.startsWith(base) && !markdownLinkRegexp.test(link)) {
@@ -55,8 +54,7 @@ var isLinkExternal = (link, base = "/") => {
   }
   return false;
 };
-var isLinkMailto = (link) => /^mailto:/.test(link);
-var isLinkTel = (link) => /^tel:/.test(link);
+var isLinkWithProtocol = (link) => /^[a-z][a-z0-9+.-]*:/.test(link);
 var isPlainObject = (val) => Object.prototype.toString.call(val) === "[object Object]";
 var omit = (obj, ...keys) => {
   const result = { ...obj };
@@ -94,10 +92,8 @@ export {
   isArray,
   isFunction,
   isLinkExternal,
-  isLinkFtp,
   isLinkHttp,
-  isLinkMailto,
-  isLinkTel,
+  isLinkWithProtocol,
   isPlainObject,
   isString,
   omit,

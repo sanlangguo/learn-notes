@@ -1,20 +1,20 @@
 {
-  "name": "11",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gh": "bash deploy.sh"
-  },
-  "author": "三郎过",
-  "license": "ISC",
-  "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.45",
-    "vue": "^3.3.4",
-    "vuepress": "2.0.0-beta.67",
-    "vuepress-plugin-auto-catalog": "^2.0.0-beta.233"
-  }
+    "name": "11",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "gh": "bash deploy.sh"
+    },
+    "author": "三郎过",
+    "license": "ISC",
+    "devDependencies": {
+        "@vuepress/client": "2.0.0-rc.0",
+        "vue": "^3.3.9",
+        "vuepress": "2.0.0-rc.0",
+        "vuepress-plugin-auto-catalog": "2.0.0-rc.1"
+    }
 }
