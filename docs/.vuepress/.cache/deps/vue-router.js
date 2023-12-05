@@ -1,6 +1,6 @@
 import {
   setupDevtoolsPlugin
-} from "./chunk-Y2XQL4KM.js";
+} from "./chunk-3QZROZY3.js";
 import {
   computed,
   defineComponent,
@@ -19,10 +19,10 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-XPY7EUJF.js";
-import "./chunk-JJMAAYPU.js";
+} from "./chunk-QOJLJMCR.js";
+import "./chunk-74LM7OP7.js";
 
-// node_modules/.pnpm/vue-router@4.2.5_vue@3.3.9/node_modules/vue-router/dist/vue-router.mjs
+// node_modules/.pnpm/registry.npmmirror.com+vue-router@4.2.4_vue@3.3.4/node_modules/vue-router/dist/vue-router.mjs
 var isBrowser = typeof window !== "undefined";
 function isESModule(obj) {
   return obj.__esModule || obj[Symbol.toStringTag] === "Module";
@@ -419,10 +419,12 @@ function createMemoryHistory(base = "") {
   base = normalizeBase(base);
   function setLocation(location2) {
     position++;
-    if (position !== queue.length) {
+    if (position === queue.length) {
+      queue.push(location2);
+    } else {
       queue.splice(position);
+      queue.push(location2);
     }
-    queue.push(location2);
   }
   function triggerListeners(to, from, { direction, delta }) {
     const info = {
@@ -1859,9 +1861,7 @@ function addDevtools(app, router, matcher) {
       if (!activeRoutesPayload)
         return;
       const payload = activeRoutesPayload;
-      let routes = matcher.getRoutes().filter((route) => !route.parent || // these routes have a parent with no component which will not appear in the view
-      // therefore we still need to include them
-      !route.parent.record.components);
+      let routes = matcher.getRoutes().filter((route) => !route.parent);
       routes.forEach(resetMatchStateOnRouteRecord);
       if (payload.filter) {
         routes = routes.filter((route) => (
@@ -2490,11 +2490,11 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     });
   }
   let readyHandlers = useCallbacks();
-  let errorListeners = useCallbacks();
+  let errorHandlers = useCallbacks();
   let ready;
   function triggerError(error, to, from) {
     markAsReady(error);
-    const list = errorListeners.list();
+    const list = errorHandlers.list();
     if (list.length) {
       list.forEach((handler) => handler(error, to, from));
     } else {
@@ -2548,7 +2548,7 @@ ${JSON.stringify(newTargetLocation, null, 2)}
     beforeEach: beforeGuards.add,
     beforeResolve: beforeResolveGuards.add,
     afterEach: afterGuards.add,
-    onError: errorListeners.add,
+    onError: errorHandlers.add,
     isReady,
     install(app) {
       const router2 = this;
@@ -2659,7 +2659,7 @@ export {
 
 vue-router/dist/vue-router.mjs:
   (*!
-    * vue-router v4.2.5
+    * vue-router v4.2.4
     * (c) 2023 Eduardo San Martin Morote
     * @license MIT
     *)

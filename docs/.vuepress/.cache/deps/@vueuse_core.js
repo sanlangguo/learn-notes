@@ -33,10 +33,10 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-XPY7EUJF.js";
-import "./chunk-JJMAAYPU.js";
+} from "./chunk-QOJLJMCR.js";
+import "./chunk-74LM7OP7.js";
 
-// node_modules/.pnpm/vue-demi@0.14.6_vue@3.3.9/node_modules/vue-demi/lib/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+vue-demi@0.14.6_vue@3.3.4/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false;
 var isVue3 = true;
 function set(target, key, val) {
@@ -56,7 +56,7 @@ function del(target, key) {
   delete target[key];
 }
 
-// node_modules/.pnpm/@vueuse+shared@10.6.1_vue@3.3.9/node_modules/@vueuse/shared/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+@vueuse+shared@10.4.1_vue@3.3.4/node_modules/@vueuse/shared/index.mjs
 function computedEager(fn, options) {
   var _a;
   const result = shallowRef();
@@ -122,7 +122,7 @@ function createEventHook() {
     };
   };
   const trigger = (param) => {
-    return Promise.all(Array.from(fns).map((fn) => param ? fn(param) : fn()));
+    return Promise.all(Array.from(fns).map((fn) => fn(param)));
   };
   return {
     on,
@@ -142,36 +142,14 @@ function createGlobalState(stateFactory) {
     return state;
   };
 }
-var localProvidedStateMap = /* @__PURE__ */ new WeakMap();
-var provideLocal = (key, value) => {
-  var _a;
-  const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
-  if (instance == null)
-    throw new Error("provideLocal must be called in setup");
-  if (!localProvidedStateMap.has(instance))
-    localProvidedStateMap.set(instance, /* @__PURE__ */ Object.create(null));
-  const localProvidedState = localProvidedStateMap.get(instance);
-  localProvidedState[key] = value;
-  provide(key, value);
-};
-var injectLocal = (...args) => {
-  var _a;
-  const key = args[0];
-  const instance = (_a = getCurrentInstance()) == null ? void 0 : _a.proxy;
-  if (instance == null)
-    throw new Error("injectLocal must be called in setup");
-  if (localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance))
-    return localProvidedStateMap.get(instance)[key];
-  return inject(...args);
-};
-function createInjectionState(composable, options) {
-  const key = (options == null ? void 0 : options.injectionKey) || Symbol("InjectionState");
+function createInjectionState(composable) {
+  const key = Symbol("InjectionState");
   const useProvidingState = (...args) => {
     const state = composable(...args);
-    provideLocal(key, state);
+    provide(key, state);
     return state;
   };
-  const useInjectedState = () => injectLocal(key);
+  const useInjectedState = () => inject(key);
   return [useProvidingState, useInjectedState];
 }
 function createSharedComposable(composable) {
@@ -319,10 +297,11 @@ function reactiveComputed(fn) {
 function reactiveOmit(obj, ...keys2) {
   const flatKeys = keys2.flat();
   const predicate = flatKeys[0];
-  return reactiveComputed(() => typeof predicate === "function" ? Object.fromEntries(Object.entries(toRefs(obj)).filter(([k, v]) => !predicate(toValue(v), k))) : Object.fromEntries(Object.entries(toRefs(obj)).filter((e) => !flatKeys.includes(e[0]))));
+  return reactiveComputed(
+    () => typeof predicate === "function" ? Object.fromEntries(Object.entries(toRefs(obj)).filter(([k, v]) => !predicate(toValue(v), k))) : Object.fromEntries(Object.entries(toRefs(obj)).filter((e) => !flatKeys.includes(e[0])))
+  );
 }
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";
-var isWorker = typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
 var isDef = (val) => typeof val !== "undefined";
 var notNullish = (val) => val != null;
 var assert = (condition, ...infos) => {
@@ -472,7 +451,9 @@ function cacheStringFunction(fn) {
   };
 }
 var hyphenateRE = /\B([A-Z])/g;
-var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+var hyphenate = cacheStringFunction(
+  (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
+);
 var camelizeRE = /-(\w)/g;
 var camelize = cacheStringFunction((str) => {
   return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
@@ -710,17 +691,18 @@ function watchPausable(source, cb, options = {}) {
   );
   return { stop, pause, resume, isActive };
 }
-function syncRef(left, right, ...[options]) {
+function syncRef(left, right, options = {}) {
+  var _a, _b;
   const {
     flush = "sync",
     deep = false,
     immediate = true,
     direction = "both",
     transform = {}
-  } = options || {};
+  } = options;
   const watchers = [];
-  const transformLTR = "ltr" in transform && transform.ltr || ((v) => v);
-  const transformRTL = "rtl" in transform && transform.rtl || ((v) => v);
+  const transformLTR = (_a = transform.ltr) != null ? _a : (v) => v;
+  const transformRTL = (_b = transform.rtl) != null ? _b : (v) => v;
   if (direction === "both" || direction === "ltr") {
     watchers.push(watchPausable(
       left,
@@ -955,9 +937,11 @@ function useArrayFilter(list, fn) {
   return computed(() => toValue(list).map((i) => toValue(i)).filter(fn));
 }
 function useArrayFind(list, fn) {
-  return computed(() => toValue(
-    toValue(list).find((element, index, array) => fn(toValue(element), index, array))
-  ));
+  return computed(
+    () => toValue(
+      toValue(list).find((element, index, array) => fn(toValue(element), index, array))
+    )
+  );
 }
 function useArrayFindIndex(list, fn) {
   return computed(() => toValue(list).findIndex((element, index, array) => fn(toValue(element), index, array)));
@@ -971,9 +955,11 @@ function findLast(arr, cb) {
   return void 0;
 }
 function useArrayFindLast(list, fn) {
-  return computed(() => toValue(
-    !Array.prototype.findLast ? findLast(toValue(list), (element, index, array) => fn(toValue(element), index, array)) : toValue(list).findLast((element, index, array) => fn(toValue(element), index, array))
-  ));
+  return computed(
+    () => toValue(
+      !Array.prototype.findLast ? findLast(toValue(list), (element, index, array) => fn(toValue(element), index, array)) : toValue(list).findLast((element, index, array) => fn(toValue(element), index, array))
+    )
+  );
 }
 function isArrayIncludesOptions(obj) {
   return isObject(obj) && containsProp(obj, "formIndex", "comparator");
@@ -993,12 +979,11 @@ function useArrayIncludes(...args) {
     comparator = (element, value2) => element[key] === toValue(value2);
   }
   comparator = comparator != null ? comparator : (element, value2) => element === toValue(value2);
-  return computed(() => toValue(list).slice(formIndex).some((element, index, array) => comparator(
-    toValue(element),
-    toValue(value),
-    index,
-    toValue(array)
-  )));
+  return computed(
+    () => toValue(list).slice(formIndex).some(
+      (element, index, array) => comparator(toValue(element), toValue(value), index, toValue(array))
+    )
+  );
 }
 function useArrayJoin(list, separator) {
   return computed(() => toValue(list).map((i) => toValue(i)).join(toValue(separator)));
@@ -1050,17 +1035,12 @@ function useCounter(initialValue = 0, options = {}) {
   return { count, inc, dec, get: get2, set: set3, reset };
 }
 var REGEX_PARSE = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/;
-var REGEX_FORMAT = /[YMDHhms]o|\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a{1,2}|A{1,2}|m{1,2}|s{1,2}|Z{1,2}|SSS/g;
+var REGEX_FORMAT = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a{1,2}|A{1,2}|m{1,2}|s{1,2}|Z{1,2}|SSS/g;
 function defaultMeridiem(hours, minutes, isLowercase, hasPeriod) {
   let m = hours < 12 ? "AM" : "PM";
   if (hasPeriod)
     m = m.split("").reduce((acc, curr) => acc += `${curr}.`, "");
   return isLowercase ? m.toLowerCase() : m;
-}
-function formatOrdinal(num) {
-  const suffixes = ["th", "st", "nd", "rd"];
-  const v = num % 100;
-  return num + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
 }
 function formatDate(date, formatStr, options = {}) {
   var _a;
@@ -1074,28 +1054,21 @@ function formatDate(date, formatStr, options = {}) {
   const day = date.getDay();
   const meridiem = (_a = options.customMeridiem) != null ? _a : defaultMeridiem;
   const matches = {
-    Yo: () => formatOrdinal(years),
     YY: () => String(years).slice(-2),
     YYYY: () => years,
     M: () => month + 1,
-    Mo: () => formatOrdinal(month + 1),
     MM: () => `${month + 1}`.padStart(2, "0"),
     MMM: () => date.toLocaleDateString(options.locales, { month: "short" }),
     MMMM: () => date.toLocaleDateString(options.locales, { month: "long" }),
     D: () => String(days),
-    Do: () => formatOrdinal(days),
     DD: () => `${days}`.padStart(2, "0"),
     H: () => String(hours),
-    Ho: () => formatOrdinal(hours),
     HH: () => `${hours}`.padStart(2, "0"),
     h: () => `${hours % 12 || 12}`.padStart(1, "0"),
-    ho: () => formatOrdinal(hours % 12 || 12),
     hh: () => `${hours % 12 || 12}`.padStart(2, "0"),
     m: () => String(minutes),
-    mo: () => formatOrdinal(minutes),
     mm: () => `${minutes}`.padStart(2, "0"),
     s: () => String(seconds),
-    so: () => formatOrdinal(seconds),
     ss: () => `${seconds}`.padStart(2, "0"),
     SSS: () => `${milliseconds}`.padStart(3, "0"),
     d: () => day,
@@ -1312,7 +1285,9 @@ function useToggle(initialValue = false, options = {}) {
     return [_value, toggle];
 }
 function watchArray(source, cb, options) {
-  let oldList = (options == null ? void 0 : options.immediate) ? [] : [...source instanceof Function ? source() : Array.isArray(source) ? source : toValue(source)];
+  let oldList = (options == null ? void 0 : options.immediate) ? [] : [
+    ...source instanceof Function ? source() : Array.isArray(source) ? source : toValue(source)
+  ];
   return watch(source, (newList, _, onCleanup) => {
     const oldListRemains = Array.from({ length: oldList.length });
     const added = [];
@@ -1461,7 +1436,6 @@ function watchOnce(source, cb, options) {
     nextTick(() => stop());
     return cb(...args);
   }, options);
-  return stop;
 }
 function watchThrottled(source, cb, options = {}) {
   const {
@@ -1530,7 +1504,7 @@ function whenever(source, cb, options) {
   );
 }
 
-// node_modules/.pnpm/@vueuse+core@10.6.1_vue@3.3.9/node_modules/@vueuse/core/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.4.1_vue@3.3.4/node_modules/@vueuse/core/index.mjs
 function computedAsync(evaluationCallback, initialState, optionsOrRef) {
   let options;
   if (isRef(optionsOrRef)) {
@@ -1794,7 +1768,8 @@ function onClickOutside(target, handler, options = {}) {
     useEventListener(window2, "click", listener, { passive: true, capture }),
     useEventListener(window2, "pointerdown", (e) => {
       const el = unrefElement(target);
-      shouldListen = !shouldIgnore(e) && !!(el && !e.composedPath().includes(el));
+      if (el)
+        shouldListen = !e.composedPath().includes(el) && !shouldIgnore(e);
     }, { passive: true }),
     detectIframe && useEventListener(window2, "blur", (event) => {
       setTimeout(() => {
@@ -1891,12 +1866,8 @@ function onLongPress(target, handler, options) {
     capture: (_a = options == null ? void 0 : options.modifiers) == null ? void 0 : _a.capture,
     once: (_b = options == null ? void 0 : options.modifiers) == null ? void 0 : _b.once
   };
-  const cleanup = [
-    useEventListener(elementRef, "pointerdown", onDown, listenerOptions),
-    useEventListener(elementRef, ["pointerup", "pointerleave"], clear, listenerOptions)
-  ].filter(Boolean);
-  const stop = () => cleanup.forEach((fn) => fn());
-  return stop;
+  useEventListener(elementRef, "pointerdown", onDown, listenerOptions);
+  useEventListener(elementRef, ["pointerup", "pointerleave"], clear, listenerOptions);
 }
 function isFocusedElementEditable() {
   const { activeElement, body } = document;
@@ -2004,21 +1975,15 @@ function useSupported(callback) {
 function useRafFn(fn, options = {}) {
   const {
     immediate = true,
-    fpsLimit = void 0,
     window: window2 = defaultWindow
   } = options;
   const isActive = ref(false);
-  const intervalLimit = fpsLimit ? 1e3 / fpsLimit : null;
   let previousFrameTimestamp = 0;
   let rafId = null;
   function loop(timestamp2) {
     if (!isActive.value || !window2)
       return;
     const delta = timestamp2 - (previousFrameTimestamp || timestamp2);
-    if (intervalLimit && delta < intervalLimit) {
-      rafId = window2.requestAnimationFrame(loop);
-      return;
-    }
     fn({ delta, timestamp: timestamp2 });
     previousFrameTimestamp = timestamp2;
     rafId = window2.requestAnimationFrame(loop);
@@ -2471,8 +2436,7 @@ function blobToBase64(blob) {
     fr.readAsDataURL(blob);
   });
 }
-function useBattery(options = {}) {
-  const { navigator = defaultNavigator } = options;
+function useBattery({ navigator = defaultNavigator } = {}) {
   const events2 = ["chargingchange", "chargingtimechange", "dischargingtimechange", "levelchange"];
   const isSupported = useSupported(() => navigator && "getBattery" in navigator);
   const charging = ref(false);
@@ -2613,7 +2577,6 @@ var breakpointsTailwind = {
   "2xl": 1536
 };
 var breakpointsBootstrapV5 = {
-  xs: 0,
   sm: 576,
   md: 768,
   lg: 992,
@@ -2785,8 +2748,7 @@ var WRITABLE_PROPERTIES = [
   "protocol",
   "search"
 ];
-function useBrowserLocation(options = {}) {
-  const { window: window2 = defaultWindow } = options;
+function useBrowserLocation({ window: window2 = defaultWindow } = {}) {
   const refs = Object.fromEntries(
     WRITABLE_PROPERTIES.map((key) => [key, ref()])
   );
@@ -2826,44 +2788,6 @@ function useCached(refValue, comparator = (a, b) => a === b, watchOptions) {
   }, watchOptions);
   return cachedValue;
 }
-function usePermission(permissionDesc, options = {}) {
-  const {
-    controls = false,
-    navigator = defaultNavigator
-  } = options;
-  const isSupported = useSupported(() => navigator && "permissions" in navigator);
-  let permissionStatus;
-  const desc = typeof permissionDesc === "string" ? { name: permissionDesc } : permissionDesc;
-  const state = ref();
-  const onChange = () => {
-    if (permissionStatus)
-      state.value = permissionStatus.state;
-  };
-  const query = createSingletonPromise(async () => {
-    if (!isSupported.value)
-      return;
-    if (!permissionStatus) {
-      try {
-        permissionStatus = await navigator.permissions.query(desc);
-        useEventListener(permissionStatus, "change", onChange);
-        onChange();
-      } catch (e) {
-        state.value = "prompt";
-      }
-    }
-    return permissionStatus;
-  });
-  query();
-  if (controls) {
-    return {
-      state,
-      isSupported,
-      query
-    };
-  } else {
-    return state;
-  }
-}
 function useClipboard(options = {}) {
   const {
     navigator = defaultNavigator,
@@ -2873,14 +2797,12 @@ function useClipboard(options = {}) {
     legacy = false
   } = options;
   const isClipboardApiSupported = useSupported(() => navigator && "clipboard" in navigator);
-  const permissionRead = usePermission("clipboard-read");
-  const permissionWrite = usePermission("clipboard-write");
   const isSupported = computed(() => isClipboardApiSupported.value || legacy);
   const text = ref("");
   const copied = ref(false);
   const timeout = useTimeoutFn(() => copied.value = false, copiedDuring);
   function updateText() {
-    if (isClipboardApiSupported.value && permissionRead.value !== "denied") {
+    if (isClipboardApiSupported.value) {
       navigator.clipboard.readText().then((value) => {
         text.value = value;
       });
@@ -2892,7 +2814,7 @@ function useClipboard(options = {}) {
     useEventListener(["copy", "cut"], updateText);
   async function copy(value = toValue(source)) {
     if (isSupported.value && value != null) {
-      if (isClipboardApiSupported.value && permissionWrite.value !== "denied")
+      if (isClipboardApiSupported.value)
         await navigator.clipboard.writeText(value);
       else
         legacyCopy(value);
@@ -2918,41 +2840,6 @@ function useClipboard(options = {}) {
   return {
     isSupported,
     text,
-    copied,
-    copy
-  };
-}
-function useClipboardItems(options = {}) {
-  const {
-    navigator = defaultNavigator,
-    read = false,
-    source,
-    copiedDuring = 1500
-  } = options;
-  const isSupported = useSupported(() => navigator && "clipboard" in navigator);
-  const content = ref([]);
-  const copied = ref(false);
-  const timeout = useTimeoutFn(() => copied.value = false, copiedDuring);
-  function updateContent() {
-    if (isSupported.value) {
-      navigator.clipboard.read().then((items) => {
-        content.value = items;
-      });
-    }
-  }
-  if (isSupported.value && read)
-    useEventListener(["copy", "cut"], updateContent);
-  async function copy(value = toValue(source)) {
-    if (isSupported.value && value != null) {
-      await navigator.clipboard.write(value);
-      content.value = value;
-      copied.value = true;
-      timeout.start();
-    }
-  }
-  return {
-    isSupported,
-    content,
     copied,
     copy
   };
@@ -3048,10 +2935,9 @@ function useStorage(key, defaults2, storage, options = {}) {
     eventFilter,
     onError = (e) => {
       console.error(e);
-    },
-    initOnMounted
+    }
   } = options;
-  const data = (shallow ? shallowRef : ref)(typeof defaults2 === "function" ? defaults2() : defaults2);
+  const data = (shallow ? shallowRef : ref)(defaults2);
   if (!storage) {
     try {
       storage = getSSRHandler("getDefaultStorage", () => {
@@ -3073,15 +2959,10 @@ function useStorage(key, defaults2, storage, options = {}) {
     { flush, deep, eventFilter }
   );
   if (window2 && listenToStorageChanges) {
-    tryOnMounted(() => {
-      useEventListener(window2, "storage", update);
-      useEventListener(window2, customStorageEventName, updateFromCustomEvent);
-      if (initOnMounted)
-        update();
-    });
+    useEventListener(window2, "storage", update);
+    useEventListener(window2, customStorageEventName, updateFromCustomEvent);
   }
-  if (!initOnMounted)
-    update();
+  update();
   return data;
   function write(v) {
     try {
@@ -3178,7 +3059,9 @@ function useColorMode(options = {}) {
   const preferredDark = usePreferredDark({ window: window2 });
   const system = computed(() => preferredDark.value ? "dark" : "light");
   const store = storageRef || (storageKey == null ? toRef2(initialValue) : useStorage(storageKey, initialValue, storage, { window: window2, listenToStorageChanges }));
-  const state = computed(() => store.value === "auto" ? system.value : store.value);
+  const state = computed(
+    () => store.value === "auto" ? system.value : store.value
+  );
   const updateHTMLAttrs = getSSRHandler(
     "updateHTMLAttrs",
     (selector2, attribute2, value) => {
@@ -3288,9 +3171,6 @@ function useMutationObserver(target, callback, options = {}) {
     },
     { immediate: true }
   );
-  const takeRecords = () => {
-    return observer == null ? void 0 : observer.takeRecords();
-  };
   const stop = () => {
     cleanup();
     stopWatch();
@@ -3298,8 +3178,7 @@ function useMutationObserver(target, callback, options = {}) {
   tryOnScopeDispose(stop);
   return {
     isSupported,
-    stop,
-    takeRecords
+    stop
   };
 }
 function useCssVar(prop, target, options = {}) {
@@ -3629,25 +3508,62 @@ function useDeviceOrientation(options = {}) {
     gamma
   };
 }
-function useDevicePixelRatio(options = {}) {
-  const {
-    window: window2 = defaultWindow
-  } = options;
+function useDevicePixelRatio({
+  window: window2 = defaultWindow
+} = {}) {
   const pixelRatio = ref(1);
   if (window2) {
-    let observe2 = function() {
+    let observe = function() {
       pixelRatio.value = window2.devicePixelRatio;
-      cleanup2();
+      cleanup();
       media = window2.matchMedia(`(resolution: ${pixelRatio.value}dppx)`);
-      media.addEventListener("change", observe2, { once: true });
-    }, cleanup2 = function() {
-      media == null ? void 0 : media.removeEventListener("change", observe2);
+      media.addEventListener("change", observe, { once: true });
+    }, cleanup = function() {
+      media == null ? void 0 : media.removeEventListener("change", observe);
     };
     let media;
-    observe2();
-    tryOnScopeDispose(cleanup2);
+    observe();
+    tryOnScopeDispose(cleanup);
   }
   return { pixelRatio };
+}
+function usePermission(permissionDesc, options = {}) {
+  const {
+    controls = false,
+    navigator = defaultNavigator
+  } = options;
+  const isSupported = useSupported(() => navigator && "permissions" in navigator);
+  let permissionStatus;
+  const desc = typeof permissionDesc === "string" ? { name: permissionDesc } : permissionDesc;
+  const state = ref();
+  const onChange = () => {
+    if (permissionStatus)
+      state.value = permissionStatus.state;
+  };
+  const query = createSingletonPromise(async () => {
+    if (!isSupported.value)
+      return;
+    if (!permissionStatus) {
+      try {
+        permissionStatus = await navigator.permissions.query(desc);
+        useEventListener(permissionStatus, "change", onChange);
+        onChange();
+      } catch (e) {
+        state.value = "prompt";
+      }
+    }
+    return permissionStatus;
+  });
+  query();
+  if (controls) {
+    return {
+      state,
+      isSupported,
+      query
+    };
+  } else {
+    return state;
+  }
 }
 function useDevicesList(options = {}) {
   const {
@@ -3756,8 +3672,7 @@ function useDisplayMedia(options = {}) {
     enabled
   };
 }
-function useDocumentVisibility(options = {}) {
-  const { document: document2 = defaultDocument } = options;
+function useDocumentVisibility({ document: document2 = defaultDocument } = {}) {
   if (!document2)
     return ref("visible");
   const visibility = ref(document2.visibilityState);
@@ -3803,12 +3718,11 @@ function useDraggable(target, options = {}) {
       return;
     if (toValue(exact) && e.target !== toValue(target))
       return;
-    const container = toValue(containerElement);
-    const containerRect = (_a2 = container == null ? void 0 : container.getBoundingClientRect) == null ? void 0 : _a2.call(container);
-    const targetRect = toValue(target).getBoundingClientRect();
+    const container = (_a2 = toValue(containerElement)) != null ? _a2 : toValue(target);
+    const rect = container.getBoundingClientRect();
     const pos = {
-      x: e.clientX - (container ? targetRect.left - containerRect.left : targetRect.left),
-      y: e.clientY - (container ? targetRect.top - containerRect.top : targetRect.top)
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
     };
     if ((onStart == null ? void 0 : onStart(pos, e)) === false)
       return;
@@ -3816,25 +3730,15 @@ function useDraggable(target, options = {}) {
     handleEvent(e);
   };
   const move = (e) => {
-    var _a2;
     if (!filterEvent(e))
       return;
     if (!pressedDelta.value)
       return;
-    const container = toValue(containerElement);
-    const containerRect = (_a2 = container == null ? void 0 : container.getBoundingClientRect) == null ? void 0 : _a2.call(container);
-    const targetRect = toValue(target).getBoundingClientRect();
     let { x, y } = position.value;
-    if (axis === "x" || axis === "both") {
+    if (axis === "x" || axis === "both")
       x = e.clientX - pressedDelta.value.x;
-      if (container)
-        x = Math.min(Math.max(0, x), containerRect.width - targetRect.width);
-    }
-    if (axis === "y" || axis === "both") {
+    if (axis === "y" || axis === "both")
       y = e.clientY - pressedDelta.value.y;
-      if (container)
-        y = Math.min(Math.max(0, y), containerRect.height - targetRect.height);
-    }
     position.value = {
       x,
       y
@@ -3870,7 +3774,6 @@ function useDropZone(target, options = {}) {
   const isOverDropZone = ref(false);
   const files = shallowRef(null);
   let counter = 0;
-  let isDataTypeIncluded = true;
   if (isClient) {
     const _options = typeof options === "function" ? { onDrop: options } : options;
     const getFiles = (event) => {
@@ -3880,12 +3783,6 @@ function useDropZone(target, options = {}) {
     };
     useEventListener(target, "dragenter", (event) => {
       var _a;
-      if (_options.dataTypes && event.dataTransfer) {
-        const dataTypes = unref(_options.dataTypes);
-        isDataTypeIncluded = typeof dataTypes === "function" ? dataTypes(event.dataTransfer.types) : dataTypes ? dataTypes.some((item) => event.dataTransfer.types.includes(item)) : true;
-        if (!isDataTypeIncluded)
-          return;
-      }
       event.preventDefault();
       counter += 1;
       isOverDropZone.value = true;
@@ -3893,15 +3790,11 @@ function useDropZone(target, options = {}) {
     });
     useEventListener(target, "dragover", (event) => {
       var _a;
-      if (!isDataTypeIncluded)
-        return;
       event.preventDefault();
       (_a = _options.onOver) == null ? void 0 : _a.call(_options, getFiles(event), event);
     });
     useEventListener(target, "dragleave", (event) => {
       var _a;
-      if (!isDataTypeIncluded)
-        return;
       event.preventDefault();
       counter -= 1;
       if (counter === 0)
@@ -3931,7 +3824,9 @@ function useResizeObserver(target, callback, options = {}) {
       observer = void 0;
     }
   };
-  const targets = computed(() => Array.isArray(target) ? target.map((el) => unrefElement(el)) : [unrefElement(target)]);
+  const targets = computed(
+    () => Array.isArray(target) ? target.map((el) => unrefElement(el)) : [unrefElement(target)]
+  );
   const stopWatch = watch(
     targets,
     (els) => {
@@ -4075,7 +3970,7 @@ function useElementSize(target, initialSize = { width: 0, height: 0 }, options =
   });
   const width = ref(initialSize.width);
   const height = ref(initialSize.height);
-  const { stop: stop1 } = useResizeObserver(
+  useResizeObserver(
     target,
     ([entry]) => {
       const boxSize = box === "border-box" ? entry.borderBoxSize : box === "content-box" ? entry.contentBoxSize : entry.devicePixelContentBoxSize;
@@ -4099,28 +3994,16 @@ function useElementSize(target, initialSize = { width: 0, height: 0 }, options =
     },
     options
   );
-  tryOnMounted(() => {
-    const ele = unrefElement(target);
-    if (ele) {
-      width.value = "offsetWidth" in ele ? ele.offsetWidth : initialSize.width;
-      height.value = "offsetHeight" in ele ? ele.offsetHeight : initialSize.height;
-    }
-  });
-  const stop2 = watch(
+  watch(
     () => unrefElement(target),
     (ele) => {
       width.value = ele ? initialSize.width : 0;
       height.value = ele ? initialSize.height : 0;
     }
   );
-  function stop() {
-    stop1();
-    stop2();
-  }
   return {
     width,
-    height,
-    stop
+    height
   };
 }
 function useIntersectionObserver(target, callback, options = {}) {
@@ -4181,8 +4064,7 @@ function useIntersectionObserver(target, callback, options = {}) {
     stop
   };
 }
-function useElementVisibility(element, options = {}) {
-  const { window: window2 = defaultWindow, scrollTarget } = options;
+function useElementVisibility(element, { window: window2 = defaultWindow, scrollTarget } = {}) {
   const elementIsVisible = ref(false);
   useIntersectionObserver(
     element,
@@ -4303,18 +4185,7 @@ function useFavicon(newIcon = null, options = {}) {
   } = options;
   const favicon = toRef2(newIcon);
   const applyIcon = (icon) => {
-    const elements = document2 == null ? void 0 : document2.head.querySelectorAll(`link[rel*="${rel}"]`);
-    if (!elements || elements.length === 0) {
-      const link = document2 == null ? void 0 : document2.createElement("link");
-      if (link) {
-        link.rel = rel;
-        link.href = `${baseUrl}${icon}`;
-        link.type = `image/${icon.split(".").pop()}`;
-        document2 == null ? void 0 : document2.head.append(link);
-      }
-      return;
-    }
-    elements == null ? void 0 : elements.forEach((el) => el.href = `${baseUrl}${icon}`);
+    document2 == null ? void 0 : document2.head.querySelectorAll(`link[rel*="${rel}"]`).forEach((el) => el.href = `${baseUrl}${icon}`);
   };
   watch(
     favicon,
@@ -4464,7 +4335,6 @@ function useFetch(url, ...args) {
   };
   if (timeout)
     timer = useTimeoutFn(abort, timeout, { immediate: false });
-  let executeCounter = 0;
   const execute = async (throwOnFailed = false) => {
     var _a2;
     abort();
@@ -4472,8 +4342,6 @@ function useFetch(url, ...args) {
     error.value = null;
     statusCode.value = null;
     aborted.value = false;
-    executeCounter += 1;
-    const currentExecuteCounter = executeCounter;
     const defaultFetchOptions = {
       method: config.method,
       headers: {}
@@ -4553,8 +4421,7 @@ function useFetch(url, ...args) {
           return reject(fetchError);
         return resolve(null);
       }).finally(() => {
-        if (currentExecuteCounter === executeCounter)
-          loading(false);
+        loading(false);
         if (timer)
           timer.stop();
         finallyEvent.trigger(null);
@@ -4661,8 +4528,7 @@ function joinPaths(start, end) {
 var DEFAULT_OPTIONS = {
   multiple: true,
   accept: "*",
-  reset: false,
-  directory: false
+  reset: false
 };
 function useFileDialog(options = {}) {
   const {
@@ -4695,7 +4561,6 @@ function useFileDialog(options = {}) {
     };
     input.multiple = _options.multiple;
     input.accept = _options.accept;
-    input.webkitdirectory = _options.directory;
     if (hasOwn(_options, "capture"))
       input.capture = _options.capture;
     if (_options.reset)
@@ -4912,7 +4777,9 @@ function useFullscreen(target, options = {}) {
     "mozFullScreenElement",
     "msFullscreenElement"
   ].find((m) => document2 && m in document2);
-  const isSupported = useSupported(() => targetRef.value && document2 && requestMethod.value !== void 0 && exitMethod.value !== void 0 && fullscreenEnabled.value !== void 0);
+  const isSupported = useSupported(
+    () => targetRef.value && document2 && requestMethod.value !== void 0 && exitMethod.value !== void 0 && fullscreenEnabled.value !== void 0
+  );
   const isCurrentElementFullScreen = () => {
     if (fullscreenElementMethod)
       return (document2 == null ? void 0 : document2[fullscreenElementMethod]) === targetRef.value;
@@ -5252,7 +5119,7 @@ function useScroll(element, options = {}) {
       return internalX.value;
     },
     set(x2) {
-      scrollTo2(x2, void 0);
+      scrollTo(x2, void 0);
     }
   });
   const y = computed({
@@ -5260,10 +5127,10 @@ function useScroll(element, options = {}) {
       return internalY.value;
     },
     set(y2) {
-      scrollTo2(void 0, y2);
+      scrollTo(void 0, y2);
     }
   });
-  function scrollTo2(_x, _y) {
+  function scrollTo(_x, _y) {
     var _a, _b, _c;
     if (!window2)
       return;
@@ -5351,12 +5218,6 @@ function useScroll(element, options = {}) {
     throttle ? useThrottleFn(onScrollHandler, throttle, true, false) : onScrollHandler,
     eventListenerOptions
   );
-  tryOnMounted(() => {
-    const _element = toValue(element);
-    if (!_element)
-      return;
-    setArrivedState(_element);
-  });
   useEventListener(
     element,
     "scrollend",
@@ -5916,7 +5777,6 @@ function useMouseInElement(target, options = {}) {
     handleOutside = true,
     window: window2 = defaultWindow
   } = options;
-  const type = options.type || "page";
   const { x, y, sourceType } = useMouse(options);
   const targetRef = ref(target != null ? target : window2 == null ? void 0 : window2.document.body);
   const elementX = ref(0);
@@ -5941,8 +5801,8 @@ function useMouseInElement(target, options = {}) {
           width,
           height
         } = el.getBoundingClientRect();
-        elementPositionX.value = left + (type === "page" ? window2.pageXOffset : 0);
-        elementPositionY.value = top + (type === "page" ? window2.pageYOffset : 0);
+        elementPositionX.value = left + window2.pageXOffset;
+        elementPositionY.value = top + window2.pageYOffset;
         elementHeight.value = height;
         elementWidth.value = width;
         const elX = x.value - elementPositionX.value;
@@ -5977,7 +5837,6 @@ function useMousePressed(options = {}) {
   const {
     touch = true,
     drag = true,
-    capture = false,
     initialValue = false,
     window: window2 = defaultWindow
   } = options;
@@ -5998,18 +5857,18 @@ function useMousePressed(options = {}) {
     sourceType.value = null;
   };
   const target = computed(() => unrefElement(options.target) || window2);
-  useEventListener(target, "mousedown", onPressed("mouse"), { passive: true, capture });
-  useEventListener(window2, "mouseleave", onReleased, { passive: true, capture });
-  useEventListener(window2, "mouseup", onReleased, { passive: true, capture });
+  useEventListener(target, "mousedown", onPressed("mouse"), { passive: true });
+  useEventListener(window2, "mouseleave", onReleased, { passive: true });
+  useEventListener(window2, "mouseup", onReleased, { passive: true });
   if (drag) {
-    useEventListener(target, "dragstart", onPressed("mouse"), { passive: true, capture });
-    useEventListener(window2, "drop", onReleased, { passive: true, capture });
-    useEventListener(window2, "dragend", onReleased, { passive: true, capture });
+    useEventListener(target, "dragstart", onPressed("mouse"), { passive: true });
+    useEventListener(window2, "drop", onReleased, { passive: true });
+    useEventListener(window2, "dragend", onReleased, { passive: true });
   }
   if (touch) {
-    useEventListener(target, "touchstart", onPressed("touch"), { passive: true, capture });
-    useEventListener(window2, "touchend", onReleased, { passive: true, capture });
-    useEventListener(window2, "touchcancel", onReleased, { passive: true, capture });
+    useEventListener(target, "touchstart", onPressed("touch"), { passive: true });
+    useEventListener(window2, "touchend", onReleased, { passive: true });
+    useEventListener(window2, "touchcancel", onReleased, { passive: true });
   }
   return {
     pressed,
@@ -6678,7 +6537,6 @@ function preventDefault(rawEvent) {
     e.preventDefault();
   return false;
 }
-var elInitialOverflow = /* @__PURE__ */ new WeakMap();
 function useScrollLock(element, initialState = false) {
   const isLocked = ref(initialState);
   let stopTouchMoveListener = null;
@@ -6687,8 +6545,7 @@ function useScrollLock(element, initialState = false) {
     const target = resolveElement(toValue(el));
     if (target) {
       const ele = target;
-      if (!elInitialOverflow.get(ele))
-        elInitialOverflow.set(ele, initialOverflow);
+      initialOverflow = ele.style.overflow;
       if (isLocked.value)
         ele.style.overflow = "hidden";
     }
@@ -6713,13 +6570,11 @@ function useScrollLock(element, initialState = false) {
     isLocked.value = true;
   };
   const unlock = () => {
-    var _a;
     const el = resolveElement(toValue(element));
     if (!el || !isLocked.value)
       return;
     isIOS && (stopTouchMoveListener == null ? void 0 : stopTouchMoveListener());
-    el.style.overflow = (_a = elInitialOverflow.get(el)) != null ? _a : "";
-    elInitialOverflow.delete(el);
+    el.style.overflow = initialOverflow;
     isLocked.value = false;
   };
   tryOnScopeDispose(unlock);
@@ -7910,14 +7765,8 @@ function useVModel(props, key, emit, options = {}) {
 }
 function useVModels(props, emit, options = {}) {
   const ret = {};
-  for (const key in props) {
-    ret[key] = useVModel(
-      props,
-      key,
-      emit,
-      options
-    );
-  }
+  for (const key in props)
+    ret[key] = useVModel(props, key, emit, options);
   return ret;
 }
 function useVibrate(options) {
@@ -7957,10 +7806,10 @@ function useVibrate(options) {
   };
 }
 function useVirtualList(list, options) {
-  const { containerStyle, wrapperProps, scrollTo: scrollTo2, calculateRange, currentList, containerRef } = "itemHeight" in options ? useVerticalVirtualList(options, list) : useHorizontalVirtualList(options, list);
+  const { containerStyle, wrapperProps, scrollTo, calculateRange, currentList, containerRef } = "itemHeight" in options ? useVerticalVirtualList(options, list) : useHorizontalVirtualList(options, list);
   return {
     list: currentList,
-    scrollTo: scrollTo2,
+    scrollTo,
     containerProps: {
       ref: containerRef,
       onScroll: () => {
@@ -8078,7 +7927,7 @@ function useHorizontalVirtualList(options, list) {
   const offsetLeft = computed(() => getDistanceLeft(state.value.start));
   const totalWidth = createComputedTotalSize(itemWidth, source);
   useWatchForSizes(size, list, calculateRange);
-  const scrollTo2 = createScrollTo("horizontal", calculateRange, getDistanceLeft, containerRef);
+  const scrollTo = createScrollTo("horizontal", calculateRange, getDistanceLeft, containerRef);
   const wrapperProps = computed(() => {
     return {
       style: {
@@ -8090,7 +7939,7 @@ function useHorizontalVirtualList(options, list) {
     };
   });
   return {
-    scrollTo: scrollTo2,
+    scrollTo,
     calculateRange,
     wrapperProps,
     containerStyle,
@@ -8110,7 +7959,7 @@ function useVerticalVirtualList(options, list) {
   const offsetTop = computed(() => getDistanceTop(state.value.start));
   const totalHeight = createComputedTotalSize(itemHeight, source);
   useWatchForSizes(size, list, calculateRange);
-  const scrollTo2 = createScrollTo("vertical", calculateRange, getDistanceTop, containerRef);
+  const scrollTo = createScrollTo("vertical", calculateRange, getDistanceTop, containerRef);
   const wrapperProps = computed(() => {
     return {
       style: {
@@ -8122,7 +7971,7 @@ function useVerticalVirtualList(options, list) {
   });
   return {
     calculateRange,
-    scrollTo: scrollTo2,
+    scrollTo,
     containerStyle,
     wrapperProps,
     currentList,
@@ -8190,7 +8039,7 @@ function useWebNotification(options = {}) {
   const { on: onError, trigger: errorTrigger } = createEventHook();
   const { on: onClose, trigger: closeTrigger } = createEventHook();
   const show = async (overrides) => {
-    if (!isSupported.value || !permissionGranted.value)
+    if (!isSupported.value && !permissionGranted.value)
       return;
     const options2 = Object.assign({}, defaultWebNotificationOptions, overrides);
     notification.value = new Notification(options2.title || "", options2);
@@ -8268,7 +8117,7 @@ function useWebSocket(url, options = {}) {
     pongTimeoutWait = void 0;
   };
   const close = (code = 1e3, reason) => {
-    if (!isClient || !wsRef.value)
+    if (!wsRef.value)
       return;
     explicitlyClosed = true;
     resetHeartbeat();
@@ -8355,13 +8204,10 @@ function useWebSocket(url, options = {}) {
     heartbeatResume = resume;
   }
   if (autoClose) {
-    if (isClient)
-      useEventListener("beforeunload", () => close());
+    useEventListener(window, "beforeunload", () => close());
     tryOnScopeDispose(close);
   }
   const open = () => {
-    if (!isClient && !isWorker)
-      return;
     close();
     explicitlyClosed = false;
     retried = 0;
@@ -8519,8 +8365,7 @@ function useWebWorkerFn(fn, options = {}) {
     workerTerminate
   };
 }
-function useWindowFocus(options = {}) {
-  const { window: window2 = defaultWindow } = options;
+function useWindowFocus({ window: window2 = defaultWindow } = {}) {
   if (!window2)
     return ref(false);
   const focused = ref(window2.document.hasFocus());
@@ -8532,38 +8377,21 @@ function useWindowFocus(options = {}) {
   });
   return focused;
 }
-function useWindowScroll(options = {}) {
-  const { window: window2 = defaultWindow, behavior = "auto" } = options;
+function useWindowScroll({ window: window2 = defaultWindow } = {}) {
   if (!window2) {
     return {
       x: ref(0),
       y: ref(0)
     };
   }
-  const internalX = ref(window2.scrollX);
-  const internalY = ref(window2.scrollY);
-  const x = computed({
-    get() {
-      return internalX.value;
-    },
-    set(x2) {
-      scrollTo({ left: x2, behavior });
-    }
-  });
-  const y = computed({
-    get() {
-      return internalY.value;
-    },
-    set(y2) {
-      scrollTo({ top: y2, behavior });
-    }
-  });
+  const x = ref(window2.scrollX);
+  const y = ref(window2.scrollY);
   useEventListener(
     window2,
     "scroll",
     () => {
-      internalX.value = window2.scrollX;
-      internalY.value = window2.scrollY;
+      x.value = window2.scrollX;
+      y.value = window2.scrollY;
     },
     {
       capture: false,
@@ -8660,14 +8488,12 @@ export {
   identity,
   watchIgnorable as ignorableWatch,
   increaseWithUnit,
-  injectLocal,
   invoke,
   isClient,
   isDef,
   isDefined,
   isIOS,
   isObject,
-  isWorker,
   makeDestructurable,
   mapGamepadToXbox360Controller,
   noop,
@@ -8687,7 +8513,6 @@ export {
   pausableFilter,
   watchPausable as pausableWatch,
   promiseTimeout,
-  provideLocal,
   rand,
   reactify,
   reactifyObject,
@@ -8745,7 +8570,6 @@ export {
   useBrowserLocation,
   useCached,
   useClipboard,
-  useClipboardItems,
   useCloned,
   useColorMode,
   useConfirmDialog,
