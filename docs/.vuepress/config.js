@@ -39,6 +39,10 @@ module.exports = {
             link: "/nuxt/index.md",
           },
           {
+            text: "vue 常见问题汇总",
+            link: "/vue/vue.md",
+          },
+          {
             text: "vue3",
             link: "/vue/v2-v3.md",
           },
