@@ -1,4 +1,23 @@
-<template><div><h3 id="vue-3与vue-2有哪些主要的区别" tabindex="-1"><a class="header-anchor" href="#vue-3与vue-2有哪些主要的区别" aria-hidden="true">#</a> Vue 3与Vue 2有哪些主要的区别？</h3>
+<template><div><h3 id="vue2或者vue3兼容性" tabindex="-1"><a class="header-anchor" href="#vue2或者vue3兼容性" aria-hidden="true">#</a> vue2或者vue3兼容性</h3>
+<ul>
+<li>
+<p>Vue3 不兼容 IE11 及以下的浏览器版本。</p>
+</li>
+<li>
+<p>Vue3 使用了 ES2015 的语法和特性，而 IE11 不支持 ES2015。因此，Vue3 在 IE11 中会出现无法运行或运行异常的情况。</p>
+</li>
+</ul>
+<p>如果您需要在 IE11 中运行 Vue3，可以使用 Vue2。Vue2 支持 IE11 及以下的浏览器版本。</p>
+<p>以下是 Vue3 支持的浏览器版本：</p>
+<ol>
+<li>Chrome 49 或更高版本</li>
+<li>Firefox 21 或更高版本</li>
+<li>Safari 10 或更高版本</li>
+<li>Edge 79 或更高版本</li>
+<li>Opera 40 或更高版本</li>
+</ol>
+<p>如果您使用的是其他浏览器，请先检查该浏览器是否支持 ES2015。</p>
+<h3 id="vue-3与vue-2有哪些主要的区别" tabindex="-1"><a class="header-anchor" href="#vue-3与vue-2有哪些主要的区别" aria-hidden="true">#</a> Vue 3与Vue 2有哪些主要的区别？</h3>
 <ul>
 <li><code v-pre>Composition API：Vue 3</code>引入了<code v-pre>Composition API</code>，它提供了一种基于函数的组合式编程的方式，使得代码更加可复用和可组合。而<code v-pre>Vue 2</code>使用的是Options API。</li>
 <li>性能优化：Vue 3在虚拟DOM的更新算法上进行了优化，提高了渲染性能。</li>
