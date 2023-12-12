@@ -1,4 +1,4 @@
-<template><div><h2 id="_06-作用域链-v8是如何查找变量的" tabindex="-1"><a class="header-anchor" href="#_06-作用域链-v8是如何查找变量的" aria-hidden="true">#</a> 06-作用域链：V8是如何查找变量的</h2>
+<template><div><h3 id="_06-作用域链-v8是如何查找变量的" tabindex="-1"><a class="header-anchor" href="#_06-作用域链-v8是如何查找变量的" aria-hidden="true">#</a> 06-作用域链：V8是如何查找变量的</h3>
 <h3 id="作用域链" tabindex="-1"><a class="header-anchor" href="#作用域链" aria-hidden="true">#</a> 作用域链</h3>
 <p>作用域链是将一个个作用域串起来，实现变量查找的路径。每个函数都有自己的作用域，函数作用域中存放了函数中定义的变量。当在函数内部使用一个变量时，V8便会去作用域链中查找。</p>
 <h3 id="变量查找路径" tabindex="-1"><a class="header-anchor" href="#变量查找路径" aria-hidden="true">#</a> 变量查找路径</h3>

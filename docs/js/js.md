@@ -1,3 +1,68 @@
+### == 与 === 区别
+
+在 JavaScript 中，== 运算符用于比较两个值是否相等。== 运算符会先进行类型转换，然后再比较两个值。
+
+== 运算符的类型转换规则如下：
+
+- 如果两个操作数的类型相同，则直接比较。
+
+- 如果两个操作数的类型不同，则会根据以下规则进行转换：
+
+1. 字符串和数字会转换为数字。
+
+2. 布尔值会转换为数字。
+
+3. 对象会转换为原始值。
+
+4. 函数会转换为 undefined。
+
+以下是一些== 运算符类型转换的示例：
+
+```js
+
+// 字符串和数字会转换为数字
+
+console.log("123" == 123); // true
+
+
+
+// 布尔值会转换为数字
+
+console.log(true == 1); // true
+
+console.log(false == 0); // true
+
+
+
+// 对象会转换为原始值
+
+console.log({ x: 1 } == 1); // false
+
+
+
+// 函数会转换为 undefined
+
+console.log(function() {} == undefined); // true
+
+== 运算符的类型转换可能会导致意想不到的结果。例如，以下代码将返回 true：
+
+
+console.log("123" == new Date()); // true
+
+```
+
+这是因为在类型转换过程中，字符串 "123" 会转换为数字 123，而 new Date() 会转换为 undefined。因此，两个值都是数字，== 运算符会返回 true。
+
+为了避免这种情况，可以使用 === 运算符。=== 运算符不会进行类型转换，而是直接比较两个值的类型和值。
+
+以下是 == 和=== 的区别：
+
+| 运算符 | 描述 |
+|---|---|
+| == | 会进行类型转换，然后比较两个值 |
+| === | 不会进行类型转换，直接比较两个值的类型和值 |
+
+
 ### 手写 bind, call
 
 ```js
@@ -30,7 +95,7 @@ Function.prototype.myApply = function(context = window, args) {
 }
 
 // 模拟实现bind
-/**
+/
  * 1.处理参数，返回一个闭包
  * 2.判断是否为构造函数调用，如果是则使用new 调用当前函数
  * 3.如果不是，使用apply,将 context 和处理好的参数传入
@@ -127,6 +192,32 @@ defer与async的区别是：defer要等到整个页面在内存中正常渲染�
 * worker：一个 JavaScript 网络工作者或共享工作者。
 * video：视频文件，通常用于 `<video>`。
 <br>
+
+#### preload 和 prefetch 都是 HTML 中的预加载属性，用于提前加载资源。
+
+#### 它们的区别在于：
+
+* preload 告诉浏览器立即加载资源，而 prefetch 告诉浏览器在空闲时才开始加载资源。
+* preload 的优先级为最高，而 prefetch 的优先级为最低。
+* preload 通常用于加载页面中必需的资源，而 prefetch 通常用于加载页面中可能需要的资源。
+
+以下是 preload 和 prefetch 的使用示例：
+
+```html
+<link rel="preload" href="style.css" as="style">
+<link rel="prefetch" href="script.js">
+```
+
+在上述示例中，浏览器会立即加载 `style.css` 文件，并在空闲时加载 `script.js` 文件。
+
+preload 和 prefetch 可以帮助提高页面的加载速度，但也可能会增加网络流量。因此，在使用它们时，需要根据实际情况进行选择。
+
+以下是一些使用 preload 和 prefetch 的最佳实践：
+
+* 只为必需的资源使用 preload。
+* 为可能需要的资源使用 prefetch。
+* 使用合理的优先级。
+* 监控网络流量，避免过度使用 preload 和 prefetch。
 
 [参考链接](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload)
 
@@ -260,7 +351,7 @@ console.log(sum(arr));//6
 
 ### Map Set WeakMap WeakSet 场景
 
-**set, map 产生的原因**
+set, map 产生的原因
 
 `JavaScript`的默认对象表示方式`{}`可以视为其他语言中的`Map`或`Dictionary`的数据结构，即一组键值对。
 
@@ -293,7 +384,7 @@ console.log(sum(arr));//6
 简单来说，`typeof null`的结果为Object的原因是一个`bug`。在 javascript 的最初版本中，使用的 32位系统，js为了性能优化，使用低位来存储变量的类型信息。
 
 
-| ****数据类型**** | ****机器码标识**** |
+| 数据类型 | 机器码标识 |
 |------------------|--------------------|
 | 对象(Object)     | 000                |
 | 整数             | 1                  |

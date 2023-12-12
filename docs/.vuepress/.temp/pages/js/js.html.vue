@@ -1,4 +1,81 @@
-<template><div><h3 id="手写-bind-call" tabindex="-1"><a class="header-anchor" href="#手写-bind-call" aria-hidden="true">#</a> 手写 bind, call</h3>
+<template><div><h3 id="与-区别" tabindex="-1"><a class="header-anchor" href="#与-区别" aria-hidden="true">#</a> == 与 === 区别</h3>
+<p>在 JavaScript 中，== 运算符用于比较两个值是否相等。== 运算符会先进行类型转换，然后再比较两个值。</p>
+<p>== 运算符的类型转换规则如下：</p>
+<ul>
+<li>
+<p>如果两个操作数的类型相同，则直接比较。</p>
+</li>
+<li>
+<p>如果两个操作数的类型不同，则会根据以下规则进行转换：</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>字符串和数字会转换为数字。</p>
+</li>
+<li>
+<p>布尔值会转换为数字。</p>
+</li>
+<li>
+<p>对象会转换为原始值。</p>
+</li>
+<li>
+<p>函数会转换为 undefined。</p>
+</li>
+</ol>
+<p>以下是一些== 运算符类型转换的示例：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>
+<span class="token comment">// 字符串和数字会转换为数字</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"123"</span> <span class="token operator">==</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+
+
+<span class="token comment">// 布尔值会转换为数字</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token boolean">true</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token boolean">false</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+
+
+<span class="token comment">// 对象会转换为原始值</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+
+
+<span class="token comment">// 函数会转换为 undefined</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token operator">==</span> 运算符的类型转换可能会导致意想不到的结果。例如，以下代码将返回 <span class="token boolean">true</span>：
+
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"123"</span> <span class="token operator">==</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这是因为在类型转换过程中，字符串 &quot;123&quot; 会转换为数字 123，而 new Date() 会转换为 undefined。因此，两个值都是数字，== 运算符会返回 true。</p>
+<p>为了避免这种情况，可以使用 === 运算符。=== 运算符不会进行类型转换，而是直接比较两个值的类型和值。</p>
+<p>以下是 == 和=== 的区别：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>会进行类型转换，然后比较两个值</td>
+</tr>
+<tr>
+<td>===</td>
+<td>不会进行类型转换，直接比较两个值的类型和值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="手写-bind-call" tabindex="-1"><a class="header-anchor" href="#手写-bind-call" aria-hidden="true">#</a> 手写 bind, call</h3>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token comment">// 模拟 call</span>
 <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myCall</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context <span class="token operator">=</span> window<span class="token punctuation">,</span> <span class="token operator">...</span>arg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -28,11 +105,11 @@
 <span class="token punctuation">}</span>
 
 <span class="token comment">// 模拟实现bind</span>
-<span class="token doc-comment comment">/**
- * 1.处理参数，返回一个闭包
- * 2.判断是否为构造函数调用，如果是则使用new 调用当前函数
- * 3.如果不是，使用apply,将 context 和处理好的参数传入
- */</span>
+<span class="token operator">/</span>
+ <span class="token operator">*</span> <span class="token number">1.</span>处理参数，返回一个闭包
+ <span class="token operator">*</span> <span class="token number">2.</span>判断是否为构造函数调用，如果是则使用<span class="token keyword">new</span> 调用当前函数
+ <span class="token operator">*</span> <span class="token number">3.</span>如果不是，使用apply<span class="token punctuation">,</span>将 context 和处理好的参数传入
+ <span class="token operator">*</span><span class="token operator">/</span>
 <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myBind</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> func <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token comment">// 保存原始函数的引用</span>
   <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>newArgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -114,6 +191,25 @@ or <span class="token keyword">let</span>
 <li>video：视频文件，通常用于 <code v-pre>&lt;video&gt;</code>。
 <br></li>
 </ul>
+<h4 id="preload-和-prefetch-都是-html-中的预加载属性-用于提前加载资源。" tabindex="-1"><a class="header-anchor" href="#preload-和-prefetch-都是-html-中的预加载属性-用于提前加载资源。" aria-hidden="true">#</a> preload 和 prefetch 都是 HTML 中的预加载属性，用于提前加载资源。</h4>
+<h4 id="它们的区别在于" tabindex="-1"><a class="header-anchor" href="#它们的区别在于" aria-hidden="true">#</a> 它们的区别在于：</h4>
+<ul>
+<li>preload 告诉浏览器立即加载资源，而 prefetch 告诉浏览器在空闲时才开始加载资源。</li>
+<li>preload 的优先级为最高，而 prefetch 的优先级为最低。</li>
+<li>preload 通常用于加载页面中必需的资源，而 prefetch 通常用于加载页面中可能需要的资源。</li>
+</ul>
+<p>以下是 preload 和 prefetch 的使用示例：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><pre v-pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>style.css<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>style<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prefetch<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>script.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>在上述示例中，浏览器会立即加载 <code v-pre>style.css</code> 文件，并在空闲时加载 <code v-pre>script.js</code> 文件。</p>
+<p>preload 和 prefetch 可以帮助提高页面的加载速度，但也可能会增加网络流量。因此，在使用它们时，需要根据实际情况进行选择。</p>
+<p>以下是一些使用 preload 和 prefetch 的最佳实践：</p>
+<ul>
+<li>只为必需的资源使用 preload。</li>
+<li>为可能需要的资源使用 prefetch。</li>
+<li>使用合理的优先级。</li>
+<li>监控网络流量，避免过度使用 preload 和 prefetch。</li>
+</ul>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a></p>
 <h3 id="js-如何获取demo元素" tabindex="-1"><a class="header-anchor" href="#js-如何获取demo元素" aria-hidden="true">#</a> js 如何获取demo元素</h3>
 <p><a href="https://www.jianshu.com/p/6fefda57b51f" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a></p>
@@ -186,7 +282,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3 id="移动端响应式如何做" tabindex="-1"><a class="header-anchor" href="#移动端响应式如何做" aria-hidden="true">#</a> 移动端响应式如何做</h3>
 <p><a href="https://juejin.cn/post/6844904021552005128#heading-6" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a></p>
 <h3 id="map-set-weakmap-weakset-场景" tabindex="-1"><a class="header-anchor" href="#map-set-weakmap-weakset-场景" aria-hidden="true">#</a> Map Set WeakMap WeakSet 场景</h3>
-<p><strong>set, map 产生的原因</strong></p>
+<p>set, map 产生的原因</p>
 <p><code v-pre>JavaScript</code>的默认对象表示方式<code v-pre>{}</code>可以视为其他语言中的<code v-pre>Map</code>或<code v-pre>Dictionary</code>的数据结构，即一组键值对。</p>
 <p>但是<code v-pre>JavaScript</code>的对象有个小问题，就是键必须是字符串。但实际上<code v-pre>Number</code>或者其他数据类型作为键也是非常合理的。为了解决这个问题，最新的ES6规范引入了新的数据类型<code v-pre>Map</code>和<code v-pre>set</code>.</p>
 <p><a href="https://juejin.cn/post/6844904024509054984#comment" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a>
@@ -206,8 +302,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <table>
 <thead>
 <tr>
-<th><strong><strong>数据类型</strong></strong></th>
-<th><strong><strong>机器码标识</strong></strong></th>
+<th>数据类型</th>
+<th>机器码标识</th>
 </tr>
 </thead>
 <tbody>
