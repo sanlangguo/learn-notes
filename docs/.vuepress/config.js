@@ -13,6 +13,7 @@ module.exports = {
     logo: "/img/logo.jpg",
     navbar: [
       { text: "首页", link: "/nav/list.md" },
+      { text: "面试汇总", link: "/interviewSummary/list.md" },
       {
         text: "JS",
         children: [
