@@ -16,7 +16,7 @@ WebGL 2 API 引入了对大部分的 OpenGL ES 3.0 功能集的支持; 它是通
 
 ### OpenGL
 
-了解WebGL，我们先介绍下OpenGL，因为WebGL 是基于 OpenGL 的。OpenGL（Open Graphics Library）是一个用于渲染2D和3D图形的跨平台编程接口。它提供了一组函数，允许开发人员直接与图形硬件交互，从而实现高性能的图形渲染。
+了解WebGL之前，我们先介绍下OpenGL，因为WebGL 是基于 OpenGL 的。OpenGL（Open Graphics Library）是一个用于渲染2D和3D图形的跨平台编程接口。它提供了一组函数，允许开发人员直接与图形硬件交互，从而实现高性能的图形渲染。
 
 OpenGL具有以下特点：
 
