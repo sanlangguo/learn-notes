@@ -1,4 +1,4 @@
-// node_modules/.pnpm/registry.npmmirror.com+@vue+shared@3.3.4/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// node_modules/.pnpm/@vue+shared@3.3.9/node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
   const map = /* @__PURE__ */ Object.create(null);
   const list = str.split(",");
@@ -34,7 +34,7 @@ var isString = (val) => typeof val === "string";
 var isSymbol = (val) => typeof val === "symbol";
 var isObject = (val) => val !== null && typeof val === "object";
 var isPromise = (val) => {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch);
+  return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 var objectToString = Object.prototype.toString;
 var toTypeString = (value) => objectToString.call(value);
@@ -65,12 +65,13 @@ var hyphenateRE = /\B([A-Z])/g;
 var hyphenate = cacheStringFunction(
   (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
 );
-var capitalize = cacheStringFunction(
-  (str) => str.charAt(0).toUpperCase() + str.slice(1)
-);
-var toHandlerKey = cacheStringFunction(
-  (str) => str ? `on${capitalize(str)}` : ``
-);
+var capitalize = cacheStringFunction((str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+});
+var toHandlerKey = cacheStringFunction((str) => {
+  const s = str ? `on${capitalize(str)}` : ``;
+  return s;
+});
 var hasChanged = (value, oldValue) => !Object.is(value, oldValue);
 var invokeArrayFns = (fns, arg) => {
   for (let i = 0; i < fns.length; i++) {
@@ -96,8 +97,8 @@ var _globalThis;
 var getGlobalThis = () => {
   return _globalThis || (_globalThis = typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
 };
-var GLOBALS_WHITE_LISTED = "Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console";
-var isGloballyWhitelisted = makeMap(GLOBALS_WHITE_LISTED);
+var GLOBALS_ALLOWED = "Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console";
+var isGloballyAllowed = makeMap(GLOBALS_ALLOWED);
 function normalizeStyle(value) {
   if (isArray(value)) {
     const res = {};
@@ -111,9 +112,7 @@ function normalizeStyle(value) {
       }
     }
     return res;
-  } else if (isString(value)) {
-    return value;
-  } else if (isObject(value)) {
+  } else if (isString(value) || isObject(value)) {
     return value;
   }
 }
@@ -291,7 +290,7 @@ export {
   looseToNumber,
   toNumber,
   getGlobalThis,
-  isGloballyWhitelisted,
+  isGloballyAllowed,
   normalizeStyle,
   normalizeClass,
   normalizeProps,
@@ -303,4 +302,4 @@ export {
   looseIndexOf,
   toDisplayString
 };
-//# sourceMappingURL=chunk-74LM7OP7.js.map
+//# sourceMappingURL=chunk-JJMAAYPU.js.map

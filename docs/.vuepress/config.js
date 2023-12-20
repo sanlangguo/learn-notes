@@ -78,6 +78,10 @@ module.exports = {
             text: "Lerna",
             link: "/engineering/lerna.md",
           },
+          {
+            text: "ios 真机调试",
+            link: "/engineering/ios.md",
+          },
         ],
       },
       {
