@@ -401,6 +401,13 @@
 <p>在描述一个系统或者进程的输出，依赖于不受控制的事件出现顺序或者出现时机</p>
 </li>
 <li>
+<p>为了解决这个问题，Vue.js 为 watch 的回调函数设计了第三个参数，即
+onInvalidate。它是一个函数，用来注册过期回调。每当 watch 的
+回调函数执行之前，会优先执行用户通过 onInvalidate 注册的过期
+回调。这样，用户就有机会在过期回调中将上一次的副作用标记为“过
+期”，从而解决竞态问题。</p>
+</li>
+<li>
 <p>解决方式</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code>    <span class="token function">watch</span><span class="token punctuation">(</span>obj，<span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">newValue，oldValue<span class="token punctuation">,</span> onInvalidate</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token comment">// 定义一个标志，代表当前副作用函数是否过期，默认为 false,代表没有过期</span>
@@ -424,7 +431,7 @@
 <li>
 <p>onInvalidate 原理</p>
 <ul>
-<li>副作用函数（effct）重新执行前，先触发 onInvalidate</li>
+<li>副作用函数（effect）重新执行前，先触发 onInvalidate</li>
 </ul>
 </li>
 </ul>

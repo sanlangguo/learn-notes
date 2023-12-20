@@ -6,8 +6,14 @@
     "scripts": {
         "dev": "vuepress dev docs",
         "build": "vuepress build docs",
+        "commit": "cz",
         "test": "echo \"Error: no test specified\" && exit 1",
         "gh": "bash deploy.sh"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     },
     "author": "三郎过",
     "license": "ISC",
