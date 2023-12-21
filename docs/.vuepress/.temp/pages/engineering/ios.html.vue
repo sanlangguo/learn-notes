@@ -19,10 +19,10 @@
 <p><img src="/img/ios-04.png" alt=""></p>
 <h4 id="真机" tabindex="-1"><a class="header-anchor" href="#真机" aria-hidden="true">#</a> 真机</h4>
 <p>真机调试可模拟器的步骤基本一致,稍微不同的是,首先要在手机 Safari 浏览器 打开高级模式</p>
-<p><img src="/img/ios-05.png" alt=""></p>
+<p><img src="/img/ios-05.jpg" alt=""></p>
 <p>然后手机连接 mac 电脑即可</p>
 <p><img src="/img/ios-06.png" alt=""></p>
-<p><img src="/img/ios-07.png" alt=""></p>
+<p><img src="/img/ios-07.jpg" alt=""></p>
 <p><img src="/img/ios-08.png" alt=""></p>
 </div></template>
 

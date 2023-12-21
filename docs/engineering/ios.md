@@ -37,12 +37,12 @@ Mac 电脑, iOS 手机
 
 真机调试可模拟器的步骤基本一致,稍微不同的是,首先要在手机 Safari 浏览器 打开高级模式
 
-![](/img/ios-05.png)
+![](/img/ios-05.jpg)
 
 然后手机连接 mac 电脑即可
 
 ![](/img/ios-06.png)
 
-![](/img/ios-07.png)
+![](/img/ios-07.jpg)
 
 ![](/img/ios-08.png)
