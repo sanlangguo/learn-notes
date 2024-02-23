@@ -710,7 +710,7 @@ const myComponent = {
 
 	- SSR：服务端渲染
 
-		![](/img/vue-csr.jpg)
+		![](/img/vue-ssr.jpg)
 
 	- 同构渲染
 

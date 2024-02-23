@@ -33,10 +33,10 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-XPY7EUJF.js";
-import "./chunk-JJMAAYPU.js";
+} from "./chunk-CIHOBSY7.js";
+import "./chunk-WJ6WAVP7.js";
 
-// node_modules/.pnpm/vue-demi@0.14.6_vue@3.3.9/node_modules/vue-demi/lib/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+vue-demi@0.14.6_vue@3.3.12/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false;
 var isVue3 = true;
 function set(target, key, val) {
@@ -56,7 +56,7 @@ function del(target, key) {
   delete target[key];
 }
 
-// node_modules/.pnpm/@vueuse+shared@10.6.1_vue@3.3.9/node_modules/@vueuse/shared/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+@vueuse+shared@10.7.0_vue@3.3.12/node_modules/@vueuse/shared/index.mjs
 function computedEager(fn, options) {
   var _a;
   const result = shallowRef();
@@ -121,8 +121,8 @@ function createEventHook() {
       off: offFn
     };
   };
-  const trigger = (param) => {
-    return Promise.all(Array.from(fns).map((fn) => param ? fn(param) : fn()));
+  const trigger = (...args) => {
+    return Promise.all(Array.from(fns).map((fn) => fn(...args)));
   };
   return {
     on,
@@ -344,8 +344,8 @@ var rand = (min, max) => {
 var hasOwn = (val, key) => Object.prototype.hasOwnProperty.call(val, key);
 var isIOS = getIsIOS();
 function getIsIOS() {
-  var _a;
-  return isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  var _a, _b;
+  return isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && (/iP(ad|hone|od)/.test(window.navigator.userAgent) || ((_b = window == null ? void 0 : window.navigator) == null ? void 0 : _b.maxTouchPoints) > 2 && /iPad|Macintosh/.test(window == null ? void 0 : window.navigator.userAgent));
 }
 function createFilterWrapper(filter, fn) {
   function wrapper(...args) {
@@ -536,6 +536,10 @@ function objectOmit(obj, keys2, omitUndefined = false) {
 }
 function objectEntries(obj) {
   return Object.entries(obj);
+}
+function getLifeCycleTarget(target) {
+  const instance = target || getCurrentInstance();
+  return isVue3 ? instance : instance == null ? void 0 : instance.proxy;
 }
 function toRef2(...args) {
   if (args.length !== 1)
@@ -792,29 +796,33 @@ function toRefs2(objectRef, options = {}) {
   }
   return result;
 }
-function tryOnBeforeMount(fn, sync = true) {
-  if (getCurrentInstance())
-    onBeforeMount(fn);
+function tryOnBeforeMount(fn, sync = true, target) {
+  const instance = getLifeCycleTarget(target);
+  if (instance)
+    onBeforeMount(fn, instance);
   else if (sync)
     fn();
   else
     nextTick(fn);
 }
-function tryOnBeforeUnmount(fn) {
-  if (getCurrentInstance())
-    onBeforeUnmount(fn);
+function tryOnBeforeUnmount(fn, target) {
+  const instance = getLifeCycleTarget(target);
+  if (instance)
+    onBeforeUnmount(fn, instance);
 }
-function tryOnMounted(fn, sync = true) {
-  if (getCurrentInstance())
-    onMounted(fn);
+function tryOnMounted(fn, sync = true, target) {
+  const instance = getLifeCycleTarget(target);
+  if (instance)
+    onMounted(fn, instance);
   else if (sync)
     fn();
   else
     nextTick(fn);
 }
-function tryOnUnmounted(fn) {
-  if (getCurrentInstance())
-    onUnmounted(fn);
+function tryOnUnmounted(fn, target) {
+  const instance = getLifeCycleTarget(target);
+  if (instance)
+    onUnmounted(fn, instance);
 }
 function createUntil(r, isNot = false) {
   function toMatch(condition, { flush = "sync", deep = false, timeout, throwOnTimeout } = {}) {
@@ -1530,7 +1538,7 @@ function whenever(source, cb, options) {
   );
 }
 
-// node_modules/.pnpm/@vueuse+core@10.6.1_vue@3.3.9/node_modules/@vueuse/core/index.mjs
+// node_modules/.pnpm/registry.npmmirror.com+@vueuse+core@10.7.0_vue@3.3.12/node_modules/@vueuse/core/index.mjs
 function computedAsync(evaluationCallback, initialState, optionsOrRef) {
   let options;
   if (isRef(optionsOrRef)) {
@@ -1863,15 +1871,18 @@ function onKeyUp(key, handler, options = {}) {
   return onKeyStroke(key, handler, { ...options, eventName: "keyup" });
 }
 var DEFAULT_DELAY = 500;
+var DEFAULT_THRESHOLD = 10;
 function onLongPress(target, handler, options) {
   var _a, _b;
   const elementRef = computed(() => unrefElement(target));
   let timeout;
+  let posStart;
   function clear() {
     if (timeout) {
       clearTimeout(timeout);
       timeout = void 0;
     }
+    posStart = void 0;
   }
   function onDown(ev) {
     var _a2, _b2, _c, _d;
@@ -1882,10 +1893,30 @@ function onLongPress(target, handler, options) {
       ev.preventDefault();
     if ((_c = options == null ? void 0 : options.modifiers) == null ? void 0 : _c.stop)
       ev.stopPropagation();
+    posStart = {
+      x: ev.x,
+      y: ev.y
+    };
     timeout = setTimeout(
       () => handler(ev),
       (_d = options == null ? void 0 : options.delay) != null ? _d : DEFAULT_DELAY
     );
+  }
+  function onMove(ev) {
+    var _a2, _b2, _c, _d;
+    if (((_a2 = options == null ? void 0 : options.modifiers) == null ? void 0 : _a2.self) && ev.target !== elementRef.value)
+      return;
+    if (!posStart || (options == null ? void 0 : options.distanceThreshold) === false)
+      return;
+    if ((_b2 = options == null ? void 0 : options.modifiers) == null ? void 0 : _b2.prevent)
+      ev.preventDefault();
+    if ((_c = options == null ? void 0 : options.modifiers) == null ? void 0 : _c.stop)
+      ev.stopPropagation();
+    const dx = ev.x - posStart.x;
+    const dy = ev.y - posStart.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance >= ((_d = options == null ? void 0 : options.distanceThreshold) != null ? _d : DEFAULT_THRESHOLD))
+      clear();
   }
   const listenerOptions = {
     capture: (_a = options == null ? void 0 : options.modifiers) == null ? void 0 : _a.capture,
@@ -1893,8 +1924,9 @@ function onLongPress(target, handler, options) {
   };
   const cleanup = [
     useEventListener(elementRef, "pointerdown", onDown, listenerOptions),
+    useEventListener(elementRef, "pointermove", onMove, listenerOptions),
     useEventListener(elementRef, ["pointerup", "pointerleave"], clear, listenerOptions)
-  ].filter(Boolean);
+  ];
   const stop = () => cleanup.forEach((fn) => fn());
   return stop;
 }
@@ -2669,7 +2701,7 @@ var breakpointsPrimeFlex = {
 };
 function useBreakpoints(breakpoints, options = {}) {
   function getValue2(k, delta) {
-    let v = breakpoints[k];
+    let v = toValue(breakpoints[k]);
     if (delta != null)
       v = increaseWithUnit(v, delta);
     if (typeof v === "number")
@@ -2683,7 +2715,7 @@ function useBreakpoints(breakpoints, options = {}) {
     return window2.matchMedia(query).matches;
   }
   const greaterOrEqual = (k) => {
-    return useMediaQuery(`(min-width: ${getValue2(k)})`, options);
+    return useMediaQuery(() => `(min-width: ${getValue2(k)})`, options);
   };
   const shortcutMethods = Object.keys(breakpoints).reduce((shortcuts, k) => {
     Object.defineProperty(shortcuts, k, {
@@ -2695,17 +2727,17 @@ function useBreakpoints(breakpoints, options = {}) {
   }, {});
   return Object.assign(shortcutMethods, {
     greater(k) {
-      return useMediaQuery(`(min-width: ${getValue2(k, 0.1)})`, options);
+      return useMediaQuery(() => `(min-width: ${getValue2(k, 0.1)})`, options);
     },
     greaterOrEqual,
     smaller(k) {
-      return useMediaQuery(`(max-width: ${getValue2(k, -0.1)})`, options);
+      return useMediaQuery(() => `(max-width: ${getValue2(k, -0.1)})`, options);
     },
     smallerOrEqual(k) {
-      return useMediaQuery(`(max-width: ${getValue2(k)})`, options);
+      return useMediaQuery(() => `(max-width: ${getValue2(k)})`, options);
     },
     between(a, b) {
-      return useMediaQuery(`(min-width: ${getValue2(a)}) and (max-width: ${getValue2(b, -0.1)})`, options);
+      return useMediaQuery(() => `(min-width: ${getValue2(a)}) and (max-width: ${getValue2(b, -0.1)})`, options);
     },
     isGreater(k) {
       return match(`(min-width: ${getValue2(k, 0.1)})`);
@@ -3111,7 +3143,7 @@ function useStorage(key, defaults2, storage, options = {}) {
   function read(event) {
     const rawValue = event ? event.newValue : storage.getItem(key);
     if (rawValue == null) {
-      if (writeDefaults && rawInit !== null)
+      if (writeDefaults && rawInit != null)
         storage.setItem(key, serializer.write(rawInit));
       return rawInit;
     } else if (!event && mergeDefaults) {
@@ -3397,7 +3429,8 @@ function useCycleList(list, options) {
 function useDark(options = {}) {
   const {
     valueDark = "dark",
-    valueLight = ""
+    valueLight = "",
+    window: window2 = defaultWindow
   } = options;
   const mode = useColorMode({
     ...options,
@@ -3413,13 +3446,21 @@ function useDark(options = {}) {
       light: valueLight
     }
   });
+  const system = computed(() => {
+    if (mode.system) {
+      return mode.system.value;
+    } else {
+      const preferredDark = usePreferredDark({ window: window2 });
+      return preferredDark.value ? "dark" : "light";
+    }
+  });
   const isDark = computed({
     get() {
       return mode.value === "dark";
     },
     set(v) {
       const modeVal = v ? "dark" : "light";
-      if (mode.system.value === modeVal)
+      if (system.value === modeVal)
         mode.value = "auto";
       else
         mode.value = modeVal;
@@ -3879,17 +3920,18 @@ function useDropZone(target, options = {}) {
       return files.value = list.length === 0 ? null : list;
     };
     useEventListener(target, "dragenter", (event) => {
-      var _a;
+      var _a, _b;
+      const types = Array.from(((_a = event == null ? void 0 : event.dataTransfer) == null ? void 0 : _a.items) || []).map((i) => i.kind === "file" ? i.type : null).filter(notNullish);
       if (_options.dataTypes && event.dataTransfer) {
         const dataTypes = unref(_options.dataTypes);
-        isDataTypeIncluded = typeof dataTypes === "function" ? dataTypes(event.dataTransfer.types) : dataTypes ? dataTypes.some((item) => event.dataTransfer.types.includes(item)) : true;
+        isDataTypeIncluded = typeof dataTypes === "function" ? dataTypes(types) : dataTypes ? dataTypes.some((item) => types.includes(item)) : true;
         if (!isDataTypeIncluded)
           return;
       }
       event.preventDefault();
       counter += 1;
       isOverDropZone.value = true;
-      (_a = _options.onEnter) == null ? void 0 : _a.call(_options, getFiles(event), event);
+      (_b = _options.onEnter) == null ? void 0 : _b.call(_options, getFiles(event), event);
     });
     useEventListener(target, "dragover", (event) => {
       var _a;
@@ -4186,7 +4228,15 @@ function useElementVisibility(element, options = {}) {
   const elementIsVisible = ref(false);
   useIntersectionObserver(
     element,
-    ([{ isIntersecting }]) => {
+    (intersectionObserverEntries) => {
+      let isIntersecting = elementIsVisible.value;
+      let latestTime = 0;
+      for (const entry of intersectionObserverEntries) {
+        if (entry.time >= latestTime) {
+          latestTime = entry.time;
+          isIntersecting = entry.isIntersecting;
+        }
+      }
       elementIsVisible.value = isIntersecting;
     },
     {
@@ -4466,7 +4516,7 @@ function useFetch(url, ...args) {
     timer = useTimeoutFn(abort, timeout, { immediate: false });
   let executeCounter = 0;
   const execute = async (throwOnFailed = false) => {
-    var _a2;
+    var _a2, _b;
     abort();
     loading(true);
     error.value = null;
@@ -4507,58 +4557,55 @@ function useFetch(url, ...args) {
     let responseData = null;
     if (timer)
       timer.start();
-    return new Promise((resolve, reject) => {
-      var _a3;
-      fetch(
-        context.url,
-        {
-          ...defaultFetchOptions,
-          ...context.options,
-          headers: {
-            ...headersToObject(defaultFetchOptions.headers),
-            ...headersToObject((_a3 = context.options) == null ? void 0 : _a3.headers)
-          }
+    return fetch(
+      context.url,
+      {
+        ...defaultFetchOptions,
+        ...context.options,
+        headers: {
+          ...headersToObject(defaultFetchOptions.headers),
+          ...headersToObject((_b = context.options) == null ? void 0 : _b.headers)
         }
-      ).then(async (fetchResponse) => {
-        response.value = fetchResponse;
-        statusCode.value = fetchResponse.status;
-        responseData = await fetchResponse[config.type]();
-        if (!fetchResponse.ok) {
-          data.value = initialData || null;
-          throw new Error(fetchResponse.statusText);
-        }
-        if (options.afterFetch) {
-          ({ data: responseData } = await options.afterFetch({
-            data: responseData,
-            response: fetchResponse
-          }));
-        }
+      }
+    ).then(async (fetchResponse) => {
+      response.value = fetchResponse;
+      statusCode.value = fetchResponse.status;
+      responseData = await fetchResponse.clone()[config.type]();
+      if (!fetchResponse.ok) {
+        data.value = initialData || null;
+        throw new Error(fetchResponse.statusText);
+      }
+      if (options.afterFetch) {
+        ({ data: responseData } = await options.afterFetch({
+          data: responseData,
+          response: fetchResponse
+        }));
+      }
+      data.value = responseData;
+      responseEvent.trigger(fetchResponse);
+      return fetchResponse;
+    }).catch(async (fetchError) => {
+      let errorData = fetchError.message || fetchError.name;
+      if (options.onFetchError) {
+        ({ error: errorData, data: responseData } = await options.onFetchError({
+          data: responseData,
+          error: fetchError,
+          response: response.value
+        }));
+      }
+      error.value = errorData;
+      if (options.updateDataOnError)
         data.value = responseData;
-        responseEvent.trigger(fetchResponse);
-        return resolve(fetchResponse);
-      }).catch(async (fetchError) => {
-        let errorData = fetchError.message || fetchError.name;
-        if (options.onFetchError) {
-          ({ error: errorData, data: responseData } = await options.onFetchError({
-            data: responseData,
-            error: fetchError,
-            response: response.value
-          }));
-        }
-        error.value = errorData;
-        if (options.updateDataOnError)
-          data.value = responseData;
-        errorEvent.trigger(fetchError);
-        if (throwOnFailed)
-          return reject(fetchError);
-        return resolve(null);
-      }).finally(() => {
-        if (currentExecuteCounter === executeCounter)
-          loading(false);
-        if (timer)
-          timer.stop();
-        finallyEvent.trigger(null);
-      });
+      errorEvent.trigger(fetchError);
+      if (throwOnFailed)
+        throw fetchError;
+      return null;
+    }).finally(() => {
+      if (currentExecuteCounter === executeCounter)
+        loading(false);
+      if (timer)
+        timer.stop();
+      finallyEvent.trigger(null);
     });
   };
   const refetch = toRef2(options.refetch);
@@ -4682,8 +4729,10 @@ function useFileDialog(options = {}) {
   }
   const reset = () => {
     files.value = null;
-    if (input)
+    if (input) {
       input.value = "";
+      trigger(null);
+    }
   };
   const open = (localOptions) => {
     if (!input)
@@ -5387,7 +5436,8 @@ function useInfiniteScroll(element, onLoadMore, options = {}) {
   var _a;
   const {
     direction = "bottom",
-    interval = 100
+    interval = 100,
+    canLoadMore = () => true
   } = options;
   const state = reactive(useScroll(
     element,
@@ -5407,7 +5457,7 @@ function useInfiniteScroll(element, onLoadMore, options = {}) {
   const isElementVisible = useElementVisibility(observedElement);
   function checkAndLoad() {
     state.measure();
-    if (!observedElement.value || !isElementVisible.value)
+    if (!observedElement.value || !isElementVisible.value || !canLoadMore(observedElement.value))
       return;
     const { scrollHeight, clientHeight, scrollWidth, clientWidth } = observedElement.value;
     const isNarrower = direction === "bottom" || direction === "top" ? scrollHeight <= clientHeight : scrollWidth <= clientWidth;
@@ -5781,7 +5831,7 @@ function useMediaControls(target, options = {}) {
   };
 }
 function getMapVue2Compat() {
-  const data = reactive({});
+  const data = shallowReactive({});
   return {
     get: (key) => data[key],
     set: (key, value) => set(data, key, value),
@@ -5797,10 +5847,10 @@ function getMapVue2Compat() {
 function useMemoize(resolver, options) {
   const initCache = () => {
     if (options == null ? void 0 : options.cache)
-      return reactive(options.cache);
+      return shallowReactive(options.cache);
     if (isVue2)
       return getMapVue2Compat();
-    return reactive(/* @__PURE__ */ new Map());
+    return shallowReactive(/* @__PURE__ */ new Map());
   };
   const cache = initCache();
   const generateKey = (...args) => (options == null ? void 0 : options.getKey) ? options.getKey(...args) : JSON.stringify(args);
@@ -6151,10 +6201,16 @@ function useOffsetPagination(options) {
   const currentPage = useClamp(page, 1, pageCount);
   const isFirstPage = computed(() => currentPage.value === 1);
   const isLastPage = computed(() => currentPage.value === pageCount.value);
-  if (isRef(page))
-    syncRef(page, currentPage);
-  if (isRef(pageSize))
-    syncRef(pageSize, currentPageSize);
+  if (isRef(page)) {
+    syncRef(page, currentPage, {
+      direction: isReadonly(page) ? "ltr" : "both"
+    });
+  }
+  if (isRef(pageSize)) {
+    syncRef(pageSize, currentPageSize, {
+      direction: isReadonly(pageSize) ? "ltr" : "both"
+    });
+  }
   function prev() {
     currentPage.value--;
   }
@@ -6373,7 +6429,8 @@ function usePointerSwipe(target, options = {}) {
     threshold = 50,
     onSwipe,
     onSwipeEnd,
-    onSwipeStart
+    onSwipeStart,
+    disableTextSelect = false
   } = options;
   const posStart = reactive({ x: 0, y: 0 });
   const updatePosStart = (x, y) => {
@@ -6408,11 +6465,9 @@ function usePointerSwipe(target, options = {}) {
   };
   const stops = [
     useEventListener(target, "pointerdown", (e) => {
-      var _a, _b;
       if (!eventIsAllowed(e))
         return;
       isPointerDown.value = true;
-      (_b = (_a = targetRef.value) == null ? void 0 : _a.style) == null ? void 0 : _b.setProperty("touch-action", "none");
       const eventTarget = e.target;
       eventTarget == null ? void 0 : eventTarget.setPointerCapture(e.pointerId);
       const { clientX: x, clientY: y } = e;
@@ -6433,16 +6488,23 @@ function usePointerSwipe(target, options = {}) {
         onSwipe == null ? void 0 : onSwipe(e);
     }),
     useEventListener(target, "pointerup", (e) => {
-      var _a, _b;
       if (!eventIsAllowed(e))
         return;
       if (isSwiping.value)
         onSwipeEnd == null ? void 0 : onSwipeEnd(e, direction.value);
       isPointerDown.value = false;
       isSwiping.value = false;
-      (_b = (_a = targetRef.value) == null ? void 0 : _a.style) == null ? void 0 : _b.setProperty("touch-action", "initial");
     })
   ];
+  tryOnMounted(() => {
+    var _a, _b, _c, _d, _e, _f, _g, _h;
+    (_b = (_a = targetRef.value) == null ? void 0 : _a.style) == null ? void 0 : _b.setProperty("touch-action", "none");
+    if (disableTextSelect) {
+      (_d = (_c = targetRef.value) == null ? void 0 : _c.style) == null ? void 0 : _d.setProperty("-webkit-user-select", "none");
+      (_f = (_e = targetRef.value) == null ? void 0 : _e.style) == null ? void 0 : _f.setProperty("-ms-user-select", "none");
+      (_h = (_g = targetRef.value) == null ? void 0 : _g.style) == null ? void 0 : _h.setProperty("user-select", "none");
+    }
+  });
   const stop = () => stops.forEach((s) => s());
   return {
     isSwiping: readonly(isSwiping),
@@ -6524,12 +6586,12 @@ function useScreenOrientation(options = {}) {
     });
   }
   const lockOrientation = (type) => {
-    if (!isSupported.value)
-      return Promise.reject(new Error("Not supported"));
-    return screenOrientation.lock(type);
+    if (isSupported.value && typeof screenOrientation.lock === "function")
+      return screenOrientation.lock(type);
+    return Promise.reject(new Error("Not supported"));
   };
   const unlockOrientation = () => {
-    if (isSupported.value)
+    if (isSupported.value && typeof screenOrientation.unlock === "function")
       screenOrientation.unlock();
   };
   return {
@@ -7506,11 +7568,13 @@ function useTimestamp(options = {}) {
   }
 }
 function useTitle(newTitle = null, options = {}) {
-  var _a, _b;
+  var _a, _b, _c;
   const {
-    document: document2 = defaultDocument
+    document: document2 = defaultDocument,
+    restoreOnUnmount = (t) => t
   } = options;
-  const title = toRef2((_a = newTitle != null ? newTitle : document2 == null ? void 0 : document2.title) != null ? _a : null);
+  const originalTitle = (_a = document2 == null ? void 0 : document2.title) != null ? _a : "";
+  const title = toRef2((_b = newTitle != null ? newTitle : document2 == null ? void 0 : document2.title) != null ? _b : null);
   const isReadonly2 = newTitle && typeof newTitle === "function";
   function format(t) {
     if (!("titleTemplate" in options))
@@ -7528,7 +7592,7 @@ function useTitle(newTitle = null, options = {}) {
   );
   if (options.observe && !options.titleTemplate && document2 && !isReadonly2) {
     useMutationObserver(
-      (_b = document2.head) == null ? void 0 : _b.querySelector("title"),
+      (_c = document2.head) == null ? void 0 : _c.querySelector("title"),
       () => {
         if (document2 && document2.title !== title.value)
           title.value = format(document2.title);
@@ -7536,6 +7600,13 @@ function useTitle(newTitle = null, options = {}) {
       { childList: true }
     );
   }
+  tryOnBeforeUnmount(() => {
+    if (restoreOnUnmount) {
+      const restoredTitle = restoreOnUnmount(originalTitle, title.value || "");
+      if (restoredTitle != null && document2)
+        document2.title = restoredTitle;
+    }
+  });
   return title;
 }
 var _TransitionPresets = {
@@ -8654,6 +8725,7 @@ export {
   formatDate,
   formatTimeAgo,
   get,
+  getLifeCycleTarget,
   getSSRHandler,
   hasOwn,
   hyphenate,

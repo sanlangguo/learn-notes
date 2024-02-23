@@ -18,12 +18,27 @@
 </ol>
 <p>如果您使用的是其他浏览器，请先检查该浏览器是否支持 ES2015。</p>
 <h3 id="vue-3与vue-2有哪些主要的区别" tabindex="-1"><a class="header-anchor" href="#vue-3与vue-2有哪些主要的区别" aria-hidden="true">#</a> Vue 3与Vue 2有哪些主要的区别？</h3>
-<ul>
-<li><code v-pre>Composition API：Vue 3</code>引入了<code v-pre>Composition API</code>，它提供了一种基于函数的组合式编程的方式，使得代码更加可复用和可组合。而<code v-pre>Vue 2</code>使用的是Options API。</li>
-<li>性能优化：Vue 3在虚拟DOM的更新算法上进行了优化，提高了渲染性能。</li>
-<li>TypeScript：Vue 3对TypeScript的支持更加友好，内置了更多的类型声明，可以提供更好的开发体验和代码提示。</li>
-<li>包大小：Vue 3的包体积相比Vue 2更小，减少了运行时的体积。</li>
-</ul>
+<p>Vue 3相对于Vue 2有一些重要的区别：</p>
+<ol>
+<li>
+<p><strong>性能提升：</strong> Vue 3在性能方面有所改进，包括更快的渲染速度和更小的包大小，使应用程序更高效。</p>
+</li>
+<li>
+<p><strong>Composition API：</strong> Vue 3引入了Composition API，这是一种新的API风格，使得代码组织更灵活，更易于复用和维护。</p>
+</li>
+<li>
+<p><strong>响应式系统改进：</strong> Vue 3中的响应式系统进行了重大改进，使得更容易追踪依赖关系并进行精确的更新。</p>
+</li>
+<li>
+<p><strong>Typescript支持：</strong> Vue 3更好地集成了Typescript，提供了更好的类型支持，使得开发过程更加安全和高效。</p>
+</li>
+<li>
+<p><strong>Teleport组件：</strong> Vue 3引入了Teleport组件，可以帮助开发者更容易地在DOM树中移动组件。</p>
+</li>
+<li>
+<p><strong>Suspense组件：</strong> Vue 3引入了Suspense组件，使得处理异步操作和代码分割更加简单。</p>
+</li>
+</ol>
 <h3 id="vue-3中的teleport是什么-有什么作用" tabindex="-1"><a class="header-anchor" href="#vue-3中的teleport是什么-有什么作用" aria-hidden="true">#</a> Vue 3中的Teleport是什么？有什么作用？</h3>
 <ul>
 <li>Teleport是Vue 3中新增的一个特性，它允许你将组件的内容渲染到指定的目标位置上。
@@ -41,25 +56,25 @@
 <li>使用Suspense，可以在组件树中定义一个fallback内容，当异步组件尚未加载完成时，可以显示fallback内容，提供更好的用户体验。</li>
 <li>在Vue 3中，通过在父组件中使用<code v-pre>&lt;Suspense&gt;</code>标签包裹异步组件，并通过<code v-pre>&lt;template #default&gt;</code>来定义fallback内容，即可使用Suspense。</li>
 </ul>
-<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token operator">&lt;</span>template<span class="token operator">></span>
-  <span class="token operator">&lt;</span>Suspense<span class="token operator">></span>
-    <span class="token operator">&lt;</span>template #<span class="token keyword">default</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>AsyncComp<span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
-    <span class="token operator">&lt;</span>template #fallback<span class="token operator">></span>
-      <span class="token operator">&lt;</span>div<span class="token operator">></span>Loading<span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>Suspense<span class="token operator">></span>
-<span class="token operator">&lt;</span>template<span class="token operator">></span>
+<div class="language-vue line-numbers-mode" data-ext="vue"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Suspense</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#default</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>AsyncComp</span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#fallback</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Loading...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Suspense</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
 
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
 <span class="token keyword">const</span> AsyncComp <span class="token operator">=</span> <span class="token function">defineAsyncComponent</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./AsyncComp.vue'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     AsyncComp
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="vue-3中的fragment是什么-为什么要使用它" tabindex="-1"><a class="header-anchor" href="#vue-3中的fragment是什么-为什么要使用它" aria-hidden="true">#</a> Vue 3中的Fragment是什么？为什么要使用它？</h3>
 <ul>
 <li>Fragment是Vue 3中新增的一个特性，允许我们在不增加额外DOM元素的情况下，渲染多个子元素。</li>

@@ -1005,7 +1005,7 @@ onInvalidate。它是一个函数，用来注册过期回调。每当 watch 的
 </li>
 <li>
 <p>SSR：服务端渲染</p>
-<p><img src="/img/vue-csr.jpg" alt=""></p>
+<p><img src="/img/vue-ssr.jpg" alt=""></p>
 </li>
 <li>
 <p>同构渲染</p>
