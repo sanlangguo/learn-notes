@@ -82,6 +82,10 @@ module.exports = {
             text: "ios 真机调试",
             link: "/engineering/ios.md",
           },
+          {
+            text: "qiankun隔离方案",
+            link: "/engineering/qiankunShadow.md",
+          },
         ],
       },
       {

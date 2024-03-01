@@ -10,8 +10,7 @@ WebGL（Web 图形库）是一个 JavaScript API，可在任何兼容的 Web 浏
 
 WebGL 2 API 引入了对大部分的 OpenGL ES 3.0 功能集的支持; 它是通过WebGL2RenderingContext界面提供的。
 
-![image-20231213225624930](/img/webgl-use.png)
-
+![img](/img/webgl-use.png)
 
 
 ### OpenGL

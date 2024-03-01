@@ -684,6 +684,7 @@
 <p>灵活性和可扩展性：链表结构允许在任何位置插入新的状态节点，以及在需要时轻松删除或更新节点。这使得 React Hook 具有灵活性和可扩展性，能够适应各种组件的需求。</p>
 </li>
 </ol>
+<h3 id="九、diff-算法" tabindex="-1"><a class="header-anchor" href="#九、diff-算法" aria-hidden="true">#</a> 九、diff 算法</h3>
 </div></template>
 
 

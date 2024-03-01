@@ -4,7 +4,7 @@
 <h3 id="浏览器兼容性" tabindex="-1"><a class="header-anchor" href="#浏览器兼容性" aria-hidden="true">#</a> 浏览器兼容性</h3>
 <p>目前支持 WebGL 的浏览器有：Firefox 4+, Google Chrome 9+, Opera 12+, Safari 5.1+, Internet Explorer 11+ 和 Microsoft Edge build 10240+；然而，WebGL 一些特性也需要用户的硬件设备支持。</p>
 <p>WebGL 2 API 引入了对大部分的 OpenGL ES 3.0 功能集的支持; 它是通过WebGL2RenderingContext界面提供的。</p>
-<p><img src="/img/webgl-use.png" alt="image-20231213225624930"></p>
+<p><img src="/img/webgl-use.png" alt="img"></p>
 <h3 id="opengl" tabindex="-1"><a class="header-anchor" href="#opengl" aria-hidden="true">#</a> OpenGL</h3>
 <p>了解WebGL之前，我们先介绍下OpenGL，因为WebGL 是基于 OpenGL 的。OpenGL（Open Graphics Library）是一个用于渲染2D和3D图形的跨平台编程接口。它提供了一组函数，允许开发人员直接与图形硬件交互，从而实现高性能的图形渲染。</p>
 <p>OpenGL具有以下特点：</p>
