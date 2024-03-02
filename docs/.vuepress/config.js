@@ -57,9 +57,14 @@ module.exports = {
           {
             text: "vue3设计与实现",
             link: "/vue/devise-realization.md",
-          }, {
+          }, 
+          {
             text: "react系统知识梳理",
             link: "/react/contrast.md",
+          },
+          {
+            text: "react常见问题",
+            link: "/react/common-problem.md",
           },
         ],
       },
