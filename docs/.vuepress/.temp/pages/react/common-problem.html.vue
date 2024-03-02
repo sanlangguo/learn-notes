@@ -56,6 +56,8 @@
 <p>但是React 的三个假设在对比 element 时存在短板，所以需要开发者为每一个 element 提供 key，以便React 可以准确地发现新旧集合节点中的相同节点，对于相同节点无须进行节点删除和创建，只需要将旧集合中节点的位置进行移动，更新为新集合中节点的位置</p>
 <h3 id="加上-key-就一定性能最优吗" tabindex="-1"><a class="header-anchor" href="#加上-key-就一定性能最优吗" aria-hidden="true">#</a> 加上 key 就一定性能最优吗？</h3>
 <p>不是的，在频发移动元素的操作开销时，不一定是最优的</p>
+<h3 id="react-hooks-为什么不能在循环、条件语句或嵌套函数中调用" tabindex="-1"><a class="header-anchor" href="#react-hooks-为什么不能在循环、条件语句或嵌套函数中调用" aria-hidden="true">#</a> react hooks 为什么不能在循环、条件语句或嵌套函数中调用</h3>
+<p>因为 React 内部实现需要按照调用顺序来记录每个 useState 的调用，以做区分; 如果在循环体中使用 Hooks，React 将无法确定每个 Hook 的调用顺序，可能导致状态混乱或不一致</p>
 </div></template>
 
 
