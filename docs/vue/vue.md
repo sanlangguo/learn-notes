@@ -79,7 +79,12 @@
 
 
 
-
+### Vue2 渲染的过程
+1. 通过new Vue 语句实例化 Vue 对象
+2. 挂载$mount 方法,通过自定义 Render 方法、template、el 等生成 Reder 函数，准备渲染内容
+3. 通过Watcher 进行依赖收集。
+4. 当数据发生变化时，执行 Render 函数并生成 VNode 对象
+5. 通过patch 方法，对比新旧 Node 对象，通过 DOM diff算法添加、修改、删除真正的 DOM元素。
 
 
 

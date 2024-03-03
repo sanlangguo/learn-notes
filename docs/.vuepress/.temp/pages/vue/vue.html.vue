@@ -33,6 +33,14 @@ computed：监测的是依赖值，依赖值不变的情况下其会直接读取
 <p><a href="https://juejin.cn/post/6858899262596448270#heading-21" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a></p>
 <h3 id="vue-组件传值" tabindex="-1"><a class="header-anchor" href="#vue-组件传值" aria-hidden="true">#</a> vue 组件传值</h3>
 <p><a href="https://segmentfault.com/a/1190000022700216" target="_blank" rel="noopener noreferrer">vue组件之间相互传值的方式<ExternalLinkIcon/></a></p>
+<h3 id="vue2-渲染的过程" tabindex="-1"><a class="header-anchor" href="#vue2-渲染的过程" aria-hidden="true">#</a> Vue2 渲染的过程</h3>
+<ol>
+<li>通过new Vue 语句实例化 Vue 对象</li>
+<li>挂载$mount 方法,通过自定义 Render 方法、template、el 等生成 Reder 函数，准备渲染内容</li>
+<li>通过Watcher 进行依赖收集。</li>
+<li>当数据发生变化时，执行 Render 函数并生成 VNode 对象</li>
+<li>通过patch 方法，对比新旧 Node 对象，通过 DOM diff算法添加、修改、删除真正的 DOM元素。</li>
+</ol>
 </div></template>
 
 

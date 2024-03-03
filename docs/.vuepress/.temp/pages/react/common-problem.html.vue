@@ -58,6 +58,65 @@
 <p>不是的，在频发移动元素的操作开销时，不一定是最优的</p>
 <h3 id="react-hooks-为什么不能在循环、条件语句或嵌套函数中调用" tabindex="-1"><a class="header-anchor" href="#react-hooks-为什么不能在循环、条件语句或嵌套函数中调用" aria-hidden="true">#</a> react hooks 为什么不能在循环、条件语句或嵌套函数中调用</h3>
 <p>因为 React 内部实现需要按照调用顺序来记录每个 useState 的调用，以做区分; 如果在循环体中使用 Hooks，React 将无法确定每个 Hook 的调用顺序，可能导致状态混乱或不一致</p>
-</div></template>
+<h3 id="为什么-react-事件处理函数还需要手动绑定-this" tabindex="-1"><a class="header-anchor" href="#为什么-react-事件处理函数还需要手动绑定-this" aria-hidden="true">#</a> 为什么 react 事件处理函数还需要手动绑定 this</h3>
+<p>在 React 中，事件处理函数需要手动绑定 <code v-pre>this</code>，原因如下：</p>
+<p><strong>1. 箭头函数的词法作用域：</strong></p>
+<p>React 事件处理函数通常使用箭头函数（<code v-pre>=&gt;</code>）编写。箭头函数使用词法作用域，这意味着它们继承了定义它们的函数的作用域。因此，在事件处理函数内部，<code v-pre>this</code> 指向定义它的组件实例。</p>
+<p><strong>2. React 组件的事件委托：</strong></p>
+<p>React 使用事件委托来提高性能。当一个事件发生时，它会冒泡到 DOM 树的根节点，然后 React 会根据事件目标来触发适当的事件处理函数。这会导致 <code v-pre>this</code> 指向 DOM 元素，而不是组件实例。</p>
+<p><strong>3. 异步事件：</strong></p>
+<p>事件处理函数可能包含异步操作，例如使用 <code v-pre>setTimeout</code> 或 <code v-pre>fetch</code>。在异步操作完成时，组件实例可能已经重新渲染或卸载。如果没有手动绑定 <code v-pre>this</code>，<code v-pre>this</code> 将指向一个无效的组件实例。</p>
+<p><strong>手动绑定 this 的好处：</strong></p>
+<ul>
+<li>确保 <code v-pre>this</code> 在事件处理函数中始终指向正确的组件实例。</li>
+<li>防止在异步操作中出现无效的 <code v-pre>this</code> 引用。</li>
+<li>提高代码的可维护性和可读性。</li>
+</ul>
+<p><strong>手动绑定 this 的方法：</strong></p>
+<p>有两种方法可以手动绑定 <code v-pre>this</code>：</p>
+<ul>
+<li>**使用箭头函数：**在事件处理函数中使用箭头函数，它会自动绑定 <code v-pre>this</code>。</li>
+<li>**使用 <code v-pre>bind()</code> 方法：**在组件的构造函数中使用 <code v-pre>bind()</code> 方法来绑定事件处理函数。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p>使用箭头函数：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 指向组件实例</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 <code v-pre>bind()</code> 方法：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>handleClick <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleClick</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 指向组件实例</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="为什么-react-生命周期不需要手动绑定-this" tabindex="-1"><a class="header-anchor" href="#为什么-react-生命周期不需要手动绑定-this" aria-hidden="true">#</a> 为什么 react 生命周期不需要手动绑定 this</h3>
+<p>React 生命周期方法不需要手动绑定 <code v-pre>this</code>，因为 React 在内部自动绑定它们。</p>
+<p>在 React 组件的构造函数中，React 会自动绑定所有生命周期方法，包括：</p>
+<ul>
+<li><code v-pre>componentDidMount</code></li>
+<li><code v-pre>componentDidUpdate</code></li>
+<li><code v-pre>componentWillUnmount</code></li>
+<li><code v-pre>shouldComponentUpdate</code></li>
+<li><code v-pre>getDerivedStateFromProps</code></li>
+<li><code v-pre>getSnapshotBeforeUpdate</code></li>
+</ul>
+<p>这意味着，在生命周期方法中，<code v-pre>this</code> 始终指向正确的组件实例，无需手动绑定。</p>
+<p>这是因为生命周期方法是在组件实例创建时绑定的，并且在组件整个生命周期中保持不变。它们不会像事件处理函数那样被重新创建或重新绑定。</p>
+<p>因此，在 React 生命周期方法中，你可以直接使用 <code v-pre>this</code>，而无需担心它指向错误的组件实例。</p>
+<p><strong>示例：</strong></p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><pre v-pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// `this` refers to the component instance</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 
