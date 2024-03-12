@@ -13,6 +13,7 @@ module.exports = {
     logo: "/img/logo.jpg",
     navbar: [
       { text: "首页", link: "/nav/list.md" },
+      { text: "算法", link: "/algorithm/linked-list.md" },
       {
         text: "动画", children: [
           {

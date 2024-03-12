@@ -1,4 +1,21 @@
-<template><div><h3 id="vue2或者vue3兼容性" tabindex="-1"><a class="header-anchor" href="#vue2或者vue3兼容性" aria-hidden="true">#</a> vue2或者vue3兼容性</h3>
+<template><div><h3 id="说说-object-defineproperty-与-proxy-的区别" tabindex="-1"><a class="header-anchor" href="#说说-object-defineproperty-与-proxy-的区别" aria-hidden="true">#</a> 说说 Object.defineProperty 与 Proxy 的区别?</h3>
+<p><strong>vue 2.x Object.defineProperty vue 3.x Proxy</strong></p>
+<ul>
+<li>0bject.defineProperty 产生三个主要问题</li>
+</ul>
+<ol>
+<li>不能监听数组变化</li>
+<li>必须遍历对象的每个属性 Object.keys()</li>
+<li>必须深层遍历嵌套的对象。</li>
+</ol>
+<ul>
+<li>关于 proxy</li>
+</ul>
+<ol>
+<li>针对整个对象</li>
+<li>解决了无法劫持数组的问题有更多的拦截方法，有助于性能的提升</li>
+</ol>
+<h3 id="vue2或者vue3兼容性" tabindex="-1"><a class="header-anchor" href="#vue2或者vue3兼容性" aria-hidden="true">#</a> vue2或者vue3兼容性</h3>
 <ul>
 <li>
 <p>Vue3 不兼容 IE11 及以下的浏览器版本。</p>
