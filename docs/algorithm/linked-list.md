@@ -24,7 +24,7 @@
 
 	解决这个问题的关键是，通过某些方式，让 p1 和 p2 能够同时到达相交节点 c1。
 
-	如果用两个指针 p1 和 p2 分别在两条链表上前进，我们可以让 p1 遍历完链表 A 之后开始遍历链表 B，让 p2 遍历	完链表 B 之后开始遍历链表 A，这样相当于「逻辑上」两条链表接在了一起。
+	如果用两个指针 p1 和 p2 分别在两条链表上前进，我们可以让 p1 遍历完链表 A 之后开始遍历链表 B，让 p2 遍历完链表 B 之后, 开始遍历链表 A，这样相当于「逻辑上」两条链表接在了一起。
 	
 	如果这样进行拼接，就可以让 p1 和 p2 同时进入公共部分，也就是同时到达相交节点 c1：
  */
@@ -494,6 +494,264 @@ var swapPairs = function(head) {
   return dummy.next
 };
 ```
+
+
+
+[25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
+
+**困难**
+
+给你链表的头节点 `head` ，每 `k` 个节点一组进行翻转，请你返回修改后的链表。
+
+`k` 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 `k` 的整数倍，那么请将最后剩余的节点保持原有顺序。
+
+你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg)
+
+```json
+输入：head = [1,2,3,4,5], k = 2
+输出：[2,1,4,3,5]
+```
+
+- 解题思路
+
+输入 `head`，`reverseKGroup` 函数能够把以 `head` 为头的这条链表进行翻转。
+
+我们要充分利用这个递归函数的定义，把原问题分解成规模更小的子问题进行求解。
+
+**1、先反转以 `head` 开头的 `k` 个元素**。
+
+
+
+![img](https://labuladong.github.io/pictures/kgroup/3.jpg)
+
+
+
+**2、将第 `k + 1` 个元素作为 `head` 递归调用 `reverseKGroup` 函数**。
+
+
+
+![img](https://labuladong.github.io/pictures/kgroup/4.jpg)
+
+
+
+**3、将上述两个过程的结果连接起来**。
+
+
+
+![img](https://labuladong.github.io/pictures/kgroup/5.jpg)
+
+
+
+最后函数递归完成之后就是这个结果，完全符合题意：
+
+
+
+![img](https://labuladong.github.io/pictures/kgroup/7.jpg)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+var reverseKGroup = function (head, k) {
+    if (!head) return null;
+    // 区间 [a, b) 包含 k 个待反转元素
+    let a = head, b = head;
+    for (let i = 0; i < k; i++) {
+        // 不足 k 个，不需要反转，base case
+        if (!b) return head;
+        b = b.next;
+    }
+    // 反转前 k 个元素
+    let newHead = reverse(a, b);
+    // 递归反转后续链表并连接起来
+    a.next = reverseKGroup(b, k);
+    return newHead;
+};
+
+/* 反转区间 [a, b) 的元素，注意是左闭右开 */
+var reverse = function (a, b) {
+    let pre = null, cur = a, nxt = a;
+    // while 终止的条件改一下就行了
+    while (cur !== b) {
+        nxt = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = nxt;
+    }
+    // 返回反转后的头结点
+    return pre;
+};
+
+```
+
+
+
+[138. 随机链表的复制](https://leetcode.cn/problems/copy-list-with-random-pointer/)
+
+**中等**
+
+给你一个长度为 `n` 的链表，每个节点包含一个额外增加的随机指针 `random` ，该指针可以指向链表中的任何节点或空节点。
+
+构造这个链表的 **[深拷贝](https://baike.baidu.com/item/深拷贝/22785317?fr=aladdin)**。 深拷贝应该正好由 `n` 个 **全新** 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 `next` 指针和 `random` 指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。**复制链表中的指针都不应指向原链表中的节点** 。
+
+例如，如果原链表中有 `X` 和 `Y` 两个节点，其中 `X.random --> Y` 。那么在复制链表中对应的两个节点 `x` 和 `y` ，同样有 `x.random --> y` 。
+
+返回复制链表的头节点。
+
+用一个由 `n` 个节点组成的链表来表示输入/输出中的链表。每个节点用一个 `[val, random_index]` 表示：
+
+- `val`：一个表示 `Node.val` 的整数。
+- `random_index`：随机指针指向的节点索引（范围从 `0` 到 `n-1`）；如果不指向任何节点，则为 `null` 。
+
+你的代码 **只** 接受原链表的头节点 `head` 作为传入参数。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/09/e1.png)
+
+```json
+输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
+```
+
+
+
+- 解题思路
+
+这个问题其实就是实现一个深copy,  可以利用递归遍历，来实现深 copy
+
+```js
+
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+
+
+// 定义一个名为 `copyRandomList` 的函数，该函数将复制一个具有随机指针的链表。
+var copyRandomList = function(head, cacheNode = new Map) {
+    // 检查 `head` 是否为 `null`。如果是，则返回 `head`，因为没有链表可复制。
+    if (head === null) {
+        return head
+    }
+    // 检查 `cacheNode` Map 是否包含 `head` 节点。如果它不包含，则表示该节点尚未复制。
+    if (!cacheNode.has(head)) {
+        // 将 `head` 节点添加到 `cacheNode` Map 中，并将其值设置为一个对象，其中包含 `head` 节点的 `val`（值）。
+        cacheNode.set(head, {
+            val: head.val
+        })
+        // 使用 `Object.assign()` 将 `head` 节点的 `next` 和 `random` 指针复制到 `cacheNode` Map 中存储的节点中。
+        // `copyRandomList(head.next, cacheNode)` 递归地复制 `head.next` 节点，`copyRandomList(head.random, cacheNode)` 递归地复制 `head.random` 节点。
+        Object.assign(cacheNode.get(head), {
+            next: copyRandomList(head.next, cacheNode),
+            random: copyRandomList(head.random, cacheNode)
+        })
+    }
+    // 返回 `cacheNode` Map 中存储的 `head` 节点。这是复制的链表的头节点。
+    return cacheNode.get(head)
+};
+
+```
+
+
+
+[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+
+**中等**
+
+给你链表的头结点 `head` ，请将其按 **升序** 排列并返回 **排序后的链表** 。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2020/09/14/sort_list_1.jpg)
+
+```
+输入：head = [4,2,1,3]
+输出：[1,2,3,4]
+```
+
+
+
+
+
+- 解题思路
+
+1. 用数组接受每一项的值，然后进行排序
+2. 根据排序后的数组，进行生成链表
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+
+// 定义一个函数，参数为链表的头节点
+var sortList = function(head) {
+    // 创建一个空数组用于存储链表节点的值
+    let arr = []
+    // 创建一个指针指向链表的头节点
+    let p = head
+    // 遍历链表，将节点的值存入数组
+    while (p) {
+        arr.push(p.val)
+        p = p.next
+    }
+    // 对数组进行排序
+    arr.sort((a, b) => a - b)
+    // 创建一个虚拟头节点
+    let dummy = new ListNode(arr[0])
+    // 创建一个指针指向虚拟头节点
+    let cur = dummy
+    // 遍历排序后的数组，将值构建成新的链表
+    for (let i = 0; i < arr.length; i++) {
+       cur.next = new ListNode(arr[i]);
+       cur = cur.next;
+    }
+    // 返回排序后的链表的头节点
+    return dummy.next
+};
+
+```
+
+
+
+
 
 
 
