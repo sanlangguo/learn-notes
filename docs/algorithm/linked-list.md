@@ -1,4 +1,4 @@
-[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
+### [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
 
 你两个单链表的头节点 `headA` 和 `headB` ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 `null` 。
 
@@ -40,7 +40,7 @@ var getIntersectionNode = function(headA, headB) {
 
 
 
-[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+### [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 
 给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。
 
@@ -74,7 +74,7 @@ var reverseList = function(head) {
 
 
 
-[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
+### [234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list/)
 
 给你一个单链表的头节点 `head` ，请你判断该链表是否为回文链表 (`回文序列是向前和向后读都相同的序列`)，如果是，返回 `true` ；否则，返回 `false` 。
 
@@ -119,7 +119,7 @@ var isPalindrome = function(head) {
 
 
 
-[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+### [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
 
 给你一个链表的头节点 `head` ，判断链表中是否有环。
 
@@ -159,7 +159,7 @@ var hasCycle = function(head) {
 
 
 
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+### [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
 
 给定一个链表的头节点  `head` ，返回链表开始入环的第一个节点。 *如果链表无环，则返回 `null`。*
 
@@ -224,7 +224,7 @@ var detectCycle = function(head) {
 
 
 
-[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+### [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
 
 **简单** 
 
@@ -282,7 +282,7 @@ var mergeTwoLists = function(list1, list2) {
 
 
 
-[2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
+### [2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)
 
 **中等**
 
@@ -358,7 +358,7 @@ var addTwoNumbers = function(l1, l2) {
 
 
 
-[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+### [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
 **中等**
 
@@ -447,7 +447,7 @@ var removeNthFromEnd = function(head, n) {
 
 
 
-[24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)
+### [24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)
 
 **中等**
 
@@ -497,7 +497,7 @@ var swapPairs = function(head) {
 
 
 
-[25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
+### [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
 
 **困难**
 
@@ -602,7 +602,7 @@ var reverse = function (a, b) {
 
 
 
-[138. 随机链表的复制](https://leetcode.cn/problems/copy-list-with-random-pointer/)
+### [138. 随机链表的复制](https://leetcode.cn/problems/copy-list-with-random-pointer/)
 
 **中等**
 
@@ -682,7 +682,7 @@ var copyRandomList = function(head, cacheNode = new Map) {
 
 
 
-[148. 排序链表](https://leetcode.cn/problems/sort-list/)
+### [148. 排序链表](https://leetcode.cn/problems/sort-list/)
 
 **中等**
 
@@ -748,6 +748,93 @@ var sortList = function(head) {
 };
 
 ```
+
+
+
+### [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+
+**困难**
+
+给你一个链表数组，每个链表都已经按升序排列。
+
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
+
+
+
+**示例 1：**
+
+```
+输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+将它们合并到一个有序链表中得到。
+1->1->2->3->4->4->5->6
+```
+
+
+
+- 解题思路
+  1. 先用数组接受每一个链表的值
+  2. 再给数组进行排序
+  3. 构建链表，返回最终构建好的链表即可
+
+**空间复杂度：**O(N)，其中 N 是所有链表中节点的总数。arr 数组存储所有链表中的值。
+
+**时间复杂度：**O(N log N)，其中 N 是所有链表中节点的总数。对 arr 数组进行排序需要 O(N log N) 的时间
+
+```js
+/**
+ * 合并 K 个升序链表
+ *
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function(lists) {
+    // 创建一个空数组来存储所有链表中的值
+    let arr = [];
+
+    // 遍历链表数组中的每个链表
+    for (let i = 0; i < lists.length; i++) {
+        // 只要当前链表不为空，就执行循环
+        while (lists[i]) {
+            // 将当前链表节点的值推入数组
+            arr.push(lists[i].val);
+
+            // 将当前链表指针移到下一个节点
+            lists[i] = lists[i].next;
+        }
+    }
+
+    // 对数组中的值进行升序排序
+    arr.sort((a, b) => a - b);
+
+    // 创建一个虚拟头节点，并将其值设置为数组中的第一个值
+    let dummy = new ListNode(arr[0]);
+
+    // 将指针 p 设置为虚拟头节点
+    let p = dummy;
+
+    // 遍历数组中的每个值
+    for (let i = 0; i < arr.length; i++) {
+        // 在 p 节点后创建一个新节点，并将其值设置为数组中的当前值
+        p.next = new ListNode(arr[i]);
+
+        // 将 p 指针移动到新创建的节点
+        p = p.next;
+    }
+
+    // 返回虚拟头节点的下一个节点，它指向合并后的链表
+    return dummy.next;
+};
+
+```
+
+
 
 
 

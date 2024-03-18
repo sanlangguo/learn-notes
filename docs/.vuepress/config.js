@@ -13,7 +13,22 @@ module.exports = {
     logo: "/img/logo.jpg",
     navbar: [
       { text: "首页", link: "/nav/list.md" },
-      { text: "算法", link: "/algorithm/linked-list.md" },
+      { text: "算法",
+        children: [
+          {
+            text: "链表",
+            link: "/algorithm/linked-list.md"
+          },
+          {
+            text: "二叉树",
+            link: "/algorithm/binary-tree.md"
+          },
+          {
+            text: "二分查找",
+            link: "/algorithm/binary-search.md"
+          },
+        ]
+      },
       {
         text: "动画", children: [
           {

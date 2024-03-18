@@ -8,11 +8,11 @@
 
 
 ### vue文件编译原理
- 
+
   [参考链接](https://forum.vuejs.org/t/vue-js-vue-js/60884)
 
 ### 计算属性 VS 监听属性
- 
+
   ```
   watch：监测的是属性值， 只要属性值发生变化，其都会触发执行回调函数来执行一系列操作。
   computed：监测的是依赖值，依赖值不变的情况下其会直接读取缓存进行复用，变化的情况下才会重新计算。
@@ -33,13 +33,13 @@
 ### vue文件编译原理/常见面试题
 
   [Vue中的模板编译原理 01](https://cloud.tencent.com/developer/article/1601614)
-  
+
   [Vue模板编译原理 02](https://github.com/berwin/Blog/issues/18)
-  
+
   [常见面试题](https://www.cnblogs.com/skywind/p/14653339.html#12-vuejs-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86)
+
   
-  
-  
+
 ### this.nextTick() 原理 100次更新dem 执行一次 (更新dom 为什么是异步的)
 
 [参考链接](https://github.com/berwin/Blog/issues/22)
@@ -79,7 +79,18 @@
 
 
 
+### Vue3 组件挂载时
+
+- 从高层面的视角看，Vue 组件挂载时会发生如下几件事：
+
+1. **编译**：Vue 模板被编译为**渲染函数**：即用来返回虚拟 DOM 树的函数。这一步骤可以通过构建步骤提前完成，也可以通过使用运行时编译器即时完成。
+2. **挂载**：运行时渲染器调用渲染函数，遍历返回的虚拟 DOM 树，并基于它创建实际的 DOM 节点。这一步会作为[响应式副作用](https://cn.vuejs.org/guide/extras/reactivity-in-depth.html)执行，因此它会追踪其中所用到的所有响应式依赖。
+3. **更新**：当一个依赖发生变化后，副作用会重新运行，这时候会创建一个更新后的虚拟 DOM 树。运行时渲染器遍历这棵新树，将它与旧树进行比较，然后将必要的更新应用到真实 DOM 上去。
+
+![render pipeline](https://cn.vuejs.org/assets/render-pipeline.sMZx_5WY.png)
+
 ### Vue2 渲染的过程
+
 1. 通过new Vue 语句实例化 Vue 对象
 2. 挂载$mount 方法,通过自定义 Render 方法、template、el 等生成 Reder 函数，准备渲染内容
 3. 通过Watcher 进行依赖收集。

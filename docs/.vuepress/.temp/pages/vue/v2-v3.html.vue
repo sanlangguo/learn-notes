@@ -1,4 +1,40 @@
-<template><div><h3 id="说说-object-defineproperty-与-proxy-的区别" tabindex="-1"><a class="header-anchor" href="#说说-object-defineproperty-与-proxy-的区别" aria-hidden="true">#</a> 说说 Object.defineProperty 与 Proxy 的区别?</h3>
+<template><div><h3 id="为什么-vue2-this-能够直接获取到-data-和-methods" tabindex="-1"><a class="header-anchor" href="#为什么-vue2-this-能够直接获取到-data-和-methods" aria-hidden="true">#</a> 为什么 Vue2 this 能够直接获取到 data 和 methods ?</h3>
+<ol>
+<li>
+<p>通过<code v-pre>this</code>直接访问到<code v-pre>methods</code>里面的函数的原因是：因为<code v-pre>methods</code>里的方法通过 <code v-pre>bind</code> 指定了<code v-pre>this</code>为 <code v-pre>new Vue</code>的实例(<code v-pre>vm</code>)。</p>
+</li>
+<li>
+<p>通过 <code v-pre>this</code> 直接访问到 <code v-pre>data</code> 里面的数据的原因是：data里的属性最终会存储到<code v-pre>new Vue</code>的实例（<code v-pre>vm</code>）上的 <code v-pre>_data</code>对象中，访问 <code v-pre>this.xxx</code>，是访问<code v-pre>Object.defineProperty</code>代理后的 <code v-pre>this._data.xxx</code>。</p>
+</li>
+</ol>
+<h3 id="vue2和vue3和react三者的diff算法有什么区别" tabindex="-1"><a class="header-anchor" href="#vue2和vue3和react三者的diff算法有什么区别" aria-hidden="true">#</a> Vue2和Vue3和React三者的diff算法有什么区别？</h3>
+<ul>
+<li>React diff 特点</li>
+</ul>
+<p>仅向右移动</p>
+<ul>
+<li>Vue2 diff 特点</li>
+</ul>
+<p>Vue2 采用双端交叉指针，新老 Vdom 各有2个指针，分别进行头头、尾尾、头尾、尾头优化比较；</p>
+<ul>
+<li>Vue3 diff 特点</li>
+</ul>
+<p>Vue3 也是双端快速 diff，新老 Vdom 各有2个指针，只比对头头和尾尾，如果能够匹配上，那就跟2.0是一致的。</p>
+<p>如果没有匹配上，就会触发最长递增子序列的算法计算，就是在新的 Vdom 里面寻找依次递增的元素有哪些，找到之后，这些元素它的顺序就是固定的，去寻找不在这些列表里面的元素。与老的Vdom进行比对，再进行移动、删除或者创建；</p>
+<p>实际上它的时间复杂度是O(nlog(n))，但是在 Vue2 里面，它的复杂度是 O(n)。那这么来看，3.0的复杂度更高了。那为什么要提高复杂度呢？</p>
+<p>因为3.0核心是为了减少 DOM 的移动，因为在浏览器中 DOM 的移动它是非常昂贵的，但是 JS 损失一点也没关系。所以总体来看，损失了 JS 的性能，但是提升了浏览器 DOM 的渲染效率，总体来说是利大于弊的。</p>
+<p>3、Vue 3.0 使用的 diff 算法相比 Vue 2.0 中的双端比对有以下优势：</p>
+<p><strong>① 最长递增子序列算法</strong></p>
+<p>Vue 3.0 的 diff 算法采用了最长递增子序列算法，能够减少不必要的 DOM 操作，提升性能。</p>
+<p><strong>② 静态标记</strong></p>
+<p>Vue 3.0 中，编译器会对静态节点进行标记，在更新时可以直接跳过这些静态节点，减少 DOM 操作，提升性能。</p>
+<p><strong>③ 缓存数组</strong></p>
+<p>Vue 3.0 中每次更新时会将新旧 VNode 数组缓存起来，只对数组中不同的 VNode 进行比对，减少比对次数，提升性能。</p>
+<p><strong>④ 动态删除操作</strong></p>
+<p>Vue 3.0 中，对于动态删除操作，采用了异步队列的方式进行，能够将多个删除操作合并为一个，减少 DOM 操作，提升性能。</p>
+<p>总的来说，Vue 3.0 的 diff 算法相比 Vue 2.0 更加高效，能够减少不必要的 DOM 操作，提升应用的性能。</p>
+<p>参考文献：https://blog.csdn.net/qq_38290251/article/details/133247855</p>
+<h3 id="说说-object-defineproperty-与-proxy-的区别" tabindex="-1"><a class="header-anchor" href="#说说-object-defineproperty-与-proxy-的区别" aria-hidden="true">#</a> 说说 Object.defineProperty 与 Proxy 的区别?</h3>
 <p><strong>vue 2.x Object.defineProperty vue 3.x Proxy</strong></p>
 <ul>
 <li>0bject.defineProperty 产生三个主要问题</li>
@@ -21,7 +57,7 @@
 <p>Vue3 不兼容 IE11 及以下的浏览器版本。</p>
 </li>
 <li>
-<p>Vue3 使用了 ES2015 的语法和特性，而 IE11 不支持 ES2015。因此，Vue3 在 IE11 中会出现无法运行或运行异常的情况。</p>
+<p>Vue3 使用了 ES2016 的语法和特性，而 IE11 不支持 ES2016。因此，Vue3 在 IE11 中会出现无法运行或运行异常的情况。</p>
 </li>
 </ul>
 <p>如果您需要在 IE11 中运行 Vue3，可以使用 Vue2。Vue2 支持 IE11 及以下的浏览器版本。</p>

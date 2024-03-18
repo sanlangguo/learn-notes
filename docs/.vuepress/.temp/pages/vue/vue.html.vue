@@ -33,6 +33,16 @@ computed：监测的是依赖值，依赖值不变的情况下其会直接读取
 <p><a href="https://juejin.cn/post/6858899262596448270#heading-21" target="_blank" rel="noopener noreferrer">参考链接<ExternalLinkIcon/></a></p>
 <h3 id="vue-组件传值" tabindex="-1"><a class="header-anchor" href="#vue-组件传值" aria-hidden="true">#</a> vue 组件传值</h3>
 <p><a href="https://segmentfault.com/a/1190000022700216" target="_blank" rel="noopener noreferrer">vue组件之间相互传值的方式<ExternalLinkIcon/></a></p>
+<h3 id="vue3-组件挂载时" tabindex="-1"><a class="header-anchor" href="#vue3-组件挂载时" aria-hidden="true">#</a> Vue3 组件挂载时</h3>
+<ul>
+<li>从高层面的视角看，Vue 组件挂载时会发生如下几件事：</li>
+</ul>
+<ol>
+<li><strong>编译</strong>：Vue 模板被编译为<strong>渲染函数</strong>：即用来返回虚拟 DOM 树的函数。这一步骤可以通过构建步骤提前完成，也可以通过使用运行时编译器即时完成。</li>
+<li><strong>挂载</strong>：运行时渲染器调用渲染函数，遍历返回的虚拟 DOM 树，并基于它创建实际的 DOM 节点。这一步会作为<a href="https://cn.vuejs.org/guide/extras/reactivity-in-depth.html" target="_blank" rel="noopener noreferrer">响应式副作用<ExternalLinkIcon/></a>执行，因此它会追踪其中所用到的所有响应式依赖。</li>
+<li><strong>更新</strong>：当一个依赖发生变化后，副作用会重新运行，这时候会创建一个更新后的虚拟 DOM 树。运行时渲染器遍历这棵新树，将它与旧树进行比较，然后将必要的更新应用到真实 DOM 上去。</li>
+</ol>
+<p><img src="https://cn.vuejs.org/assets/render-pipeline.sMZx_5WY.png" alt="render pipeline"></p>
 <h3 id="vue2-渲染的过程" tabindex="-1"><a class="header-anchor" href="#vue2-渲染的过程" aria-hidden="true">#</a> Vue2 渲染的过程</h3>
 <ol>
 <li>通过new Vue 语句实例化 Vue 对象</li>
